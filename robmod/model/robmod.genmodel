@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/robmod/src/" modelPluginID="robmod" modelName="Robmod"
+    importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" copyrightFields="false">
+  <foreignModel>robmod.ecore</foreignModel>
+  <genPackages prefix="Robmod" basePackage="robmod" disposableProviderFactory="true"
+      ecorePackage="robmod.ecore#/">
+    <genClasses ecoreClass="robmod.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/composition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/handlers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/inputPorts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/outputPorts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="robmod.ecore#//Handler">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Handler/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Handler/trigeredBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Handler/description"/>
+    </genClasses>
+    <genClasses ecoreClass="robmod.ecore#//InputPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//InputPort/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//InputPort/connection"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//InputPort/propagation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//InputPort/description"/>
+    </genClasses>
+    <genClasses ecoreClass="robmod.ecore#//OutputPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//OutputPort/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//OutputPort/connection"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//OutputPort/delegation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//OutputPort/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robmod.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Port/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Port/external"/>
+    </genClasses>
+    <genClasses ecoreClass="robmod.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Property/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Property/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Property/propagate"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

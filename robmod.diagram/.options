@@ -1,0 +1,7 @@
+# Tracing options for the robmod.diagram plug-in
+
+# Common issues
+robmod.diagram/debug=false
+
+# Visual IDs
+robmod.diagram/debug/visualID=false

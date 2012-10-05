@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="robmod.robmod.presentation.RobmodModelWizardID"
+            name="%_UI_RobmodModelWizard_label"
+            class="robmod.robmod.presentation.RobmodModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RobmodModelFile.gif">
+         <description>%_UI_RobmodModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="robmod.robmod.presentation.RobmodEditorID"
+            name="%_UI_RobmodEditor_label"
+            icon="icons/full/obj16/RobmodModelFile.gif"
+            extensions="robmod"
+            class="robmod.robmod.presentation.RobmodEditor"
+            contributorClass="robmod.robmod.presentation.RobmodActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
