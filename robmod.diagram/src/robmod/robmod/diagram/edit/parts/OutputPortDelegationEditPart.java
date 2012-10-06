@@ -1,5 +1,6 @@
 package robmod.robmod.diagram.edit.parts;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
@@ -48,25 +49,27 @@ public class OutputPortDelegationEditPart extends ConnectionNodeEditPart
 	 */
 
 	protected Connection createConnectionFigure() {
-		return new HandlerTrigeredByFigure();
+		return new PortConnectionFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public HandlerTrigeredByFigure getPrimaryShape() {
-		return (HandlerTrigeredByFigure) getFigure();
+	public PortConnectionFigure getPrimaryShape() {
+		return (PortConnectionFigure) getFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public class HandlerTrigeredByFigure extends PolylineConnectionEx {
+	public class PortConnectionFigure extends PolylineConnectionEx {
 
 		/**
 		 * @generated
 		 */
-		public HandlerTrigeredByFigure() {
+		public PortConnectionFigure() {
+			this.setLineWidth(3);
+			this.setForegroundColor(ColorConstants.black);
 
 			setTargetDecoration(createTargetDecoration());
 		}

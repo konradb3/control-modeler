@@ -318,6 +318,41 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String Composition8CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String Composition8CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String SequentialThread9CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String SequentialThread9CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String ComponentOrdering10CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String ComponentOrdering10CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String ComponentThreadCompartmentEditPart_title;
+
+	/**
+	 * @generated
+	 */
 	public static String CommandName_OpenDiagram;
 
 	/**
@@ -378,6 +413,46 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_ComponentBefore_4009_target;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_ComponentBefore_4009_source;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_2006_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_2006_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_2003_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_2003_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_HandlerGenerates_4008_target;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_HandlerGenerates_4008_source;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_InputPort_3001_incominglinks;
 
 	/**
@@ -398,7 +473,27 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_Component_2007_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_2007_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_Component_1000_links;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_3003_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Component_3003_outgoinglinks;
 
 	/**
 	 * @generated

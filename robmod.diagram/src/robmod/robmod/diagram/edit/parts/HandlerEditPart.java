@@ -254,8 +254,9 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	 */
 	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSource() {
 		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
-				1);
+				2);
 		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
+		types.add(RobmodElementTypes.HandlerGenerates_4008);
 		return types;
 	}
 
@@ -271,6 +272,12 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof InputPort2EditPart) {
 			types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		}
+		if (targetEditPart instanceof OutputPortEditPart) {
+			types.add(RobmodElementTypes.HandlerGenerates_4008);
+		}
+		if (targetEditPart instanceof OutputPort2EditPart) {
+			types.add(RobmodElementTypes.HandlerGenerates_4008);
+		}
 		return types;
 	}
 
@@ -283,6 +290,9 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 		if (relationshipType == RobmodElementTypes.HandlerTrigeredBy_4004) {
 			types.add(RobmodElementTypes.InputPort_2004);
 			types.add(RobmodElementTypes.InputPort_3001);
+		} else if (relationshipType == RobmodElementTypes.HandlerGenerates_4008) {
+			types.add(RobmodElementTypes.OutputPort_2001);
+			types.add(RobmodElementTypes.OutputPort_3002);
 		}
 		return types;
 	}

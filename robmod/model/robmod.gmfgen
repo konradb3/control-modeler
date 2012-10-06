@@ -15,7 +15,7 @@
         name="sdd"
         description="Handler or Coposition"
         id="ssd"
-        rule="//@expressionProviders/@providers.0/@expressions.3"
+        rule="//@expressionProviders/@providers.0/@expressions.6"
         message="Single component can't conteins both Handler and orther Components"
         useInLiveMode="true"
         category="//@audits/@categories.0">
@@ -30,7 +30,7 @@
         name="Component name audit"
         description="A component must have a name provided."
         id="Component.name"
-        rule="//@expressionProviders/@providers.0/@expressions.4"
+        rule="//@expressionProviders/@providers.0/@expressions.7"
         message="Component must have a name"
         category="//@audits/@categories.0">
       <target
@@ -44,7 +44,7 @@
         name="Component type audit"
         description="A component must have a type provided."
         id="Component.type"
-        rule="//@expressionProviders/@providers.0/@expressions.5"
+        rule="//@expressionProviders/@providers.0/@expressions.8"
         message="Component must have a type"
         category="//@audits/@categories.0">
       <target
@@ -58,7 +58,7 @@
         name="InputPort name audit"
         description="A InputPort must have a name provided."
         id="InputPort.name"
-        rule="//@expressionProviders/@providers.0/@expressions.6"
+        rule="//@expressionProviders/@providers.0/@expressions.9"
         message="InputPort must have a name"
         category="//@audits/@categories.0">
       <target
@@ -72,7 +72,7 @@
         name="Component handlers audit"
         description="Conponent can contain only one handler without triggers."
         id="Component.handlers"
-        rule="//@expressionProviders/@providers.0/@expressions.7"
+        rule="//@expressionProviders/@providers.0/@expressions.10"
         message="Conponent can contain only one handler without triggers."
         category="//@audits/@categories.0">
       <target
@@ -86,7 +86,7 @@
         name="Component empty"
         description="Comopnent doesn't contain handler nor other components."
         id="Component.empty"
-        rule="//@expressionProviders/@providers.0/@expressions.8"
+        rule="//@expressionProviders/@providers.0/@expressions.11"
         message="Comopnent doesn't contain handler nor other components."
         severity="WARNING"
         category="//@audits/@categories.0">
@@ -129,7 +129,7 @@
         canonicalEditPolicyClassName="InputPort2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="InputPort2GraphicalNodeEditPolicy"
         createCommandClassName="InputPort2CreateCommand"
-        containers="//@diagram/@topLevelNodes.2"
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.5 //@diagram/@childNodes.2"
         preferredSideName="WEST">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -177,7 +177,7 @@
         canonicalEditPolicyClassName="OutputPort2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="OutputPort2GraphicalNodeEditPolicy"
         createCommandClassName="OutputPort2CreateCommand"
-        containers="//@diagram/@topLevelNodes.2"
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.5 //@diagram/@childNodes.2"
         preferredSideName="EAST">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -217,6 +217,93 @@
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="robmod.genmodel#//robmod/OutputPort/name"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <childNodes
+        visualID="3003"
+        editPartClassName="Component5EditPart"
+        itemSemanticEditPolicyClassName="Component5ItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComponentViewFactory"
+        canonicalEditPolicyClassName="Component5CanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1"
+        graphicalNodeEditPolicyClassName="Component4GraphicalNodeEditPolicy"
+        createCommandClassName="Component4CreateCommand"
+        containers="//@diagram/@compartments.0">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"
+          metamodelType="//@diagram/@elementType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          layoutType="FLOW_LAYOUT"
+          className="ComponentFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ComponentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureComponentNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureComponentTypeFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ComponentFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureComponentNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureComponentNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;fFigureComponentNameFigure.setFont(FFIGURECOMPONENTNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureComponentNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureComponentTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureComponentTypeFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;fFigureComponentTypeFigure.setFont(FFIGURECOMPONENTTYPEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureComponentTypeFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureComponentNameFigure() {&#xA;&#x9;&#x9;return fFigureComponentNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureComponentTypeFigure() {&#xA;&#x9;&#x9;return fFigureComponentTypeFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECOMPONENTNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), &quot;Ubuntu&quot;, 14, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECOMPONENTTYPEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), &quot;Ubuntu&quot;, 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;"/>
+      <behaviour
+          xsi:type="gmfgen:OpenDiagramBehaviour"/>
+      <modelFacet
+          modelElementSelector="//@expressionProviders/@providers.0/@expressions.0">
+        <metaClass
+            href="robmod.genmodel#//robmod/Component"/>
+        <containmentMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <childMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenFeatureValueSpec"
+              value="//@expressionProviders/@providers.1/@expressions.0">
+            <feature
+                href="robmod.genmodel#//robmod/Component/type2"/>
+          </initializers>
+        </modelElementInitializer>
+      </modelFacet>
+      <labels
+          visualID="5012"
+          editPartClassName="ComponentName2EditPart"
+          itemSemanticEditPolicyClassName="ComponentName2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="ComponentNameViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureComponentNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            viewPattern=""
+            editorPattern="">
+          <metaFeatures
+              href="robmod.genmodel#//robmod/Component/name"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5013"
+          editPartClassName="ComponentType4EditPart"
+          itemSemanticEditPolicyClassName="ComponentType4ItemSemanticEditPolicy"
+          notationViewFactoryClassName="ComponentTypeViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureComponentTypeFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="robmod.genmodel#//robmod/Component/type"/>
         </modelFacet>
       </labels>
     </childNodes>
@@ -338,13 +425,23 @@
           xsi:type="gmfgen:OpenDiagramBehaviour"
           diagramKind="Robmod"
           editorID="robmod.robmod.diagram.part.RobmodDiagramEditorID"/>
-      <modelFacet>
+      <modelFacet
+          modelElementSelector="//@expressionProviders/@providers.0/@expressions.0">
         <metaClass
             href="robmod.genmodel#//robmod/Component"/>
         <containmentMetaFeature
             href="robmod.genmodel#//robmod/Component/composition"/>
         <childMetaFeature
             href="robmod.genmodel#//robmod/Component/composition"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenFeatureValueSpec"
+              value="//@expressionProviders/@providers.1/@expressions.0">
+            <feature
+                href="robmod.genmodel#//robmod/Component/type2"/>
+          </initializers>
+        </modelElementInitializer>
       </modelFacet>
       <labels
           visualID="5003"
@@ -510,6 +607,124 @@
         </modelFacet>
       </labels>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2006"
+        editPartClassName="Component3EditPart"
+        itemSemanticEditPolicyClassName="Component3ItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComponentViewFactory"
+        canonicalEditPolicyClassName="Component3CanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1"
+        graphicalNodeEditPolicyClassName="Component2GraphicalNodeEditPolicy"
+        createCommandClassName="Component2CreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"
+          metamodelType="//@diagram/@elementType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          layoutType="FLOW_LAYOUT"
+          className="ComponentFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ComponentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureComponentNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureComponentTypeFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ComponentFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureComponentNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureComponentNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;fFigureComponentNameFigure.setFont(FFIGURECOMPONENTNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureComponentNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureComponentTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureComponentTypeFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;fFigureComponentTypeFigure.setFont(FFIGURECOMPONENTTYPEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureComponentTypeFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureComponentNameFigure() {&#xA;&#x9;&#x9;return fFigureComponentNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureComponentTypeFigure() {&#xA;&#x9;&#x9;return fFigureComponentTypeFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECOMPONENTNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), &quot;Ubuntu&quot;, 14, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECOMPONENTTYPEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), &quot;Ubuntu&quot;, 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;"/>
+      <modelFacet
+          modelElementSelector="//@expressionProviders/@providers.0/@expressions.1">
+        <metaClass
+            href="robmod.genmodel#//robmod/Component"/>
+        <containmentMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <childMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenFeatureValueSpec"
+              value="//@expressionProviders/@providers.1/@expressions.1">
+            <feature
+                href="robmod.genmodel#//robmod/Component/type2"/>
+          </initializers>
+        </modelElementInitializer>
+      </modelFacet>
+      <labels
+          visualID="5010"
+          editPartClassName="ComponentDescriptionEditPart"
+          itemSemanticEditPolicyClassName="ComponentDescriptionItemSemanticEditPolicy"
+          notationViewFactoryClassName="ComponentDescriptionViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureComponentNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="robmod.genmodel#//robmod/Component/description"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5011"
+          editPartClassName="ComponentType2EditPart"
+          itemSemanticEditPolicyClassName="ComponentType2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="ComponentTypeViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureComponentTypeFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="robmod.genmodel#//robmod/Component/type"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2007"
+        editPartClassName="Component4EditPart"
+        itemSemanticEditPolicyClassName="Component4ItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComponentViewFactory"
+        canonicalEditPolicyClassName="Component4CanonicalEditPolicy"
+        compartments="//@diagram/@compartments.0"
+        graphicalNodeEditPolicyClassName="Component3GraphicalNodeEditPolicy"
+        createCommandClassName="Component3CreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"
+          metamodelType="//@diagram/@elementType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RoundedRectangle"/>
+      <modelFacet
+          modelElementSelector="//@expressionProviders/@providers.0/@expressions.2">
+        <metaClass
+            href="robmod.genmodel#//robmod/Component"/>
+        <containmentMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <childMetaFeature
+            href="robmod.genmodel#//robmod/Component/composition"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenFeatureValueSpec"
+              value="//@expressionProviders/@providers.1/@expressions.2">
+            <feature
+                href="robmod.genmodel#//robmod/Component/type2"/>
+          </initializers>
+        </modelElementInitializer>
+      </modelFacet>
+    </topLevelNodes>
     <links
         visualID="4004"
         editPartClassName="HandlerTrigeredByEditPart"
@@ -544,15 +759,19 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="HandlerTrigeredByFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class HandlerTrigeredByFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public HandlerTrigeredByFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          className="PortConnectionFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PortConnectionFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PortConnectionFigure() {&#xA;&#x9;&#x9;this.setLineWidth(3);&#xA;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"/>
+      </viewmap>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
             href="robmod.genmodel#//robmod/OutputPort/connection"/>
       </modelFacet>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.0"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.3"/>
     </links>
     <links
         visualID="4006"
@@ -567,15 +786,19 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="HandlerTrigeredByFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class HandlerTrigeredByFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public HandlerTrigeredByFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          className="PortConnectionFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PortConnectionFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PortConnectionFigure() {&#xA;&#x9;&#x9;this.setLineWidth(3);&#xA;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"/>
+      </viewmap>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
             href="robmod.genmodel#//robmod/OutputPort/delegation"/>
       </modelFacet>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.1"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.4"/>
     </links>
     <links
         visualID="4007"
@@ -590,16 +813,80 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="HandlerTrigeredByFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class HandlerTrigeredByFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public HandlerTrigeredByFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          className="PortConnectionFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class PortConnectionFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public PortConnectionFigure() {&#xA;&#x9;&#x9;this.setLineWidth(3);&#xA;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"/>
+      </viewmap>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
             href="robmod.genmodel#//robmod/InputPort/propagation"/>
       </modelFacet>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.2"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.5"/>
     </links>
+    <links
+        visualID="4008"
+        editPartClassName="HandlerGeneratesEditPart"
+        itemSemanticEditPolicyClassName="HandlerGeneratesItemSemanticEditPolicy"
+        notationViewFactoryClassName="HandlerGeneratesViewFactory"
+        createCommandClassName="HandlerGeneratesCreateCommand"
+        reorientCommandClassName="HandlerGeneratesReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="HandlerTrigeredByFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class HandlerTrigeredByFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public HandlerTrigeredByFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="robmod.genmodel#//robmod/Handler/generates"/>
+      </modelFacet>
+    </links>
+    <links
+        visualID="4009"
+        editPartClassName="ComponentBeforeEditPart"
+        itemSemanticEditPolicyClassName="ComponentBeforeItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComponentBeforeViewFactory"
+        createCommandClassName="ComponentBeforeCreateCommand"
+        reorientCommandClassName="ComponentBeforeReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="HandlerTrigeredByFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class HandlerTrigeredByFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public HandlerTrigeredByFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="robmod.genmodel#//robmod/Component/before"/>
+      </modelFacet>
+    </links>
+    <compartments
+        visualID="7001"
+        editPartClassName="ComponentThreadCompartmentEditPart"
+        itemSemanticEditPolicyClassName="ComponentThreadCompartmentItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComponentThreadCompartmentViewFactory"
+        canonicalEditPolicyClassName="ComponentThreadCompartmentCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.2"
+        title="ThreadCompartment"
+        canCollapse="false"
+        needsTitle="false"
+        node="//@diagram/@topLevelNodes.6"
+        listLayout="false">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RoundedRectangle"/>
+    </compartments>
     <palette>
       <groups
           title="robmod">
@@ -607,7 +894,7 @@
             xsi:type="gmfgen:ToolEntry"
             title="Component"
             description="Create new Component"
-            genNodes="//@diagram/@topLevelNodes.2"/>
+            genNodes="//@diagram/@topLevelNodes.2 //@diagram/@childNodes.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Handler"
@@ -617,7 +904,7 @@
             xsi:type="gmfgen:ToolEntry"
             title="HandlerTrigeredBy"
             description="Create new HandlerTrigeredBy"
-            genLinks="//@diagram/@links.0"/>
+            genLinks="//@diagram/@links.0 //@diagram/@links.4"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="InputPort"
@@ -638,6 +925,21 @@
             title="Property"
             description="Create new Property"
             genNodes="//@diagram/@topLevelNodes.4"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Composition"
+            description="Create new Composition"
+            genNodes="//@diagram/@topLevelNodes.5"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="SequentialThread"
+            description="Create new Sequential Thread"
+            genNodes="//@diagram/@topLevelNodes.6"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="ComponentOrdering"
+            description="Set execution order"
+            genLinks="//@diagram/@links.5"/>
       </groups>
     </palette>
     <preferencePages
@@ -696,6 +998,27 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.4"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.5"
+        child="//@diagram/@childNodes.0"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.5"
+        child="//@diagram/@childNodes.1"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.5"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@childNodes.0"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@childNodes.1"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.6"
+        child="//@diagram/@childNodes.2"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.6"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"
@@ -896,6 +1219,148 @@
         referenceType="out_target"
         groupName="outgoing links"
         groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.4"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@topLevelNodes.0"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@links.4"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.1"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.4"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@topLevelNodes.1"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@links.4"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.5"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.2"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.2"
+        child="//@diagram/@links.5"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.5"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.5"
+        child="//@diagram/@links.5"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.6"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.6"
+        child="//@diagram/@links.5"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@childNodes.2"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@links.5"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.2"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.2"
+        child="//@diagram/@links.5"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.5"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.5"
+        child="//@diagram/@links.5"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@topLevelNodes.6"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.6"
+        child="//@diagram/@links.5"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@childNodes.2"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@links.5"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
@@ -924,6 +1389,15 @@
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
           xsi:type="gmfgen:GenConstraint"
+          body="self.type2 = ComponentType::Component"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.type2 = ComponentType::Composition"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.type2 = ComponentType::SequentialThread"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
           body="(dataType = oppositeEnd.dataType)&#xA;and &#xA;(Component.allInstances()->select(outputPorts->includes(oppositeEnd)) &lt;> Component.allInstances()->select(inputPorts->includes(self)))&#xA;"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
@@ -950,12 +1424,22 @@
           xsi:type="gmfgen:GenConstraint"
           body="self.handlers->notEmpty() or self.composition->notEmpty()"/>
     </providers>
+    <providers
+        xsi:type="gmfgen:GenLiteralExpressionProvider">
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ComponentType.COMPONENT_LITERAL"/>
+      <expressions
+          body="ComponentType.COMPOSITION_LITERAL"/>
+      <expressions
+          body="ComponentType.SEQUENTIAL_THREAD_LITERAL"/>
+    </providers>
   </expressionProviders>
   <labelParsers
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.1/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.1/@modelFacet"/>
+        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.1/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.1/@modelFacet //@diagram/@topLevelNodes.5/@labels.0/@modelFacet //@diagram/@topLevelNodes.5/@labels.1/@modelFacet //@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.1/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

@@ -22,6 +22,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link robmod.robmod.Component#getType <em>Type</em>}</li>
  *   <li>{@link robmod.robmod.Component#getDescription <em>Description</em>}</li>
  *   <li>{@link robmod.robmod.Component#getProperties <em>Properties</em>}</li>
+ *   <li>{@link robmod.robmod.Component#getType2 <em>Type2</em>}</li>
+ *   <li>{@link robmod.robmod.Component#getBefore <em>Before</em>}</li>
+ *   <li>{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,7 +134,7 @@ public interface Component extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
 	 * @see robmod.robmod.RobmodPackage#getComponent_Type()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getType();
@@ -157,7 +160,7 @@ public interface Component extends EObject {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see robmod.robmod.RobmodPackage#getComponent_Description()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getDescription();
@@ -187,5 +190,77 @@ public interface Component extends EObject {
 	 * @generated
 	 */
 	EList getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Type2</b></em>' attribute.
+	 * The literals are from the enumeration {@link robmod.robmod.ComponentType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type2</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type2</em>' attribute.
+	 * @see robmod.robmod.ComponentType
+	 * @see #setType2(ComponentType)
+	 * @see robmod.robmod.RobmodPackage#getComponent_Type2()
+	 * @model required="true"
+	 *        extendedMetaData="namespace=''"
+	 * @generated
+	 */
+	ComponentType getType2();
+
+	/**
+	 * Sets the value of the '{@link robmod.robmod.Component#getType2 <em>Type2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type2</em>' attribute.
+	 * @see robmod.robmod.ComponentType
+	 * @see #getType2()
+	 * @generated
+	 */
+	void setType2(ComponentType value);
+
+	/**
+	 * Returns the value of the '<em><b>Before</b></em>' reference list.
+	 * The list contents are of type {@link robmod.robmod.Component}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Before</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Before</em>' reference list.
+	 * @see robmod.robmod.RobmodPackage#getComponent_Before()
+	 * @model type="robmod.robmod.Component"
+	 * @generated
+	 */
+	EList getBefore();
+
+	/**
+	 * Returns the value of the '<em><b>Execution Order</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Execution Order</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Execution Order</em>' reference.
+	 * @see #setExecutionOrder(Component)
+	 * @see robmod.robmod.RobmodPackage#getComponent_ExecutionOrder()
+	 * @model
+	 * @generated
+	 */
+	Component getExecutionOrder();
+
+	/**
+	 * Sets the value of the '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Execution Order</em>' reference.
+	 * @see #getExecutionOrder()
+	 * @generated
+	 */
+	void setExecutionOrder(Component value);
 
 } // Component

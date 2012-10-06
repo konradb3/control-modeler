@@ -59,6 +59,7 @@ public class InputPortItemProvider
 			addConnectionPropertyDescriptor(object);
 			addPropagationPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
+			addTriggerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -147,6 +148,28 @@ public class InputPortItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Trigger feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTriggerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InputPort_trigger_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InputPort_trigger_feature", "_UI_InputPort_type"),
+				 RobmodPackage.Literals.INPUT_PORT__TRIGGER,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

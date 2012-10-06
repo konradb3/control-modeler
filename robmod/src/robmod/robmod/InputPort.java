@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link robmod.robmod.InputPort#getConnection <em>Connection</em>}</li>
  *   <li>{@link robmod.robmod.InputPort#getPropagation <em>Propagation</em>}</li>
  *   <li>{@link robmod.robmod.InputPort#getDescription <em>Description</em>}</li>
+ *   <li>{@link robmod.robmod.InputPort#getTrigger <em>Trigger</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,5 +119,23 @@ public interface InputPort extends Port {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
+	 * The list contents are of type {@link robmod.robmod.Handler}.
+	 * It is bidirectional and its opposite is '{@link robmod.robmod.Handler#getTrigeredBy <em>Trigered By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trigger</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trigger</em>' reference list.
+	 * @see robmod.robmod.RobmodPackage#getInputPort_Trigger()
+	 * @see robmod.robmod.Handler#getTrigeredBy
+	 * @model type="robmod.robmod.Handler" opposite="trigeredBy"
+	 * @generated
+	 */
+	EList getTrigger();
 
 } // InputPort

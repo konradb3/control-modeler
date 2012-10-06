@@ -15,10 +15,13 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
+import robmod.robmod.diagram.edit.commands.HandlerGeneratesCreateCommand;
+import robmod.robmod.diagram.edit.commands.HandlerGeneratesReorientCommand;
 import robmod.robmod.diagram.edit.commands.OutputPortConnectionCreateCommand;
 import robmod.robmod.diagram.edit.commands.OutputPortConnectionReorientCommand;
 import robmod.robmod.diagram.edit.commands.OutputPortDelegationCreateCommand;
 import robmod.robmod.diagram.edit.commands.OutputPortDelegationReorientCommand;
+import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
 import robmod.robmod.diagram.edit.parts.OutputPortConnectionEditPart;
 import robmod.robmod.diagram.edit.parts.OutputPortDelegationEditPart;
 import robmod.robmod.diagram.part.RobmodVisualIDRegistry;
@@ -49,6 +52,14 @@ public class OutputPortItemSemanticEditPolicy extends
 				.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (RobmodVisualIDRegistry.getVisualID(incomingLink) == OutputPortDelegationEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(
+						incomingLink.getSource().getElement(), null,
+						incomingLink.getTarget().getElement(), false);
+				cmd.add(new DestroyReferenceCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+				continue;
+			}
+			if (RobmodVisualIDRegistry.getVisualID(incomingLink) == HandlerGeneratesEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
 						incomingLink.getSource().getElement(), null,
 						incomingLink.getTarget().getElement(), false);
@@ -114,6 +125,9 @@ public class OutputPortItemSemanticEditPolicy extends
 			return getGEFWrapper(new OutputPortDelegationCreateCommand(req,
 					req.getSource(), req.getTarget()));
 		}
+		if (RobmodElementTypes.HandlerGenerates_4008 == req.getElementType()) {
+			return null;
+		}
 		return null;
 	}
 
@@ -129,6 +143,10 @@ public class OutputPortItemSemanticEditPolicy extends
 		if (RobmodElementTypes.OutputPortDelegation_4006 == req
 				.getElementType()) {
 			return getGEFWrapper(new OutputPortDelegationCreateCommand(req,
+					req.getSource(), req.getTarget()));
+		}
+		if (RobmodElementTypes.HandlerGenerates_4008 == req.getElementType()) {
+			return getGEFWrapper(new HandlerGeneratesCreateCommand(req,
 					req.getSource(), req.getTarget()));
 		}
 		return null;
@@ -147,6 +165,8 @@ public class OutputPortItemSemanticEditPolicy extends
 			return getGEFWrapper(new OutputPortConnectionReorientCommand(req));
 		case OutputPortDelegationEditPart.VISUAL_ID:
 			return getGEFWrapper(new OutputPortDelegationReorientCommand(req));
+		case HandlerGeneratesEditPart.VISUAL_ID:
+			return getGEFWrapper(new HandlerGeneratesReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

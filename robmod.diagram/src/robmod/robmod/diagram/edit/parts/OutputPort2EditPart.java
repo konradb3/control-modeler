@@ -363,8 +363,9 @@ public class OutputPort2EditPart extends AbstractBorderItemEditPart {
 	 */
 	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnTarget() {
 		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
-				1);
+				2);
 		types.add(RobmodElementTypes.OutputPortDelegation_4006);
+		types.add(RobmodElementTypes.HandlerGenerates_4008);
 		return types;
 	}
 
@@ -377,6 +378,8 @@ public class OutputPort2EditPart extends AbstractBorderItemEditPart {
 		if (relationshipType == RobmodElementTypes.OutputPortDelegation_4006) {
 			types.add(RobmodElementTypes.OutputPort_2001);
 			types.add(RobmodElementTypes.OutputPort_3002);
+		} else if (relationshipType == RobmodElementTypes.HandlerGenerates_4008) {
+			types.add(RobmodElementTypes.Handler_2002);
 		}
 		return types;
 	}

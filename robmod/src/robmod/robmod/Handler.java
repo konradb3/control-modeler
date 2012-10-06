@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link robmod.robmod.Handler#getName <em>Name</em>}</li>
  *   <li>{@link robmod.robmod.Handler#getTrigeredBy <em>Trigered By</em>}</li>
  *   <li>{@link robmod.robmod.Handler#getDescription <em>Description</em>}</li>
+ *   <li>{@link robmod.robmod.Handler#getGenerates <em>Generates</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +55,7 @@ public interface Handler extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Trigered By</b></em>' reference list.
 	 * The list contents are of type {@link robmod.robmod.InputPort}.
+	 * It is bidirectional and its opposite is '{@link robmod.robmod.InputPort#getTrigger <em>Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Trigered By</em>' reference list isn't clear,
@@ -62,7 +64,8 @@ public interface Handler extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Trigered By</em>' reference list.
 	 * @see robmod.robmod.RobmodPackage#getHandler_TrigeredBy()
-	 * @model type="robmod.robmod.InputPort"
+	 * @see robmod.robmod.InputPort#getTrigger
+	 * @model type="robmod.robmod.InputPort" opposite="trigger"
 	 * @generated
 	 */
 	EList getTrigeredBy();
@@ -92,5 +95,21 @@ public interface Handler extends EObject {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Generates</b></em>' reference list.
+	 * The list contents are of type {@link robmod.robmod.OutputPort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generates</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generates</em>' reference list.
+	 * @see robmod.robmod.RobmodPackage#getHandler_Generates()
+	 * @model type="robmod.robmod.OutputPort"
+	 * @generated
+	 */
+	EList getGenerates();
 
 } // Handler

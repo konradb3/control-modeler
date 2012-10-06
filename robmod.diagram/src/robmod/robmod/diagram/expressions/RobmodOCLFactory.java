@@ -37,8 +37,11 @@ public class RobmodOCLFactory {
 	 * @generated
 	 */
 	protected RobmodOCLFactory() {
-		this.expressions = new RobmodAbstractExpression[9];
+		this.expressions = new RobmodAbstractExpression[12];
 		this.expressionBodies = new String[] {
+				"self.type2 = ComponentType::Component", //$NON-NLS-1$
+				"self.type2 = ComponentType::Composition", //$NON-NLS-1$
+				"self.type2 = ComponentType::SequentialThread", //$NON-NLS-1$
 				"(dataType = oppositeEnd.dataType)\nand \n(Component.allInstances()->select(outputPorts->includes(oppositeEnd)) <> Component.allInstances()->select(inputPorts->includes(self)))\n", //$NON-NLS-1$
 				"self.dataType = oppositeEnd.dataType\nand\nComponent.allInstances()->select(outputPorts->includes(self)).composition->exists(outputPorts->includes(oppositeEnd))\n", //$NON-NLS-1$
 				"self.dataType = oppositeEnd.dataType\nand\nComponent.allInstances()->select(inputPorts->includes(oppositeEnd)).composition->exists(inputPorts->includes(self))\n", //$NON-NLS-1$

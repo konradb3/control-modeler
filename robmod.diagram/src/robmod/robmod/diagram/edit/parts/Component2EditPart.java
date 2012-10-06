@@ -1,5 +1,8 @@
 package robmod.robmod.diagram.edit.parts;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -22,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -35,6 +39,7 @@ import robmod.robmod.diagram.edit.policies.Component2CanonicalEditPolicy;
 import robmod.robmod.diagram.edit.policies.Component2ItemSemanticEditPolicy;
 import robmod.robmod.diagram.edit.policies.OpenDiagramEditPolicy;
 import robmod.robmod.diagram.part.RobmodVisualIDRegistry;
+import robmod.robmod.diagram.providers.RobmodElementTypes;
 
 /**
  * @generated
@@ -309,6 +314,77 @@ public class Component2EditPart extends AbstractBorderedShapeEditPart {
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(RobmodVisualIDRegistry
 				.getType(ComponentNameEditPart.VISUAL_ID));
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSource() {
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+				1);
+		types.add(RobmodElementTypes.ComponentBefore_4009);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSourceAndTarget(
+			IGraphicalEditPart targetEditPart) {
+		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		if (targetEditPart instanceof robmod.robmod.diagram.edit.parts.Component2EditPart) {
+			types.add(RobmodElementTypes.ComponentBefore_4009);
+		}
+		if (targetEditPart instanceof Component3EditPart) {
+			types.add(RobmodElementTypes.ComponentBefore_4009);
+		}
+		if (targetEditPart instanceof Component4EditPart) {
+			types.add(RobmodElementTypes.ComponentBefore_4009);
+		}
+		if (targetEditPart instanceof Component5EditPart) {
+			types.add(RobmodElementTypes.ComponentBefore_4009);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForTarget(
+			IElementType relationshipType) {
+		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
+			types.add(RobmodElementTypes.Component_2003);
+			types.add(RobmodElementTypes.Component_2006);
+			types.add(RobmodElementTypes.Component_2007);
+			types.add(RobmodElementTypes.Component_3003);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnTarget() {
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+				1);
+		types.add(RobmodElementTypes.ComponentBefore_4009);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForSource(
+			IElementType relationshipType) {
+		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
+			types.add(RobmodElementTypes.Component_2003);
+			types.add(RobmodElementTypes.Component_2006);
+			types.add(RobmodElementTypes.Component_2007);
+			types.add(RobmodElementTypes.Component_3003);
+		}
+		return types;
 	}
 
 	/**

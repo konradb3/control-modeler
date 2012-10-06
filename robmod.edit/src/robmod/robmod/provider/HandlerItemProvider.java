@@ -61,6 +61,7 @@ public class HandlerItemProvider
 			addNamePropertyDescriptor(object);
 			addTrigeredByPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
+			addGeneratesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -127,6 +128,28 @@ public class HandlerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Generates feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGeneratesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Handler_generates_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_generates_feature", "_UI_Handler_type"),
+				 RobmodPackage.Literals.HANDLER__GENERATES,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

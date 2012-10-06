@@ -44,6 +44,23 @@
         visualID="5009"
         queryText="true"/>
   </nodeTraces>
+  <nodeTraces
+      visualID="2006"
+      queryText="let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component'">
+    <nodeLabelTraces
+        visualID="5010"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5011"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2007"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and _containmentMF_.name = 'composition')">
+    <compartmentTraces
+        visualID="7001"
+        queryText="true"/>
+  </nodeTraces>
   <childNodeTraces
       visualID="3001"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'InputPort') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and _containmentMF_.name = 'inputPorts')">
@@ -58,6 +75,16 @@
         visualID="5006"
         queryText="true"/>
   </childNodeTraces>
+  <childNodeTraces
+      visualID="3003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and _containmentMF_.name = 'composition')">
+    <nodeLabelTraces
+        visualID="5012"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5013"
+        queryText="true"/>
+  </childNodeTraces>
   <linkTraces
       visualID="4004"
       queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Handler') and _feature_.name = 'trigeredBy')"/>
@@ -70,4 +97,10 @@
   <linkTraces
       visualID="4007"
       queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'InputPort') and _feature_.name = 'propagation')"/>
+  <linkTraces
+      visualID="4008"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Handler') and _feature_.name = 'generates')"/>
+  <linkTraces
+      visualID="4009"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://dupa.org/robmod.ecore' and _eClass_.name = 'Component') and _feature_.name = 'before')"/>
 </trace:TraceModel>

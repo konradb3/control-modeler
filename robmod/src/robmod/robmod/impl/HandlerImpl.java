@@ -6,17 +6,22 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import robmod.robmod.Handler;
 import robmod.robmod.InputPort;
+import robmod.robmod.OutputPort;
 import robmod.robmod.RobmodPackage;
 
 /**
@@ -29,6 +34,7 @@ import robmod.robmod.RobmodPackage;
  *   <li>{@link robmod.robmod.impl.HandlerImpl#getName <em>Name</em>}</li>
  *   <li>{@link robmod.robmod.impl.HandlerImpl#getTrigeredBy <em>Trigered By</em>}</li>
  *   <li>{@link robmod.robmod.impl.HandlerImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link robmod.robmod.impl.HandlerImpl#getGenerates <em>Generates</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,6 +92,16 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getGenerates() <em>Generates</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList generates;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -131,7 +147,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 */
 	public EList getTrigeredBy() {
 		if (trigeredBy == null) {
-			trigeredBy = new EObjectResolvingEList(InputPort.class, this, RobmodPackage.HANDLER__TRIGERED_BY);
+			trigeredBy = new EObjectWithInverseResolvingEList.ManyInverse(InputPort.class, this, RobmodPackage.HANDLER__TRIGERED_BY, RobmodPackage.INPUT_PORT__TRIGGER);
 		}
 		return trigeredBy;
 	}
@@ -162,6 +178,44 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getGenerates() {
+		if (generates == null) {
+			generates = new EObjectResolvingEList(OutputPort.class, this, RobmodPackage.HANDLER__GENERATES);
+		}
+		return generates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RobmodPackage.HANDLER__TRIGERED_BY:
+				return ((InternalEList)getTrigeredBy()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case RobmodPackage.HANDLER__TRIGERED_BY:
+				return ((InternalEList)getTrigeredBy()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case RobmodPackage.HANDLER__NAME:
@@ -170,6 +224,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				return getTrigeredBy();
 			case RobmodPackage.HANDLER__DESCRIPTION:
 				return getDescription();
+			case RobmodPackage.HANDLER__GENERATES:
+				return getGenerates();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,6 +247,10 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 			case RobmodPackage.HANDLER__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
+			case RobmodPackage.HANDLER__GENERATES:
+				getGenerates().clear();
+				getGenerates().addAll((Collection)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -211,6 +271,9 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 			case RobmodPackage.HANDLER__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
+			case RobmodPackage.HANDLER__GENERATES:
+				getGenerates().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -228,6 +291,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				return trigeredBy != null && !trigeredBy.isEmpty();
 			case RobmodPackage.HANDLER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case RobmodPackage.HANDLER__GENERATES:
+				return generates != null && !generates.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

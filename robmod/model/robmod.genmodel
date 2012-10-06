@@ -5,6 +5,11 @@
   <foreignModel>robmod.ecore</foreignModel>
   <genPackages prefix="Robmod" basePackage="robmod" disposableProviderFactory="true"
       ecorePackage="robmod.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="robmod.ecore#//ComponentType">
+      <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Component"/>
+      <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Composition"/>
+      <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/SequentialThread"/>
+    </genEnums>
     <genClasses ecoreClass="robmod.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/composition"/>
@@ -14,17 +19,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/type2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/before"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Component/executionOrder"/>
     </genClasses>
     <genClasses ecoreClass="robmod.ecore#//Handler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Handler/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Handler/trigeredBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Handler/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//Handler/generates"/>
     </genClasses>
     <genClasses ecoreClass="robmod.ecore#//InputPort">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//InputPort/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//InputPort/connection"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//InputPort/propagation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//InputPort/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robmod.ecore#//InputPort/trigger"/>
     </genClasses>
     <genClasses ecoreClass="robmod.ecore#//OutputPort">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//OutputPort/name"/>

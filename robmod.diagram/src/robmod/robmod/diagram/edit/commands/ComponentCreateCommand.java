@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import robmod.robmod.Component;
 import robmod.robmod.RobmodFactory;
+import robmod.robmod.diagram.providers.ElementInitializers;
 
 /**
  * @generated
@@ -57,6 +58,8 @@ public class ComponentCreateCommand extends EditElementCommand {
 
 		Component owner = (Component) getElementToEdit();
 		owner.getComposition().add(newElement);
+
+		ElementInitializers.getInstance().init_Component_2003(newElement);
 
 		doConfigure(newElement, monitor, info);
 

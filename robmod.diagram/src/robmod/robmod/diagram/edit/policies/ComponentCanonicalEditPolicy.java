@@ -12,26 +12,38 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredLayoutCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetViewMutabilityCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 
 import robmod.robmod.RobmodPackage;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
+import robmod.robmod.diagram.edit.parts.Component3EditPart;
+import robmod.robmod.diagram.edit.parts.Component4EditPart;
+import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.InputPort2EditPart;
@@ -124,6 +136,8 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 		case Component2EditPart.VISUAL_ID:
 		case InputPortEditPart.VISUAL_ID:
 		case PropertyEditPart.VISUAL_ID:
+		case Component3EditPart.VISUAL_ID:
+		case Component4EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -150,6 +164,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 			}
 		}
 		// alternative to #cleanCanonicalSemanticChildren(getViewChildren(), semanticChildren)
+		HashMap/*[robmod.robmod.diagram.part.RobmodNodeDescriptor, java.util.LinkedList[org.eclipse.gmf.runtime.notation.View]]*/potentialViews = new HashMap/*[robmod.robmod.diagram.part.RobmodNodeDescriptor, java.util.LinkedList[org.eclipse.gmf.runtime.notation.View]]*/();
 		//
 		// iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
 		// iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
@@ -160,6 +175,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 					.next();
 			String hint = RobmodVisualIDRegistry.getType(next.getVisualID());
 			LinkedList/*[org.eclipse.gmf.runtime.notation.View]*/perfectMatch = new LinkedList/*[org.eclipse.gmf.runtime.notation.View]*/(); // both semanticElement and hint match that of NodeDescriptor
+			LinkedList/*[org.eclipse.gmf.runtime.notation.View]*/potentialMatch = new LinkedList/*[org.eclipse.gmf.runtime.notation.View]*/(); // semanticElement matches, hint does not
 			for (Iterator/*[org.eclipse.gmf.runtime.notation.View]*/it = getViewChildren()
 					.iterator(); it.hasNext();) {
 				View childView = (View) it.next();
@@ -170,6 +186,8 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 						// actually, can stop iteration over view children here, but
 						// may want to use not the first view but last one as a 'real' match (the way original CEP does
 						// with its trick with viewToSemanticMap inside #cleanCanonicalSemanticChildren
+					} else {
+						potentialMatch.add(childView);
 					}
 				}
 			}
@@ -177,12 +195,17 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				descriptorsIterator.remove(); // precise match found no need to create anything for the NodeDescriptor
 				// use only one view (first or last?), keep rest as orphaned for further consideration
 				knownViewChildren.remove(perfectMatch.getFirst());
+			} else if (potentialMatch.size() > 0) {
+				potentialViews.put(next, potentialMatch);
 			}
 		}
 		// those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
 		// or those we have potential matches to, and thus need to be recreated, preserving size/location information.
 		orphaned.addAll(knownViewChildren);
 		//
+		CompositeTransactionalCommand boundsCommand = new CompositeTransactionalCommand(
+				host().getEditingDomain(),
+				DiagramUIMessages.SetLocationCommand_Label_Resize);
 		ArrayList/*[org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor]*/viewDescriptors = new ArrayList/*[org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor]*/(
 				childDescriptors.size());
 		for (Iterator/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/it = childDescriptors
@@ -195,6 +218,41 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
 					host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
+
+			LinkedList/*[org.eclipse.gmf.runtime.notation.View]*/possibleMatches = (LinkedList) potentialViews
+					.get(next);
+			if (possibleMatches != null) {
+				// from potential matches, leave those that were not eventually used for some other NodeDescriptor (i.e. those left as orphaned)
+				possibleMatches.retainAll(knownViewChildren);
+			}
+			if (possibleMatches != null && !possibleMatches.isEmpty()) {
+				View originalView = (View) possibleMatches.getFirst();
+				knownViewChildren.remove(originalView); // remove not to copy properties of the same view again and again
+				// add command to copy properties
+				if (originalView instanceof Node) {
+					if (((Node) originalView).getLayoutConstraint() instanceof Bounds) {
+						Bounds b = (Bounds) ((Node) originalView)
+								.getLayoutConstraint();
+						boundsCommand.add(new SetBoundsCommand(boundsCommand
+								.getEditingDomain(), boundsCommand.getLabel(),
+								descriptor, new Rectangle(b.getX(), b.getY(), b
+										.getWidth(), b.getHeight())));
+					} else if (((Node) originalView).getLayoutConstraint() instanceof Location) {
+						Location l = (Location) ((Node) originalView)
+								.getLayoutConstraint();
+						boundsCommand.add(new SetBoundsCommand(boundsCommand
+								.getEditingDomain(), boundsCommand.getLabel(),
+								descriptor, new Point(l.getX(), l.getY())));
+					} else if (((Node) originalView).getLayoutConstraint() instanceof Size) {
+						Size s = (Size) ((Node) originalView)
+								.getLayoutConstraint();
+						boundsCommand.add(new SetBoundsCommand(boundsCommand
+								.getEditingDomain(), boundsCommand.getLabel(),
+								descriptor, new Dimension(s.getWidth(), s
+										.getHeight())));
+					}
+				}
+			}
 		}
 
 		boolean changed = deleteViews(orphaned.iterator());
@@ -205,6 +263,9 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 			SetViewMutabilityCommand.makeMutable(
 					new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
+			if (boundsCommand.canExecute()) {
+				executeCommand(new ICommandProxy(boundsCommand.reduce()));
+			}
 
 			List/*[org.eclipse.core.runtime.IAdaptable]*/nl = (List/*[org.eclipse.core.runtime.IAdaptable]*/) request
 					.getNewObject();
@@ -349,6 +410,28 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 			}
 			break;
 		}
+		case Component3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(RobmodDiagramUpdater
+						.getComponent_2006ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
+		case Component4EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(RobmodDiagramUpdater
+						.getComponent_2007ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
 		case InputPort2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(RobmodDiagramUpdater
@@ -364,6 +447,17 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(RobmodDiagramUpdater
 						.getOutputPort_3002ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
+		case Component5EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(RobmodDiagramUpdater
+						.getComponent_3003ContainedLinks(view));
 			}
 			if (!domain2NotationMap.containsKey(view.getElement())
 					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$

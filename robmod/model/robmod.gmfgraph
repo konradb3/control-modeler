@@ -1,185 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgraph:Canvas
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition"
-    name="robmod">
-  <figures
-      name="Default">
-    <figures
-        xsi:type="gmfgraph:PolylineDecoration"
-        name="HandlerTrigeredByTargetDecoration"/>
-    <descriptors
-        name="ComponentFigure">
-      <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          name="ComponentFigure">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="ComponentNameFigure"
-            text="&lt;...>">
-          <font
-              xsi:type="gmfgraph:BasicFont"
-              faceName="Ubuntu"
-              height="14"
-              style="BOLD"/>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="robmod">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="HandlerTrigeredByTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="PortConnectionDecoration"/>
+    <descriptors name="ComponentFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="ComponentFigure">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <children xsi:type="gmfgraph:Label" name="ComponentNameFigure" text="&lt;...>">
+          <font xsi:type="gmfgraph:BasicFont" faceName="Ubuntu" height="14" style="BOLD"/>
         </children>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="ComponentTypeFigure"
-            text="&lt;...>">
-          <font
-              xsi:type="gmfgraph:BasicFont"
-              faceName="Ubuntu"/>
+        <children xsi:type="gmfgraph:Label" name="ComponentTypeFigure" text="&lt;...>">
+          <font xsi:type="gmfgraph:BasicFont" faceName="Ubuntu"/>
         </children>
       </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
-      <accessors
-          accessor="getFigureComponentTypeFigure"
-          figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
+      <accessors figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureComponentTypeFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors
-        name="HandlerFigure">
-      <actualFigure
-          xsi:type="gmfgraph:Ellipse"
-          name="HandleFigure"
-          lineWidth="2">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="HandlerNameFigure"
-            text="&lt;...>"/>
+    <descriptors name="HandlerFigure">
+      <actualFigure xsi:type="gmfgraph:Ellipse" name="HandleFigure" lineWidth="2">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <children xsi:type="gmfgraph:Label" name="HandlerNameFigure" text="&lt;...>"/>
       </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
     </descriptors>
-    <descriptors
-        name="HandlerTrigeredByFigure">
-      <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"
-          name="HandlerTrigeredByFigure"
-          targetDecoration="//@figures.0/@figures.0"/>
+    <descriptors name="HandlerTrigeredByFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="HandlerTrigeredByFigure" targetDecoration="//@figures.0/@figures.0"/>
     </descriptors>
-    <descriptors
-        name="InputPortFigure">
-      <actualFigure
-          xsi:type="gmfgraph:RoundedRectangle"
-          name="InputPort"
-          lineWidth="2">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
-        <minimumSize
-            dx="100"
-            dy="20"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="InputPortNameFigure"
-            text="&lt;...>"/>
+    <descriptors name="InputPortFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputPort" lineWidth="2">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <minimumSize dx="100" dy="20"/>
+        <children xsi:type="gmfgraph:Label" name="InputPortNameFigure" text="&lt;...>"/>
       </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
     </descriptors>
-    <descriptors
-        name="OutputPortFigure">
-      <actualFigure
-          xsi:type="gmfgraph:RoundedRectangle"
-          name="OutputPort"
-          lineWidth="2">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
-        <backgroundColor
-            xsi:type="gmfgraph:ConstantColor"
-            value="gray"/>
-        <minimumSize
-            dx="100"
-            dy="20"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="OutputPortNameFigure"
-            text="&lt;...>"/>
+    <descriptors name="OutputPortFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="OutputPort" lineWidth="2">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor xsi:type="gmfgraph:ConstantColor" value="gray"/>
+        <minimumSize dx="100" dy="20"/>
+        <children xsi:type="gmfgraph:Label" name="OutputPortNameFigure" text="&lt;...>"/>
       </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
     </descriptors>
-    <descriptors
-        name="PropertyFigure">
-      <actualFigure
-          xsi:type="gmfgraph:RoundedRectangle"
-          name="Property">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="PropertyNameFigure"
-            text="&lt;...>"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="PropertyTypeFigure"
-            text="&lt;...>"/>
+    <descriptors name="PropertyFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="Property">
+        <layout xsi:type="gmfgraph:FlowLayout"/>
+        <children xsi:type="gmfgraph:Label" name="PropertyNameFigure" text="&lt;...>"/>
+        <children xsi:type="gmfgraph:Label" name="PropertyTypeFigure" text="&lt;...>"/>
       </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
-      <accessors
-          figure="//@figures.0/@descriptors.5/@actualFigure/@children.1"/>
+      <accessors figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+      <accessors figure="//@figures.0/@descriptors.5/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors name="ThreadFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ThreadFigure"/>
+    </descriptors>
+    <descriptors name="PortConnectionFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="PortConnectionFigure" lineWidth="3" targetDecoration="//@figures.0/@figures.1">
+        <foregroundColor xsi:type="gmfgraph:ConstantColor" value="black"/>
+      </actualFigure>
     </descriptors>
   </figures>
-  <nodes
-      name="Component"
-      figure="ComponentFigure"/>
-  <nodes
-      name="Handler"
-      figure="HandlerFigure"/>
-  <nodes
-      name="InputPort"
-      figure="InputPortFigure"
-      affixedParentSide="WEST"/>
-  <nodes
-      name="OutputPort"
-      figure="OutputPortFigure"
-      affixedParentSide="EAST"/>
-  <nodes
-      name="Property"
-      figure="PropertyFigure"/>
-  <connections
-      name="HandlerTrigeredBy"
-      figure="HandlerTrigeredByFigure"/>
-  <labels
-      name="ComponentName"
-      figure="ComponentFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.0/@accessors.0"/>
-  <labels
-      name="HandlerName"
-      figure="HandlerFigure"
-      accessor="//@figures.0/@descriptors.1/@accessors.0"/>
-  <labels
-      name="InputPortName"
-      figure="InputPortFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.3/@accessors.0"/>
-  <labels
-      name="OutputPortName"
-      figure="OutputPortFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
-  <labels
-      name="ComponentType"
-      figure="ComponentFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.0/@accessors.1"/>
-  <labels
-      name="PropertyName"
-      figure="PropertyFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.5/@accessors.0"/>
-  <labels
-      name="PropertyType"
-      figure="PropertyFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.5/@accessors.1"/>
+  <nodes name="Component" figure="ComponentFigure"/>
+  <nodes name="Handler" figure="HandlerFigure"/>
+  <nodes name="InputPort" figure="InputPortFigure" affixedParentSide="WEST"/>
+  <nodes name="OutputPort" figure="OutputPortFigure" affixedParentSide="EAST"/>
+  <nodes name="Property" figure="PropertyFigure"/>
+  <nodes name="Thread" figure="ThreadFigure"/>
+  <connections name="HandlerTrigeredBy" figure="HandlerTrigeredByFigure"/>
+  <connections name="PortConnection" figure="PortConnectionFigure"/>
+  <compartments name="ThreadCompartment" figure="ThreadFigure"/>
+  <labels name="ComponentName" figure="ComponentFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="HandlerName" figure="HandlerFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="InputPortName" figure="InputPortFigure" elementIcon="false" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="OutputPortName" figure="OutputPortFigure" elementIcon="false" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="ComponentType" figure="ComponentFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.1"/>
+  <labels name="PropertyName" figure="PropertyFigure" elementIcon="false" accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+  <labels name="PropertyType" figure="PropertyFigure" elementIcon="false" accessor="//@figures.0/@descriptors.5/@accessors.1"/>
 </gmfgraph:Canvas>

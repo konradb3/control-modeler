@@ -41,6 +41,9 @@ public class RobmodPaletteFactory {
 		paletteContainer.add(createOutputPort5CreationTool());
 		paletteContainer.add(createOutputPortConnection6CreationTool());
 		paletteContainer.add(createProperty7CreationTool());
+		paletteContainer.add(createComposition8CreationTool());
+		paletteContainer.add(createSequentialThread9CreationTool());
+		paletteContainer.add(createComponentOrdering10CreationTool());
 		return paletteContainer;
 	}
 
@@ -48,10 +51,13 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createComponent1CreationTool() {
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+				2);
+		types.add(RobmodElementTypes.Component_2003);
+		types.add(RobmodElementTypes.Component_3003);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Component1CreationTool_title,
-				Messages.Component1CreationTool_desc,
-				Collections.singletonList(RobmodElementTypes.Component_2003));
+				Messages.Component1CreationTool_desc, types);
 		entry.setId("createComponent1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(RobmodElementTypes
 				.getImageDescriptor(RobmodElementTypes.Component_2003));
@@ -78,11 +84,13 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createHandlerTrigeredBy3CreationTool() {
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+				2);
+		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
+		types.add(RobmodElementTypes.HandlerGenerates_4008);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.HandlerTrigeredBy3CreationTool_title,
-				Messages.HandlerTrigeredBy3CreationTool_desc,
-				Collections
-						.singletonList(RobmodElementTypes.HandlerTrigeredBy_4004));
+				Messages.HandlerTrigeredBy3CreationTool_desc, types);
 		entry.setId("createHandlerTrigeredBy3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(RobmodElementTypes
 				.getImageDescriptor(RobmodElementTypes.HandlerTrigeredBy_4004));
@@ -156,6 +164,52 @@ public class RobmodPaletteFactory {
 		entry.setId("createProperty7CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(RobmodElementTypes
 				.getImageDescriptor(RobmodElementTypes.Property_2005));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createComposition8CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				Messages.Composition8CreationTool_title,
+				Messages.Composition8CreationTool_desc,
+				Collections.singletonList(RobmodElementTypes.Component_2006));
+		entry.setId("createComposition8CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(RobmodElementTypes
+				.getImageDescriptor(RobmodElementTypes.Component_2006));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createSequentialThread9CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				Messages.SequentialThread9CreationTool_title,
+				Messages.SequentialThread9CreationTool_desc,
+				Collections.singletonList(RobmodElementTypes.Component_2007));
+		entry.setId("createSequentialThread9CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(RobmodElementTypes
+				.getImageDescriptor(RobmodElementTypes.Component_2007));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createComponentOrdering10CreationTool() {
+		LinkToolEntry entry = new LinkToolEntry(
+				Messages.ComponentOrdering10CreationTool_title,
+				Messages.ComponentOrdering10CreationTool_desc,
+				Collections
+						.singletonList(RobmodElementTypes.ComponentBefore_4009));
+		entry.setId("createComponentOrdering10CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(RobmodElementTypes
+				.getImageDescriptor(RobmodElementTypes.ComponentBefore_4009));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

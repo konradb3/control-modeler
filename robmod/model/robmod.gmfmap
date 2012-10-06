@@ -53,6 +53,21 @@
         relatedDiagrams="//@diagram">
       <domainMetaElement
           href="robmod.ecore#//Component"/>
+      <domainSpecialization
+          body="self.type2 = ComponentType::Component"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="robmod.ecore#//Component/type2"/>
+          <value
+              xsi:type="gmfmap:Constraint"
+              body="ComponentType.COMPONENT_LITERAL"
+              language="literal"/>
+        </initializers>
+      </domainInitializer>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping"
           viewPattern=""
@@ -134,6 +149,95 @@
           href="robmod.gmfgraph#Property"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="robmod.ecore#//Component/composition"/>
+    <ownedChild>
+      <domainMetaElement
+          href="robmod.ecore#//Component"/>
+      <domainSpecialization
+          body="self.type2 = ComponentType::Composition"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="robmod.ecore#//Component/type2"/>
+          <value
+              body="ComponentType.COMPOSITION_LITERAL"
+              language="literal"/>
+        </initializers>
+      </domainInitializer>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="robmod.gmfgraph#ComponentName"/>
+        <features
+            href="robmod.ecore#//Component/description"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="robmod.gmfgraph#ComponentType"/>
+        <features
+            href="robmod.ecore#//Component/type"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="robmod.gmftool#//@palette/@tools.0/@tools.7"/>
+      <diagramNode
+          href="robmod.gmfgraph#Component"/>
+      <children
+          referencedChild="//@nodes.3/@ownedChild">
+        <containmentFeature
+            href="robmod.ecore#//Component/inputPorts"/>
+      </children>
+      <children
+          referencedChild="//@nodes.0/@ownedChild">
+        <containmentFeature
+            href="robmod.ecore#//Component/outputPorts"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="robmod.ecore#//Component/composition"/>
+    <ownedChild>
+      <domainMetaElement
+          href="robmod.ecore#//Component"/>
+      <domainSpecialization
+          body="self.type2 = ComponentType::SequentialThread"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="robmod.ecore#//Component/type2"/>
+          <value
+              body="ComponentType.SEQUENTIAL_THREAD_LITERAL"
+              language="literal"/>
+        </initializers>
+      </domainInitializer>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="robmod.gmftool#//@palette/@tools.0/@tools.8"/>
+      <diagramNode
+          href="robmod.gmfgraph#Thread"/>
+      <children
+          compartment="//@nodes.6/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.2/@ownedChild">
+        <containmentFeature
+            href="robmod.ecore#//Component/composition"/>
+      </children>
+      <compartments
+          children="//@nodes.6/@ownedChild/@children.0">
+        <compartment
+            href="robmod.gmfgraph#ThreadCompartment"/>
+      </compartments>
+    </ownedChild>
+  </nodes>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
@@ -149,7 +253,7 @@
         xsi:type="gmftool:CreationTool"
         href="robmod.gmftool#//@palette/@tools.0/@tools.5"/>
     <diagramLink
-        href="robmod.gmfgraph#HandlerTrigeredBy"/>
+        href="robmod.gmfgraph#PortConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="robmod.ecore#//OutputPort/connection"/>
@@ -163,7 +267,7 @@
         xsi:type="gmftool:CreationTool"
         href="robmod.gmftool#//@palette/@tools.0/@tools.5"/>
     <diagramLink
-        href="robmod.gmfgraph#HandlerTrigeredBy"/>
+        href="robmod.gmfgraph#PortConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="robmod.ecore#//OutputPort/delegation"/>
@@ -177,7 +281,7 @@
         xsi:type="gmftool:CreationTool"
         href="robmod.gmftool#//@palette/@tools.0/@tools.5"/>
     <diagramLink
-        href="robmod.gmfgraph#HandlerTrigeredBy"/>
+        href="robmod.gmfgraph#PortConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="robmod.ecore#//InputPort/propagation"/>
@@ -185,6 +289,26 @@
       <targetEnd
           body="self.dataType = oppositeEnd.dataType&#xA;and&#xA;Component.allInstances()->select(inputPorts->includes(oppositeEnd)).composition->exists(inputPorts->includes(self))&#xA;"/>
     </creationConstraints>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="robmod.gmftool#//@palette/@tools.0/@tools.2"/>
+    <diagramLink
+        href="robmod.gmfgraph#HandlerTrigeredBy"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="robmod.ecore#//Handler/generates"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="robmod.gmftool#//@palette/@tools.0/@tools.9"/>
+    <diagramLink
+        href="robmod.gmfgraph#HandlerTrigeredBy"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="robmod.ecore#//Component/before"/>
   </links>
   <diagram>
     <diagramCanvas

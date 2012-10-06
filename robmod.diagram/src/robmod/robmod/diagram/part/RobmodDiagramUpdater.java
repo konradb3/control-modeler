@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 
@@ -18,8 +20,14 @@ import robmod.robmod.OutputPort;
 import robmod.robmod.Property;
 import robmod.robmod.RobmodPackage;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
+import robmod.robmod.diagram.edit.parts.Component3EditPart;
+import robmod.robmod.diagram.edit.parts.Component4EditPart;
+import robmod.robmod.diagram.edit.parts.Component5EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
+import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerTrigeredByEditPart;
 import robmod.robmod.diagram.edit.parts.InputPort2EditPart;
 import robmod.robmod.diagram.edit.parts.InputPortEditPart;
@@ -46,6 +54,12 @@ public class RobmodDiagramUpdater {
 			return getComponent_1000SemanticChildren(view);
 		case Component2EditPart.VISUAL_ID:
 			return getComponent_2003SemanticChildren(view);
+		case Component3EditPart.VISUAL_ID:
+			return getComponent_2006SemanticChildren(view);
+		case Component5EditPart.VISUAL_ID:
+			return getComponent_3003SemanticChildren(view);
+		case ComponentThreadCompartmentEditPart.VISUAL_ID:
+			return getComponentThreadCompartment_7001SemanticChildren(view);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -86,6 +100,14 @@ public class RobmodDiagramUpdater {
 			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == Component2EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Component3EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Component4EditPart.VISUAL_ID) {
 				result.add(new RobmodNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -149,6 +171,99 @@ public class RobmodDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/getComponent_2006SemanticChildren(
+			View view) {
+		if (!view.isSetElement()) {
+			return Collections.EMPTY_LIST;
+		}
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/();
+		for (Iterator/*[?]*/it = modelElement.getInputPorts().iterator(); it
+				.hasNext();) {
+			InputPort childElement = (InputPort) it.next();
+			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == InputPort2EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator/*[?]*/it = modelElement.getOutputPorts().iterator(); it
+				.hasNext();) {
+			OutputPort childElement = (OutputPort) it.next();
+			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == OutputPort2EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/getComponent_3003SemanticChildren(
+			View view) {
+		if (!view.isSetElement()) {
+			return Collections.EMPTY_LIST;
+		}
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/();
+		for (Iterator/*[?]*/it = modelElement.getInputPorts().iterator(); it
+				.hasNext();) {
+			InputPort childElement = (InputPort) it.next();
+			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == InputPort2EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator/*[?]*/it = modelElement.getOutputPorts().iterator(); it
+				.hasNext();) {
+			OutputPort childElement = (OutputPort) it.next();
+			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == OutputPort2EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/getComponentThreadCompartment_7001SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.EMPTY_LIST;
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.EMPTY_LIST;
+		}
+		Component modelElement = (Component) containerView.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodNodeDescriptor]*/();
+		for (Iterator/*[?]*/it = modelElement.getComposition().iterator(); it
+				.hasNext();) {
+			Component childElement = (Component) it.next();
+			int visualID = RobmodVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Component5EditPart.VISUAL_ID) {
+				result.add(new RobmodNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getContainedLinks(
 			View view) {
 		switch (RobmodVisualIDRegistry.getVisualID(view)) {
@@ -164,10 +279,16 @@ public class RobmodDiagramUpdater {
 			return getInputPort_2004ContainedLinks(view);
 		case PropertyEditPart.VISUAL_ID:
 			return getProperty_2005ContainedLinks(view);
+		case Component3EditPart.VISUAL_ID:
+			return getComponent_2006ContainedLinks(view);
+		case Component4EditPart.VISUAL_ID:
+			return getComponent_2007ContainedLinks(view);
 		case InputPort2EditPart.VISUAL_ID:
 			return getInputPort_3001ContainedLinks(view);
 		case OutputPort2EditPart.VISUAL_ID:
 			return getOutputPort_3002ContainedLinks(view);
+		case Component5EditPart.VISUAL_ID:
+			return getComponent_3003ContainedLinks(view);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -188,10 +309,16 @@ public class RobmodDiagramUpdater {
 			return getInputPort_2004IncomingLinks(view);
 		case PropertyEditPart.VISUAL_ID:
 			return getProperty_2005IncomingLinks(view);
+		case Component3EditPart.VISUAL_ID:
+			return getComponent_2006IncomingLinks(view);
+		case Component4EditPart.VISUAL_ID:
+			return getComponent_2007IncomingLinks(view);
 		case InputPort2EditPart.VISUAL_ID:
 			return getInputPort_3001IncomingLinks(view);
 		case OutputPort2EditPart.VISUAL_ID:
 			return getOutputPort_3002IncomingLinks(view);
+		case Component5EditPart.VISUAL_ID:
+			return getComponent_3003IncomingLinks(view);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -212,10 +339,16 @@ public class RobmodDiagramUpdater {
 			return getInputPort_2004OutgoingLinks(view);
 		case PropertyEditPart.VISUAL_ID:
 			return getProperty_2005OutgoingLinks(view);
+		case Component3EditPart.VISUAL_ID:
+			return getComponent_2006OutgoingLinks(view);
+		case Component4EditPart.VISUAL_ID:
+			return getComponent_2007OutgoingLinks(view);
 		case InputPort2EditPart.VISUAL_ID:
 			return getInputPort_3001OutgoingLinks(view);
 		case OutputPort2EditPart.VISUAL_ID:
 			return getOutputPort_3002OutgoingLinks(view);
+		case Component5EditPart.VISUAL_ID:
+			return getComponent_3003OutgoingLinks(view);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -225,7 +358,10 @@ public class RobmodDiagramUpdater {
 	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_1000ContainedLinks(
 			View view) {
-		return Collections.EMPTY_LIST;
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
 	}
 
 	/**
@@ -248,6 +384,7 @@ public class RobmodDiagramUpdater {
 		Handler modelElement = (Handler) view.getElement();
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Handler_TrigeredBy_4004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Handler_Generates_4008(modelElement));
 		return result;
 	}
 
@@ -256,7 +393,10 @@ public class RobmodDiagramUpdater {
 	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2003ContainedLinks(
 			View view) {
-		return Collections.EMPTY_LIST;
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
 	}
 
 	/**
@@ -276,6 +416,28 @@ public class RobmodDiagramUpdater {
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getProperty_2005ContainedLinks(
 			View view) {
 		return Collections.EMPTY_LIST;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2006ContainedLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2007ContainedLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
 	}
 
 	/**
@@ -304,6 +466,17 @@ public class RobmodDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_3003ContainedLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getOutputPort_2001IncomingLinks(
 			View view) {
 		OutputPort modelElement = (OutputPort) view.getElement();
@@ -311,6 +484,8 @@ public class RobmodDiagramUpdater {
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
 		result.addAll(getIncomingFeatureModelFacetLinks_OutputPort_Delegation_4006(
+				modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_Handler_Generates_4008(
 				modelElement, crossReferences));
 		return result;
 	}
@@ -328,7 +503,13 @@ public class RobmodDiagramUpdater {
 	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2003IncomingLinks(
 			View view) {
-		return Collections.EMPTY_LIST;
+		Component modelElement = (Component) view.getElement();
+		Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getIncomingFeatureModelFacetLinks_Component_Before_4009(
+				modelElement, crossReferences));
+		return result;
 	}
 
 	/**
@@ -360,6 +541,34 @@ public class RobmodDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2006IncomingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getIncomingFeatureModelFacetLinks_Component_Before_4009(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2007IncomingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getIncomingFeatureModelFacetLinks_Component_Before_4009(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getInputPort_3001IncomingLinks(
 			View view) {
 		InputPort modelElement = (InputPort) view.getElement();
@@ -386,6 +595,22 @@ public class RobmodDiagramUpdater {
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
 		result.addAll(getIncomingFeatureModelFacetLinks_OutputPort_Delegation_4006(
 				modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_Handler_Generates_4008(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_3003IncomingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getIncomingFeatureModelFacetLinks_Component_Before_4009(
+				modelElement, crossReferences));
 		return result;
 	}
 
@@ -409,6 +634,7 @@ public class RobmodDiagramUpdater {
 		Handler modelElement = (Handler) view.getElement();
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Handler_TrigeredBy_4004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Handler_Generates_4008(modelElement));
 		return result;
 	}
 
@@ -417,7 +643,10 @@ public class RobmodDiagramUpdater {
 	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2003OutgoingLinks(
 			View view) {
-		return Collections.EMPTY_LIST;
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
 	}
 
 	/**
@@ -442,6 +671,28 @@ public class RobmodDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2006OutgoingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_2007OutgoingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getInputPort_3001OutgoingLinks(
 			View view) {
 		InputPort modelElement = (InputPort) view.getElement();
@@ -459,6 +710,17 @@ public class RobmodDiagramUpdater {
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
 		result.addAll(getOutgoingFeatureModelFacetLinks_OutputPort_Connection_4005(modelElement));
 		result.addAll(getOutgoingFeatureModelFacetLinks_OutputPort_Delegation_4006(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getComponent_3003OutgoingLinks(
+			View view) {
+		Component modelElement = (Component) view.getElement();
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Component_Before_4009(modelElement));
 		return result;
 	}
 
@@ -557,6 +819,52 @@ public class RobmodDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	private static Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getIncomingFeatureModelFacetLinks_Handler_Generates_4008(
+			OutputPort target,
+			Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences) {
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		Collection/*[org.eclipse.emf.ecore.EStructuralFeature.Setting]*/settings = (Collection) crossReferences
+				.get(target);
+		for (Iterator/*[org.eclipse.emf.ecore.EStructuralFeature.Setting]*/it = settings
+				.iterator(); it.hasNext();) {
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
+					.next();
+			if (setting.getEStructuralFeature() == RobmodPackage.eINSTANCE
+					.getHandler_Generates()) {
+				result.add(new RobmodLinkDescriptor(setting.getEObject(),
+						target, RobmodElementTypes.HandlerGenerates_4008,
+						HandlerGeneratesEditPart.VISUAL_ID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getIncomingFeatureModelFacetLinks_Component_Before_4009(
+			Component target,
+			Map/*[org.eclipse.emf.ecore.EObject, java.util.Collection<org.eclipse.emf.ecore.EStructuralFeature.Setting>]*/crossReferences) {
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		Collection/*[org.eclipse.emf.ecore.EStructuralFeature.Setting]*/settings = (Collection) crossReferences
+				.get(target);
+		for (Iterator/*[org.eclipse.emf.ecore.EStructuralFeature.Setting]*/it = settings
+				.iterator(); it.hasNext();) {
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
+					.next();
+			if (setting.getEStructuralFeature() == RobmodPackage.eINSTANCE
+					.getComponent_Before()) {
+				result.add(new RobmodLinkDescriptor(setting.getEObject(),
+						target, RobmodElementTypes.ComponentBefore_4009,
+						ComponentBeforeEditPart.VISUAL_ID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	private static Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getOutgoingFeatureModelFacetLinks_Handler_TrigeredBy_4004(
 			Handler source) {
 		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
@@ -614,6 +922,38 @@ public class RobmodDiagramUpdater {
 			result.add(new RobmodLinkDescriptor(source, destination,
 					RobmodElementTypes.InputPortPropagation_4007,
 					InputPortPropagationEditPart.VISUAL_ID));
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getOutgoingFeatureModelFacetLinks_Handler_Generates_4008(
+			Handler source) {
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		for (Iterator/*[?]*/destinations = source.getGenerates().iterator(); destinations
+				.hasNext();) {
+			OutputPort destination = (OutputPort) destinations.next();
+			result.add(new RobmodLinkDescriptor(source, destination,
+					RobmodElementTypes.HandlerGenerates_4008,
+					HandlerGeneratesEditPart.VISUAL_ID));
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/getOutgoingFeatureModelFacetLinks_Component_Before_4009(
+			Component source) {
+		LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/result = new LinkedList/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/();
+		for (Iterator/*[?]*/destinations = source.getBefore().iterator(); destinations
+				.hasNext();) {
+			Component destination = (Component) destinations.next();
+			result.add(new RobmodLinkDescriptor(source, destination,
+					RobmodElementTypes.ComponentBefore_4009,
+					ComponentBeforeEditPart.VISUAL_ID));
 		}
 		return result;
 	}

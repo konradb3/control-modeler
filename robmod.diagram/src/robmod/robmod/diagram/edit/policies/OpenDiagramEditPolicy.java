@@ -33,7 +33,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
+import robmod.robmod.diagram.edit.parts.ComponentEditPart;
 import robmod.robmod.diagram.part.Messages;
+import robmod.robmod.diagram.part.RobmodDiagramEditor;
 import robmod.robmod.diagram.part.RobmodDiagramEditorPlugin;
 import robmod.robmod.diagram.part.RobmodDiagramEditorUtil;
 
@@ -185,14 +187,14 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
 		 * @generated
 		 */
 		protected String getDiagramKind() {
-			return "Robmod";
+			return ComponentEditPart.MODEL_ID;
 		}
 
 		/**
 		 * @generated
 		 */
 		protected String getEditorID() {
-			return "robmod.robmod.diagram.part.RobmodDiagramEditorID";
+			return RobmodDiagramEditor.ID;
 		}
 	}
 

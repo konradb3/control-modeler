@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -43,10 +44,22 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
+import robmod.robmod.diagram.edit.parts.Component3EditPart;
+import robmod.robmod.diagram.edit.parts.Component4EditPart;
+import robmod.robmod.diagram.edit.parts.Component5EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentDescription2EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentDescriptionEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentName2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentNameEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType2EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType3EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType4EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentTypeEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
+import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerNameEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerTrigeredByEditPart;
 import robmod.robmod.diagram.edit.parts.InputPort2EditPart;
@@ -163,7 +176,10 @@ public class RobmodViewProvider extends AbstractProvider implements
 				case InputPort2EditPart.VISUAL_ID:
 				case Component2EditPart.VISUAL_ID:
 				case InputPortEditPart.VISUAL_ID:
+				case Component3EditPart.VISUAL_ID:
+				case Component4EditPart.VISUAL_ID:
 				case OutputPort2EditPart.VISUAL_ID:
+				case Component5EditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != RobmodVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -181,8 +197,11 @@ public class RobmodViewProvider extends AbstractProvider implements
 				|| Component2EditPart.VISUAL_ID == visualID
 				|| InputPortEditPart.VISUAL_ID == visualID
 				|| PropertyEditPart.VISUAL_ID == visualID
+				|| Component3EditPart.VISUAL_ID == visualID
+				|| Component4EditPart.VISUAL_ID == visualID
 				|| InputPort2EditPart.VISUAL_ID == visualID
-				|| OutputPort2EditPart.VISUAL_ID == visualID;
+				|| OutputPort2EditPart.VISUAL_ID == visualID
+				|| Component5EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -254,11 +273,20 @@ public class RobmodViewProvider extends AbstractProvider implements
 		case PropertyEditPart.VISUAL_ID:
 			return createProperty_2005(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case Component3EditPart.VISUAL_ID:
+			return createComponent_2006(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case Component4EditPart.VISUAL_ID:
+			return createComponent_2007(domainElement, containerView, index,
+					persisted, preferencesHint);
 		case InputPort2EditPart.VISUAL_ID:
 			return createInputPort_3001(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case OutputPort2EditPart.VISUAL_ID:
 			return createOutputPort_3002(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case Component5EditPart.VISUAL_ID:
+			return createComponent_3003(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -286,6 +314,12 @@ public class RobmodViewProvider extends AbstractProvider implements
 		case InputPortPropagationEditPart.VISUAL_ID:
 			return createInputPortPropagation_4007(containerView, index,
 					persisted, preferencesHint);
+		case HandlerGeneratesEditPart.VISUAL_ID:
+			return createHandlerGenerates_4008(containerView, index, persisted,
+					preferencesHint);
+		case ComponentBeforeEditPart.VISUAL_ID:
+			return createComponentBefore_4009(containerView, index, persisted,
+					preferencesHint);
 		}
 		// can never happen, provided #provides(CreateEdgeViewOperation) is correct
 		return null;
@@ -529,6 +563,102 @@ public class RobmodViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	public Node createComponent_2006(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(RobmodVisualIDRegistry
+				.getType(Component3EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5010 = createLabel(node,
+				RobmodVisualIDRegistry
+						.getType(ComponentDescriptionEditPart.VISUAL_ID));
+		Node label5011 = createLabel(node,
+				RobmodVisualIDRegistry
+						.getType(ComponentType2EditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createComponent_2007(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(RobmodVisualIDRegistry
+				.getType(Component4EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		createCompartment(node,
+				RobmodVisualIDRegistry
+						.getType(ComponentThreadCompartmentEditPart.VISUAL_ID),
+				false, false, false, false);
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
 	public Node createInputPort_3001(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
@@ -618,6 +748,56 @@ public class RobmodViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	public Node createComponent_3003(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(
+				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(RobmodVisualIDRegistry
+				.getType(Component5EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5012 = createLabel(node,
+				RobmodVisualIDRegistry
+						.getType(ComponentName2EditPart.VISUAL_ID));
+		Node label5013 = createLabel(node,
+				RobmodVisualIDRegistry
+						.getType(ComponentType4EditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
 	public Edge createHandlerTrigeredBy_4004(View containerView, int index,
 			boolean persisted, PreferencesHint preferencesHint) {
 		Connector edge = NotationFactory.eINSTANCE.createConnector();
@@ -672,7 +852,8 @@ public class RobmodViewProvider extends AbstractProvider implements
 	 */
 	public Edge createOutputPortConnection_4005(View containerView, int index,
 			boolean persisted, PreferencesHint preferencesHint) {
-		Connector edge = NotationFactory.eINSTANCE.createConnector();
+		Edge edge = NotationFactory.eINSTANCE.createEdge();
+		edge.getStyles().add(NotationFactory.eINSTANCE.createRoutingStyle());
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
@@ -689,12 +870,6 @@ public class RobmodViewProvider extends AbstractProvider implements
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
 				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -724,7 +899,8 @@ public class RobmodViewProvider extends AbstractProvider implements
 	 */
 	public Edge createOutputPortDelegation_4006(View containerView, int index,
 			boolean persisted, PreferencesHint preferencesHint) {
-		Connector edge = NotationFactory.eINSTANCE.createConnector();
+		Edge edge = NotationFactory.eINSTANCE.createEdge();
+		edge.getStyles().add(NotationFactory.eINSTANCE.createRoutingStyle());
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
@@ -737,6 +913,99 @@ public class RobmodViewProvider extends AbstractProvider implements
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(RobmodVisualIDRegistry
 				.getType(OutputPortDelegationEditPart.VISUAL_ID));
+		edge.setElement(null);
+		// initializePreferences
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+		FontStyle edgeFontStyle = (FontStyle) edge
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (edgeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			edgeFontStyle.setFontName(fontData.getName());
+			edgeFontStyle.setFontHeight(fontData.getHeight());
+			edgeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			edgeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			edgeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		Routing routing = Routing.get(prefStore
+				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
+		if (routing != null) {
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
+		}
+		return edge;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Edge createInputPortPropagation_4007(View containerView, int index,
+			boolean persisted, PreferencesHint preferencesHint) {
+		Edge edge = NotationFactory.eINSTANCE.createEdge();
+		edge.getStyles().add(NotationFactory.eINSTANCE.createRoutingStyle());
+		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
+				.createRelativeBendpoints();
+		ArrayList/*[org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint]*/points = new ArrayList/*[org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint]*/(
+				2);
+		points.add(new RelativeBendpoint());
+		points.add(new RelativeBendpoint());
+		bendpoints.setPoints(points);
+		edge.setBendpoints(bendpoints);
+		ViewUtil.insertChildView(containerView, edge, index, persisted);
+		edge.setType(RobmodVisualIDRegistry
+				.getType(InputPortPropagationEditPart.VISUAL_ID));
+		edge.setElement(null);
+		// initializePreferences
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+		FontStyle edgeFontStyle = (FontStyle) edge
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (edgeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			edgeFontStyle.setFontName(fontData.getName());
+			edgeFontStyle.setFontHeight(fontData.getHeight());
+			edgeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			edgeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			edgeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		Routing routing = Routing.get(prefStore
+				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
+		if (routing != null) {
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
+		}
+		return edge;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Edge createHandlerGenerates_4008(View containerView, int index,
+			boolean persisted, PreferencesHint preferencesHint) {
+		Connector edge = NotationFactory.eINSTANCE.createConnector();
+		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
+				.createRelativeBendpoints();
+		ArrayList/*[org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint]*/points = new ArrayList/*[org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint]*/(
+				2);
+		points.add(new RelativeBendpoint());
+		points.add(new RelativeBendpoint());
+		bendpoints.setPoints(points);
+		edge.setBendpoints(bendpoints);
+		ViewUtil.insertChildView(containerView, edge, index, persisted);
+		edge.setType(RobmodVisualIDRegistry
+				.getType(HandlerGeneratesEditPart.VISUAL_ID));
 		edge.setElement(null);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
@@ -774,7 +1043,7 @@ public class RobmodViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Edge createInputPortPropagation_4007(View containerView, int index,
+	public Edge createComponentBefore_4009(View containerView, int index,
 			boolean persisted, PreferencesHint preferencesHint) {
 		Connector edge = NotationFactory.eINSTANCE.createConnector();
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
@@ -788,7 +1057,7 @@ public class RobmodViewProvider extends AbstractProvider implements
 		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(RobmodVisualIDRegistry
-				.getType(InputPortPropagationEditPart.VISUAL_ID));
+				.getType(ComponentBeforeEditPart.VISUAL_ID));
 		edge.setElement(null);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
@@ -843,6 +1112,38 @@ public class RobmodViewProvider extends AbstractProvider implements
 	 */
 	private Node createLabel(View owner, String hint) {
 		DecorationNode rv = NotationFactory.eINSTANCE.createDecorationNode();
+		rv.setType(hint);
+		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
+		return rv;
+	}
+
+	/**
+	 * @generated
+	 */
+	private Node createCompartment(View owner, String hint,
+			boolean canCollapse, boolean hasTitle, boolean canSort,
+			boolean canFilter) {
+		//SemanticListCompartment rv = NotationFactory.eINSTANCE.createSemanticListCompartment();
+		//rv.setShowTitle(showTitle);
+		//rv.setCollapsed(isCollapsed);
+		Node rv;
+		if (canCollapse) {
+			rv = NotationFactory.eINSTANCE.createBasicCompartment();
+		} else {
+			rv = NotationFactory.eINSTANCE.createDecorationNode();
+		}
+		if (hasTitle) {
+			TitleStyle ts = NotationFactory.eINSTANCE.createTitleStyle();
+			ts.setShowTitle(true);
+			rv.getStyles().add(ts);
+		}
+		if (canSort) {
+			rv.getStyles().add(NotationFactory.eINSTANCE.createSortingStyle());
+		}
+		if (canFilter) {
+			rv.getStyles()
+					.add(NotationFactory.eINSTANCE.createFilteringStyle());
+		}
 		rv.setType(hint);
 		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
 		return rv;

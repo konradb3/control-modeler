@@ -10,8 +10,18 @@ import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 import robmod.robmod.Component;
 import robmod.robmod.RobmodPackage;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
+import robmod.robmod.diagram.edit.parts.Component3EditPart;
+import robmod.robmod.diagram.edit.parts.Component4EditPart;
+import robmod.robmod.diagram.edit.parts.Component5EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentDescription2EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentDescriptionEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentName2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentNameEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType2EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType3EditPart;
+import robmod.robmod.diagram.edit.parts.ComponentType4EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentTypeEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerNameEditPart;
@@ -28,6 +38,7 @@ import robmod.robmod.diagram.edit.parts.OutputPortNameEditPart;
 import robmod.robmod.diagram.edit.parts.PropertyEditPart;
 import robmod.robmod.diagram.edit.parts.WrappingLabel2EditPart;
 import robmod.robmod.diagram.edit.parts.WrappingLabelEditPart;
+import robmod.robmod.diagram.expressions.RobmodOCLFactory;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -146,7 +157,8 @@ public class RobmodVisualIDRegistry {
 				return HandlerEditPart.VISUAL_ID;
 			}
 			if (RobmodPackage.eINSTANCE.getComponent().isSuperTypeOf(
-					domainElement.eClass())) {
+					domainElement.eClass())
+					&& isComponent_2003((Component) domainElement)) {
 				return Component2EditPart.VISUAL_ID;
 			}
 			if (RobmodPackage.eINSTANCE.getInputPort().isSuperTypeOf(
@@ -157,6 +169,16 @@ public class RobmodVisualIDRegistry {
 					domainElement.eClass())) {
 				return PropertyEditPart.VISUAL_ID;
 			}
+			if (RobmodPackage.eINSTANCE.getComponent().isSuperTypeOf(
+					domainElement.eClass())
+					&& isComponent_2006((Component) domainElement)) {
+				return Component3EditPart.VISUAL_ID;
+			}
+			if (RobmodPackage.eINSTANCE.getComponent().isSuperTypeOf(
+					domainElement.eClass())
+					&& isComponent_2007((Component) domainElement)) {
+				return Component4EditPart.VISUAL_ID;
+			}
 			break;
 		case Component2EditPart.VISUAL_ID:
 			if (RobmodPackage.eINSTANCE.getInputPort().isSuperTypeOf(
@@ -166,6 +188,33 @@ public class RobmodVisualIDRegistry {
 			if (RobmodPackage.eINSTANCE.getOutputPort().isSuperTypeOf(
 					domainElement.eClass())) {
 				return OutputPort2EditPart.VISUAL_ID;
+			}
+			break;
+		case Component3EditPart.VISUAL_ID:
+			if (RobmodPackage.eINSTANCE.getInputPort().isSuperTypeOf(
+					domainElement.eClass())) {
+				return InputPort2EditPart.VISUAL_ID;
+			}
+			if (RobmodPackage.eINSTANCE.getOutputPort().isSuperTypeOf(
+					domainElement.eClass())) {
+				return OutputPort2EditPart.VISUAL_ID;
+			}
+			break;
+		case Component5EditPart.VISUAL_ID:
+			if (RobmodPackage.eINSTANCE.getInputPort().isSuperTypeOf(
+					domainElement.eClass())) {
+				return InputPort2EditPart.VISUAL_ID;
+			}
+			if (RobmodPackage.eINSTANCE.getOutputPort().isSuperTypeOf(
+					domainElement.eClass())) {
+				return OutputPort2EditPart.VISUAL_ID;
+			}
+			break;
+		case ComponentThreadCompartmentEditPart.VISUAL_ID:
+			if (RobmodPackage.eINSTANCE.getComponent().isSuperTypeOf(
+					domainElement.eClass())
+					&& isComponent_3003((Component) domainElement)) {
+				return Component5EditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -209,6 +258,12 @@ public class RobmodVisualIDRegistry {
 			if (PropertyEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (Component3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Component4EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case OutputPortEditPart.VISUAL_ID:
 			if (OutputPortDataTypeEditPart.VISUAL_ID == nodeVisualID) {
@@ -247,6 +302,25 @@ public class RobmodVisualIDRegistry {
 				return true;
 			}
 			break;
+		case Component3EditPart.VISUAL_ID:
+			if (ComponentDescriptionEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ComponentType2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (InputPort2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (OutputPort2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case Component4EditPart.VISUAL_ID:
+			if (ComponentThreadCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case InputPort2EditPart.VISUAL_ID:
 			if (InputPortNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -254,6 +328,25 @@ public class RobmodVisualIDRegistry {
 			break;
 		case OutputPort2EditPart.VISUAL_ID:
 			if (OutputPortNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case Component5EditPart.VISUAL_ID:
+			if (ComponentName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ComponentType4EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (InputPort2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (OutputPort2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case ComponentThreadCompartmentEditPart.VISUAL_ID:
+			if (Component5EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -284,6 +377,46 @@ public class RobmodVisualIDRegistry {
 	/**
 	 * @generated
 	 */
+	private static boolean isComponent_2003(Component domainElement) {
+		Object result = RobmodOCLFactory.getExpression(0,
+				RobmodPackage.eINSTANCE.getComponent(), null).evaluate(
+				domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	 * @generated
+	 */
+	private static boolean isComponent_2006(Component domainElement) {
+		Object result = RobmodOCLFactory.getExpression(1,
+				RobmodPackage.eINSTANCE.getComponent(), null).evaluate(
+				domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	 * @generated
+	 */
+	private static boolean isComponent_2007(Component domainElement) {
+		Object result = RobmodOCLFactory.getExpression(2,
+				RobmodPackage.eINSTANCE.getComponent(), null).evaluate(
+				domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	 * @generated
+	 */
+	private static boolean isComponent_3003(Component domainElement) {
+		Object result = RobmodOCLFactory.getExpression(0,
+				RobmodPackage.eINSTANCE.getComponent(), null).evaluate(
+				domainElement);
+		return result instanceof Boolean && ((Boolean) result).booleanValue();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static boolean checkNodeVisualID(View containerView,
 			EObject domainElement, int candidate) {
 		if (candidate == -1) {
@@ -298,6 +431,12 @@ public class RobmodVisualIDRegistry {
 	 * @generated
 	 */
 	public static boolean isCompartmentVisualID(int visualID) {
+		switch (visualID) {
+		case ComponentThreadCompartmentEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
 		return false;
 	}
 

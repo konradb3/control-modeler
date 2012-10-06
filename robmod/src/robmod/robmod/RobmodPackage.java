@@ -4,6 +4,7 @@ package robmod.robmod;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -138,13 +139,40 @@ public interface RobmodPackage extends EPackage {
 	int COMPONENT__PROPERTIES = 7;
 
 	/**
+	 * The feature id for the '<em><b>Type2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__TYPE2 = 8;
+
+	/**
+	 * The feature id for the '<em><b>Before</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__BEFORE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Execution Order</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__EXECUTION_ORDER = 10;
+
+	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 8;
+	int COMPONENT_FEATURE_COUNT = 11;
 
 	/**
 	 * The meta object id for the '{@link robmod.robmod.impl.HandlerImpl <em>Handler</em>}' class.
@@ -184,13 +212,22 @@ public interface RobmodPackage extends EPackage {
 	int HANDLER__DESCRIPTION = 2;
 
 	/**
+	 * The feature id for the '<em><b>Generates</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__GENERATES = 3;
+
+	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER_FEATURE_COUNT = 3;
+	int HANDLER_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link robmod.robmod.impl.PortImpl <em>Port</em>}' class.
@@ -294,13 +331,22 @@ public interface RobmodPackage extends EPackage {
 	int INPUT_PORT__DESCRIPTION = PORT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Trigger</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PORT__TRIGGER = PORT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Input Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 4;
+	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link robmod.robmod.impl.OutputPortImpl <em>Output Port</em>}' class.
@@ -433,6 +479,17 @@ public interface RobmodPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link robmod.robmod.ComponentType <em>Component Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see robmod.robmod.ComponentType
+	 * @see robmod.robmod.impl.RobmodPackageImpl#getComponentType()
+	 * @generated
+	 */
+	int COMPONENT_TYPE = 6;
+
+
+	/**
 	 * Returns the meta object for class '{@link robmod.robmod.Component <em>Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -531,6 +588,39 @@ public interface RobmodPackage extends EPackage {
 	EReference getComponent_Properties();
 
 	/**
+	 * Returns the meta object for the attribute '{@link robmod.robmod.Component#getType2 <em>Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type2</em>'.
+	 * @see robmod.robmod.Component#getType2()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EAttribute getComponent_Type2();
+
+	/**
+	 * Returns the meta object for the reference list '{@link robmod.robmod.Component#getBefore <em>Before</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Before</em>'.
+	 * @see robmod.robmod.Component#getBefore()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EReference getComponent_Before();
+
+	/**
+	 * Returns the meta object for the reference '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Execution Order</em>'.
+	 * @see robmod.robmod.Component#getExecutionOrder()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EReference getComponent_ExecutionOrder();
+
+	/**
 	 * Returns the meta object for class '{@link robmod.robmod.Handler <em>Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -572,6 +662,17 @@ public interface RobmodPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getHandler_Description();
+
+	/**
+	 * Returns the meta object for the reference list '{@link robmod.robmod.Handler#getGenerates <em>Generates</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Generates</em>'.
+	 * @see robmod.robmod.Handler#getGenerates()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EReference getHandler_Generates();
 
 	/**
 	 * Returns the meta object for class '{@link robmod.robmod.InputPort <em>Input Port</em>}'.
@@ -626,6 +727,17 @@ public interface RobmodPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getInputPort_Description();
+
+	/**
+	 * Returns the meta object for the reference list '{@link robmod.robmod.InputPort#getTrigger <em>Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Trigger</em>'.
+	 * @see robmod.robmod.InputPort#getTrigger()
+	 * @see #getInputPort()
+	 * @generated
+	 */
+	EReference getInputPort_Trigger();
 
 	/**
 	 * Returns the meta object for class '{@link robmod.robmod.OutputPort <em>Output Port</em>}'.
@@ -768,6 +880,16 @@ public interface RobmodPackage extends EPackage {
 	EReference getProperty_Propagate();
 
 	/**
+	 * Returns the meta object for enum '{@link robmod.robmod.ComponentType <em>Component Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Component Type</em>'.
+	 * @see robmod.robmod.ComponentType
+	 * @generated
+	 */
+	EEnum getComponentType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -864,6 +986,30 @@ public interface RobmodPackage extends EPackage {
 		EReference COMPONENT__PROPERTIES = eINSTANCE.getComponent_Properties();
 
 		/**
+		 * The meta object literal for the '<em><b>Type2</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT__TYPE2 = eINSTANCE.getComponent_Type2();
+
+		/**
+		 * The meta object literal for the '<em><b>Before</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__BEFORE = eINSTANCE.getComponent_Before();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Order</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__EXECUTION_ORDER = eINSTANCE.getComponent_ExecutionOrder();
+
+		/**
 		 * The meta object literal for the '{@link robmod.robmod.impl.HandlerImpl <em>Handler</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -896,6 +1042,14 @@ public interface RobmodPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute HANDLER__DESCRIPTION = eINSTANCE.getHandler_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Generates</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HANDLER__GENERATES = eINSTANCE.getHandler_Generates();
 
 		/**
 		 * The meta object literal for the '{@link robmod.robmod.impl.InputPortImpl <em>Input Port</em>}' class.
@@ -938,6 +1092,14 @@ public interface RobmodPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INPUT_PORT__DESCRIPTION = eINSTANCE.getInputPort_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Trigger</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INPUT_PORT__TRIGGER = eINSTANCE.getInputPort_Trigger();
 
 		/**
 		 * The meta object literal for the '{@link robmod.robmod.impl.OutputPortImpl <em>Output Port</em>}' class.
@@ -1048,6 +1210,16 @@ public interface RobmodPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROPERTY__PROPAGATE = eINSTANCE.getProperty_Propagate();
+
+		/**
+		 * The meta object literal for the '{@link robmod.robmod.ComponentType <em>Component Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see robmod.robmod.ComponentType
+		 * @see robmod.robmod.impl.RobmodPackageImpl#getComponentType()
+		 * @generated
+		 */
+		EEnum COMPONENT_TYPE = eINSTANCE.getComponentType();
 
 	}
 

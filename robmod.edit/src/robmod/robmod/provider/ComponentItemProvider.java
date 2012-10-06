@@ -64,6 +64,9 @@ public class ComponentItemProvider
 			addNamePropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
+			addType2PropertyDescriptor(object);
+			addBeforePropertyDescriptor(object);
+			addExecutionOrderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -130,6 +133,72 @@ public class ComponentItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Type2 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addType2PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_type2_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_type2_feature", "_UI_Component_type"),
+				 RobmodPackage.Literals.COMPONENT__TYPE2,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Before feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBeforePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_before_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_before_feature", "_UI_Component_type"),
+				 RobmodPackage.Literals.COMPONENT__BEFORE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Execution Order feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExecutionOrderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_executionOrder_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_executionOrder_feature", "_UI_Component_type"),
+				 RobmodPackage.Literals.COMPONENT__EXECUTION_ORDER,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -203,6 +272,7 @@ public class ComponentItemProvider
 			case RobmodPackage.COMPONENT__NAME:
 			case RobmodPackage.COMPONENT__TYPE:
 			case RobmodPackage.COMPONENT__DESCRIPTION:
+			case RobmodPackage.COMPONENT__TYPE2:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case RobmodPackage.COMPONENT__COMPOSITION:

@@ -15,8 +15,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
+import robmod.robmod.diagram.edit.commands.HandlerGeneratesCreateCommand;
+import robmod.robmod.diagram.edit.commands.HandlerGeneratesReorientCommand;
 import robmod.robmod.diagram.edit.commands.HandlerTrigeredByCreateCommand;
 import robmod.robmod.diagram.edit.commands.HandlerTrigeredByReorientCommand;
+import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerTrigeredByEditPart;
 import robmod.robmod.diagram.part.RobmodVisualIDRegistry;
 import robmod.robmod.diagram.providers.RobmodElementTypes;
@@ -46,6 +49,14 @@ public class HandlerItemSemanticEditPolicy extends
 				.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
 			if (RobmodVisualIDRegistry.getVisualID(outgoingLink) == HandlerTrigeredByEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(
+						outgoingLink.getSource().getElement(), null,
+						outgoingLink.getTarget().getElement(), false);
+				cmd.add(new DestroyReferenceCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
+				continue;
+			}
+			if (RobmodVisualIDRegistry.getVisualID(outgoingLink) == HandlerGeneratesEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
 						outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
@@ -85,6 +96,10 @@ public class HandlerItemSemanticEditPolicy extends
 			return getGEFWrapper(new HandlerTrigeredByCreateCommand(req,
 					req.getSource(), req.getTarget()));
 		}
+		if (RobmodElementTypes.HandlerGenerates_4008 == req.getElementType()) {
+			return getGEFWrapper(new HandlerGeneratesCreateCommand(req,
+					req.getSource(), req.getTarget()));
+		}
 		return null;
 	}
 
@@ -94,6 +109,9 @@ public class HandlerItemSemanticEditPolicy extends
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
 		if (RobmodElementTypes.HandlerTrigeredBy_4004 == req.getElementType()) {
+			return null;
+		}
+		if (RobmodElementTypes.HandlerGenerates_4008 == req.getElementType()) {
 			return null;
 		}
 		return null;
@@ -110,6 +128,8 @@ public class HandlerItemSemanticEditPolicy extends
 		switch (getVisualID(req)) {
 		case HandlerTrigeredByEditPart.VISUAL_ID:
 			return getGEFWrapper(new HandlerTrigeredByReorientCommand(req));
+		case HandlerGeneratesEditPart.VISUAL_ID:
+			return getGEFWrapper(new HandlerGeneratesReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

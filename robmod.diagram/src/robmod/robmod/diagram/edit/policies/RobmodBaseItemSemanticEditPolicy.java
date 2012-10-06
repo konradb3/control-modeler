@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 
+import robmod.robmod.Component;
 import robmod.robmod.Handler;
 import robmod.robmod.InputPort;
 import robmod.robmod.OutputPort;
@@ -336,6 +337,9 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					return false;
 				}
 			}
+			if (target != null && (target.getTrigger().contains(target))) {
+				return false;
+			}
 
 			return canExistHandlerTrigeredBy_4004(source, target);
 		}
@@ -385,6 +389,34 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
+		public boolean canCreateHandlerGenerates_4008(Handler source,
+				OutputPort target) {
+			if (source != null) {
+				if (source.getGenerates().contains(target)) {
+					return false;
+				}
+			}
+
+			return canExistHandlerGenerates_4008(source, target);
+		}
+
+		/**
+		 * @generated
+		 */
+		public boolean canCreateComponentBefore_4009(Component source,
+				Component target) {
+			if (source != null) {
+				if (source.getBefore().contains(target)) {
+					return false;
+				}
+			}
+
+			return canExistComponentBefore_4009(source, target);
+		}
+
+		/**
+		 * @generated
+		 */
 		public boolean canExistHandlerTrigeredBy_4004(Handler source,
 				InputPort target) {
 			return true;
@@ -402,7 +434,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getOutputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(0,
+					Object targetVal = RobmodOCLFactory.getExpression(3,
 							RobmodPackage.eINSTANCE.getInputPort(), env)
 							.evaluate(
 									target,
@@ -433,7 +465,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getOutputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(1,
+					Object targetVal = RobmodOCLFactory.getExpression(4,
 							RobmodPackage.eINSTANCE.getOutputPort(), env)
 							.evaluate(
 									target,
@@ -464,7 +496,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getInputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(2,
+					Object targetVal = RobmodOCLFactory.getExpression(5,
 							RobmodPackage.eINSTANCE.getInputPort(), env)
 							.evaluate(
 									target,
@@ -481,6 +513,22 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 						"Link constraint evaluation error", e); //$NON-NLS-1$
 				return false;
 			}
+		}
+
+		/**
+		 * @generated
+		 */
+		public boolean canExistHandlerGenerates_4008(Handler source,
+				OutputPort target) {
+			return true;
+		}
+
+		/**
+		 * @generated
+		 */
+		public boolean canExistComponentBefore_4009(Component source,
+				Component target) {
+			return true;
 		}
 	}
 

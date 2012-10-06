@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import robmod.robmod.Component;
+import robmod.robmod.ComponentType;
 import robmod.robmod.Handler;
 import robmod.robmod.InputPort;
 import robmod.robmod.OutputPort;
@@ -40,6 +42,9 @@ import robmod.robmod.RobmodPackage;
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getType <em>Type</em>}</li>
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link robmod.robmod.impl.ComponentImpl#getType2 <em>Type2</em>}</li>
+ *   <li>{@link robmod.robmod.impl.ComponentImpl#getBefore <em>Before</em>}</li>
+ *   <li>{@link robmod.robmod.impl.ComponentImpl#getExecutionOrder <em>Execution Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,6 +160,46 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * @ordered
 	 */
 	protected EList properties;
+
+	/**
+	 * The default value of the '{@link #getType2() <em>Type2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType2()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ComponentType TYPE2_EDEFAULT = ComponentType.COMPONENT_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getType2() <em>Type2</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType2()
+	 * @generated
+	 * @ordered
+	 */
+	protected ComponentType type2 = TYPE2_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getBefore() <em>Before</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBefore()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList before;
+
+	/**
+	 * The cached value of the '{@link #getExecutionOrder() <em>Execution Order</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected Component executionOrder;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,6 +347,77 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ComponentType getType2() {
+		return type2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType2(ComponentType newType2) {
+		ComponentType oldType2 = type2;
+		type2 = newType2 == null ? TYPE2_EDEFAULT : newType2;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RobmodPackage.COMPONENT__TYPE2, oldType2, type2));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getBefore() {
+		if (before == null) {
+			before = new EObjectResolvingEList(Component.class, this, RobmodPackage.COMPONENT__BEFORE);
+		}
+		return before;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Component getExecutionOrder() {
+		if (executionOrder != null && executionOrder.eIsProxy()) {
+			InternalEObject oldExecutionOrder = (InternalEObject)executionOrder;
+			executionOrder = (Component)eResolveProxy(oldExecutionOrder);
+			if (executionOrder != oldExecutionOrder) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobmodPackage.COMPONENT__EXECUTION_ORDER, oldExecutionOrder, executionOrder));
+			}
+		}
+		return executionOrder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Component basicGetExecutionOrder() {
+		return executionOrder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExecutionOrder(Component newExecutionOrder) {
+		Component oldExecutionOrder = executionOrder;
+		executionOrder = newExecutionOrder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RobmodPackage.COMPONENT__EXECUTION_ORDER, oldExecutionOrder, executionOrder));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RobmodPackage.COMPONENT__COMPOSITION:
@@ -341,6 +457,13 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				return getDescription();
 			case RobmodPackage.COMPONENT__PROPERTIES:
 				return getProperties();
+			case RobmodPackage.COMPONENT__TYPE2:
+				return getType2();
+			case RobmodPackage.COMPONENT__BEFORE:
+				return getBefore();
+			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
+				if (resolve) return getExecutionOrder();
+				return basicGetExecutionOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -381,6 +504,16 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				getProperties().clear();
 				getProperties().addAll((Collection)newValue);
 				return;
+			case RobmodPackage.COMPONENT__TYPE2:
+				setType2((ComponentType)newValue);
+				return;
+			case RobmodPackage.COMPONENT__BEFORE:
+				getBefore().clear();
+				getBefore().addAll((Collection)newValue);
+				return;
+			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
+				setExecutionOrder((Component)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -416,6 +549,15 @@ public class ComponentImpl extends EObjectImpl implements Component {
 			case RobmodPackage.COMPONENT__PROPERTIES:
 				getProperties().clear();
 				return;
+			case RobmodPackage.COMPONENT__TYPE2:
+				setType2(TYPE2_EDEFAULT);
+				return;
+			case RobmodPackage.COMPONENT__BEFORE:
+				getBefore().clear();
+				return;
+			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
+				setExecutionOrder((Component)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -443,6 +585,12 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case RobmodPackage.COMPONENT__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case RobmodPackage.COMPONENT__TYPE2:
+				return type2 != TYPE2_EDEFAULT;
+			case RobmodPackage.COMPONENT__BEFORE:
+				return before != null && !before.isEmpty();
+			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
+				return executionOrder != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -462,6 +610,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 		result.append(type);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", type2: ");
+		result.append(type2);
 		result.append(')');
 		return result.toString();
 	}

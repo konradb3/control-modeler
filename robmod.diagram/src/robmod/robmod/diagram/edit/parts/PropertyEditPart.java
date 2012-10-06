@@ -298,13 +298,13 @@ public class PropertyEditPart extends ShapeNodeEditPart {
 			fFigurePropertyNameFigure.setText("<...>");
 
 			fFigurePropertyNameFigure.setAlignment(PositionConstants.CENTER);
-			
+
 			this.add(fFigurePropertyNameFigure);
 
 			fFigurePropertyTypeFigure = new WrappingLabel();
 
 			fFigurePropertyTypeFigure.setText("<...>");
-			
+
 			fFigurePropertyTypeFigure.setAlignment(PositionConstants.CENTER);
 
 			this.add(fFigurePropertyTypeFigure);

@@ -4,12 +4,14 @@ package robmod.robmod.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import robmod.robmod.Component;
+import robmod.robmod.ComponentType;
 import robmod.robmod.Handler;
 import robmod.robmod.InputPort;
 import robmod.robmod.OutputPort;
@@ -66,6 +68,13 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 	 * @generated
 	 */
 	private EClass propertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum componentTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -214,6 +223,33 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getComponent_Type2() {
+		return (EAttribute)componentEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponent_Before() {
+		return (EReference)componentEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponent_ExecutionOrder() {
+		return (EReference)componentEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHandler() {
 		return handlerEClass;
 	}
@@ -243,6 +279,15 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 	 */
 	public EAttribute getHandler_Description() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHandler_Generates() {
+		return (EReference)handlerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -288,6 +333,15 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 	 */
 	public EAttribute getInputPort_Description() {
 		return (EAttribute)inputPortEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInputPort_Trigger() {
+		return (EReference)inputPortEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -412,6 +466,15 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getComponentType() {
+		return componentTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RobmodFactory getRobmodFactory() {
 		return (RobmodFactory)getEFactoryInstance();
 	}
@@ -444,17 +507,22 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 		createEAttribute(componentEClass, COMPONENT__TYPE);
 		createEAttribute(componentEClass, COMPONENT__DESCRIPTION);
 		createEReference(componentEClass, COMPONENT__PROPERTIES);
+		createEAttribute(componentEClass, COMPONENT__TYPE2);
+		createEReference(componentEClass, COMPONENT__BEFORE);
+		createEReference(componentEClass, COMPONENT__EXECUTION_ORDER);
 
 		handlerEClass = createEClass(HANDLER);
 		createEAttribute(handlerEClass, HANDLER__NAME);
 		createEReference(handlerEClass, HANDLER__TRIGERED_BY);
 		createEAttribute(handlerEClass, HANDLER__DESCRIPTION);
+		createEReference(handlerEClass, HANDLER__GENERATES);
 
 		inputPortEClass = createEClass(INPUT_PORT);
 		createEAttribute(inputPortEClass, INPUT_PORT__NAME);
 		createEReference(inputPortEClass, INPUT_PORT__CONNECTION);
 		createEReference(inputPortEClass, INPUT_PORT__PROPAGATION);
 		createEAttribute(inputPortEClass, INPUT_PORT__DESCRIPTION);
+		createEReference(inputPortEClass, INPUT_PORT__TRIGGER);
 
 		outputPortEClass = createEClass(OUTPUT_PORT);
 		createEAttribute(outputPortEClass, OUTPUT_PORT__NAME);
@@ -471,6 +539,9 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 		createEAttribute(propertyEClass, PROPERTY__TYPE);
 		createEAttribute(propertyEClass, PROPERTY__VALUE);
 		createEReference(propertyEClass, PROPERTY__PROPAGATE);
+
+		// Create enums
+		componentTypeEEnum = createEEnum(COMPONENT_TYPE);
 	}
 
 	/**
@@ -507,20 +578,25 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 		initEReference(getComponent_Handlers(), this.getHandler(), null, "handlers", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_InputPorts(), this.getInputPort(), null, "inputPorts", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_OutputPorts(), this.getOutputPort(), null, "outputPorts", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponent_Type(), ecorePackage.getEString(), "type", null, 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponent_Description(), ecorePackage.getEString(), "description", null, 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Type(), ecorePackage.getEString(), "type", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Description(), ecorePackage.getEString(), "description", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Properties(), this.getProperty(), null, "properties", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Type2(), this.getComponentType(), "type2", null, 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponent_Before(), this.getComponent(), null, "before", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponent_ExecutionOrder(), this.getComponent(), null, "executionOrder", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHandler_Name(), ecorePackage.getEString(), "name", null, 1, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHandler_TrigeredBy(), this.getInputPort(), null, "trigeredBy", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHandler_TrigeredBy(), this.getInputPort(), this.getInputPort_Trigger(), "trigeredBy", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Description(), ecorePackage.getEString(), "description", null, 1, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHandler_Generates(), this.getOutputPort(), null, "generates", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputPortEClass, InputPort.class, "InputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputPort_Name(), ecorePackage.getEString(), "name", null, 1, 1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInputPort_Connection(), this.getOutputPort(), null, "connection", null, 0, 1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInputPort_Propagation(), this.getInputPort(), null, "propagation", null, 0, -1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInputPort_Description(), ecorePackage.getEString(), "description", null, 1, 1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInputPort_Trigger(), this.getHandler(), this.getHandler_TrigeredBy(), "trigger", null, 0, -1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outputPortEClass, OutputPort.class, "OutputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOutputPort_Name(), ecorePackage.getEString(), "name", null, 1, 1, OutputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -538,8 +614,34 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 		initEAttribute(getProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProperty_Propagate(), this.getProperty(), null, "propagate", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		// Initialize enums and add enum literals
+		initEEnum(componentTypeEEnum, ComponentType.class, "ComponentType");
+		addEEnumLiteral(componentTypeEEnum, ComponentType.COMPONENT_LITERAL);
+		addEEnumLiteral(componentTypeEEnum, ComponentType.COMPOSITION_LITERAL);
+		addEEnumLiteral(componentTypeEEnum, ComponentType.SEQUENTIAL_THREAD_LITERAL);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		addAnnotation
+		  (getComponent_Type2(), 
+		   source, 
+		   new String[] {
+			 "namespace", ""
+		   });
 	}
 
 } //RobmodPackageImpl
