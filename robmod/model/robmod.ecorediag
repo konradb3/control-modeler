@@ -19,6 +19,10 @@
         <element xmi:type="ecore:EAttribute" href="robmod.ecore#//Component/description"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_TprO0QphEeKB8IvsTU3R5Q"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_qxn08BC7EeK4PL3ZQ8ZuBw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="robmod.ecore#//Component/executionOrder"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_qxn08RC7EeK4PL3ZQ8ZuBw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_zQMkgQn8EeKpO-InE6wsbQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_zQMkggn8EeKpO-InE6wsbQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_zQMkgwn8EeKpO-InE6wsbQ"/>
@@ -330,7 +334,7 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_6ytacQ8wEeK9Duk_hkZPDw" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_6ytacg8wEeK9Duk_hkZPDw" fontColor="4210752" fontName="Ubuntu" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="robmod.ecore#//Component/before"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6ytacw8wEeK9Duk_hkZPDw" points="[-10, 48, -10, 48]$[-22, 110, -22, 110]$[-8, 110, -8, 110]$[22, 110, 22, 110]$[9, 48, 9, 48]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6ytacw8wEeK9Duk_hkZPDw" points="[-13, 95, -37, 48]$[-16, 121, -40, 74]$[4, 133, -20, 86]$[31, 145, 7, 98]$[40, 145, 16, 98]$[31, 95, 7, 48]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8UQYMA-dEeK9WO2ey_bBkQ" id="(0.3651685393258427,0.0)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_zEp1EA-dEeK9WO2ey_bBkQ" type="3002" source="_6Q61QAn8EeKpO-InE6wsbQ" target="_LYeMEAn9EeKpO-InE6wsbQ">
@@ -358,17 +362,5 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ytpN0w-eEeK9WO2ey_bBkQ" points="[-50, 9, 73, 221]$[-113, -188, 10, 24]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AHMB0A-fEeK9WO2ey_bBkQ" id="(0.5,0.5)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AHMB0Q-fEeK9WO2ey_bBkQ" id="(0.5,0.5)"/>
-  </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_K-YK0A_AEeK9WO2ey_bBkQ" type="3002" source="_zQI6IAn8EeKpO-InE6wsbQ" target="_zQI6IAn8EeKpO-InE6wsbQ">
-    <children xmi:type="notation:Node" xmi:id="_K-Yx4A_AEeK9WO2ey_bBkQ" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_K-Yx4Q_AEeK9WO2ey_bBkQ" x="-10" y="-10"/>
-    </children>
-    <children xmi:type="notation:Node" xmi:id="_K-Yx4g_AEeK9WO2ey_bBkQ" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_K-Yx4w_AEeK9WO2ey_bBkQ" x="10" y="10"/>
-    </children>
-    <styles xmi:type="notation:ConnectorStyle" xmi:id="_K-YK0Q_AEeK9WO2ey_bBkQ" lineColor="4210752"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_K-YK0g_AEeK9WO2ey_bBkQ" fontColor="4210752" fontName="Ubuntu" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="robmod.ecore#//Component/executionOrder"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_K-YK0w_AEeK9WO2ey_bBkQ" points="[88, 0, 88, 0]$[88, 0, 88, 0]"/>
   </edges>
 </notation:Diagram>

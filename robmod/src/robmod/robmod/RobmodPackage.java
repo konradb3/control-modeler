@@ -157,7 +157,7 @@ public interface RobmodPackage extends EPackage {
 	int COMPONENT__BEFORE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Execution Order</b></em>' reference.
+	 * The feature id for the '<em><b>Execution Order</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -421,7 +421,6 @@ public interface RobmodPackage extends EPackage {
 	 */
 	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 4;
 
-
 	/**
 	 * The meta object id for the '{@link robmod.robmod.impl.PropertyImpl <em>Property</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -476,7 +475,6 @@ public interface RobmodPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY_FEATURE_COUNT = 4;
-
 
 	/**
 	 * The meta object id for the '{@link robmod.robmod.ComponentType <em>Component Type</em>}' enum.
@@ -610,15 +608,15 @@ public interface RobmodPackage extends EPackage {
 	EReference getComponent_Before();
 
 	/**
-	 * Returns the meta object for the reference '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}'.
+	 * Returns the meta object for the attribute '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Execution Order</em>'.
+	 * @return the meta object for the attribute '<em>Execution Order</em>'.
 	 * @see robmod.robmod.Component#getExecutionOrder()
 	 * @see #getComponent()
 	 * @generated
 	 */
-	EReference getComponent_ExecutionOrder();
+	EAttribute getComponent_ExecutionOrder();
 
 	/**
 	 * Returns the meta object for class '{@link robmod.robmod.Handler <em>Handler</em>}'.
@@ -1002,12 +1000,12 @@ public interface RobmodPackage extends EPackage {
 		EReference COMPONENT__BEFORE = eINSTANCE.getComponent_Before();
 
 		/**
-		 * The meta object literal for the '<em><b>Execution Order</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Execution Order</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT__EXECUTION_ORDER = eINSTANCE.getComponent_ExecutionOrder();
+		EAttribute COMPONENT__EXECUTION_ORDER = eINSTANCE.getComponent_ExecutionOrder();
 
 		/**
 		 * The meta object literal for the '{@link robmod.robmod.impl.HandlerImpl <em>Handler</em>}' class.

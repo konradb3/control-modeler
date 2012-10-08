@@ -84,10 +84,9 @@ public class OrderingHelper {
 		
 		//System.out.println("generateOrder.order(" + order + ")");
 
-		for (int i = 0; i < (order.size() - 1); i++) {
+		for (int i = 0; i < order.size(); i++) {
 			Component c = (Component)order.elementAt(i).handler.eContainer();
-			Component c1 = (Component)order.elementAt(i+1).handler.eContainer();
-			c.setExecutionOrder(c1);
+			c.setExecutionOrder(i);
 		}
 	}
 	

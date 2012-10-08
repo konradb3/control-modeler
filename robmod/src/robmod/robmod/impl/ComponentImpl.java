@@ -192,14 +192,24 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	protected EList before;
 
 	/**
-	 * The cached value of the '{@link #getExecutionOrder() <em>Execution Order</em>}' reference.
+	 * The default value of the '{@link #getExecutionOrder() <em>Execution Order</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExecutionOrder()
 	 * @generated
 	 * @ordered
 	 */
-	protected Component executionOrder;
+	protected static final Integer EXECUTION_ORDER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExecutionOrder() <em>Execution Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer executionOrder = EXECUTION_ORDER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -380,15 +390,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Component getExecutionOrder() {
-		if (executionOrder != null && executionOrder.eIsProxy()) {
-			InternalEObject oldExecutionOrder = (InternalEObject)executionOrder;
-			executionOrder = (Component)eResolveProxy(oldExecutionOrder);
-			if (executionOrder != oldExecutionOrder) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobmodPackage.COMPONENT__EXECUTION_ORDER, oldExecutionOrder, executionOrder));
-			}
-		}
+	public Integer getExecutionOrder() {
 		return executionOrder;
 	}
 
@@ -397,17 +399,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Component basicGetExecutionOrder() {
-		return executionOrder;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExecutionOrder(Component newExecutionOrder) {
-		Component oldExecutionOrder = executionOrder;
+	public void setExecutionOrder(Integer newExecutionOrder) {
+		Integer oldExecutionOrder = executionOrder;
 		executionOrder = newExecutionOrder;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RobmodPackage.COMPONENT__EXECUTION_ORDER, oldExecutionOrder, executionOrder));
@@ -462,8 +455,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 			case RobmodPackage.COMPONENT__BEFORE:
 				return getBefore();
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
-				if (resolve) return getExecutionOrder();
-				return basicGetExecutionOrder();
+				return getExecutionOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -512,7 +504,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				getBefore().addAll((Collection)newValue);
 				return;
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
-				setExecutionOrder((Component)newValue);
+				setExecutionOrder((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -556,7 +548,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				getBefore().clear();
 				return;
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
-				setExecutionOrder((Component)null);
+				setExecutionOrder(EXECUTION_ORDER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -590,7 +582,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 			case RobmodPackage.COMPONENT__BEFORE:
 				return before != null && !before.isEmpty();
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
-				return executionOrder != null;
+				return EXECUTION_ORDER_EDEFAULT == null ? executionOrder != null : !EXECUTION_ORDER_EDEFAULT.equals(executionOrder);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -612,6 +604,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 		result.append(description);
 		result.append(", type2: ");
 		result.append(type2);
+		result.append(", executionOrder: ");
+		result.append(executionOrder);
 		result.append(')');
 		return result.toString();
 	}

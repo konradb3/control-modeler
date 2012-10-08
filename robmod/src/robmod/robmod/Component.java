@@ -193,6 +193,7 @@ public interface Component extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type2</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link robmod.robmod.ComponentType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -204,7 +205,7 @@ public interface Component extends EObject {
 	 * @see robmod.robmod.ComponentType
 	 * @see #setType2(ComponentType)
 	 * @see robmod.robmod.RobmodPackage#getComponent_Type2()
-	 * @model required="true"
+	 * @model default="" required="true"
 	 *        extendedMetaData="namespace=''"
 	 * @generated
 	 */
@@ -238,29 +239,29 @@ public interface Component extends EObject {
 	EList getBefore();
 
 	/**
-	 * Returns the value of the '<em><b>Execution Order</b></em>' reference.
+	 * Returns the value of the '<em><b>Execution Order</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Execution Order</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Execution Order</em>' reference.
-	 * @see #setExecutionOrder(Component)
+	 * @return the value of the '<em>Execution Order</em>' attribute.
+	 * @see #setExecutionOrder(Integer)
 	 * @see robmod.robmod.RobmodPackage#getComponent_ExecutionOrder()
 	 * @model
 	 * @generated
 	 */
-	Component getExecutionOrder();
+	Integer getExecutionOrder();
 
 	/**
-	 * Sets the value of the '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}' reference.
+	 * Sets the value of the '{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Execution Order</em>' reference.
+	 * @param value the new value of the '<em>Execution Order</em>' attribute.
 	 * @see #getExecutionOrder()
 	 * @generated
 	 */
-	void setExecutionOrder(Component value);
+	void setExecutionOrder(Integer value);
 
 } // Component
