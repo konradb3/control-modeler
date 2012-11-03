@@ -69,5 +69,7 @@
     <eLiterals name="Component"/>
     <eLiterals name="Composition" value="1"/>
     <eLiterals name="SequentialThread" value="2"/>
+    <eLiterals name="Library" value="3"/>
+    <eLiterals name="Deployment" value="4"/>
   </eClassifiers>
 </ecore:EPackage>

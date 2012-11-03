@@ -9,6 +9,8 @@
       <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Component"/>
       <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Composition"/>
       <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/SequentialThread"/>
+      <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Library"/>
+      <genEnumLiterals ecoreEnumLiteral="robmod.ecore#//ComponentType/Deployment"/>
     </genEnums>
     <genClasses ecoreClass="robmod.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/name"/>

@@ -50,6 +50,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
 import robmod.robmod.Component;
+import robmod.robmod.ComponentType;
 import robmod.robmod.RobmodFactory;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
 
@@ -219,7 +220,9 @@ public class RobmodDiagramEditorUtil {
 	 * @generated
 	 */
 	private static Component createInitialModel() {
-		return RobmodFactory.eINSTANCE.createComponent();
+		Component component = RobmodFactory.eINSTANCE.createComponent();
+		component.setType2(ComponentType.COMPOSITION_LITERAL);
+		return component;
 	}
 
 	/**

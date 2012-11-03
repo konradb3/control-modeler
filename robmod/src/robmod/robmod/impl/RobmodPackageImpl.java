@@ -619,6 +619,8 @@ public class RobmodPackageImpl extends EPackageImpl implements RobmodPackage {
 		addEEnumLiteral(componentTypeEEnum, ComponentType.COMPONENT_LITERAL);
 		addEEnumLiteral(componentTypeEEnum, ComponentType.COMPOSITION_LITERAL);
 		addEEnumLiteral(componentTypeEEnum, ComponentType.SEQUENTIAL_THREAD_LITERAL);
+		addEEnumLiteral(componentTypeEEnum, ComponentType.LIBRARY_LITERAL);
+		addEEnumLiteral(componentTypeEEnum, ComponentType.DEPLOYMENT_LITERAL);
 
 		// Create resource
 		createResource(eNS_URI);

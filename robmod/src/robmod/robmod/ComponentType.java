@@ -64,6 +64,36 @@ public final class ComponentType extends AbstractEnumerator {
 	public static final int SEQUENTIAL_THREAD = 2;
 
 	/**
+	 * The '<em><b>Library</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Library</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LIBRARY_LITERAL
+	 * @model name="Library"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LIBRARY = 3;
+
+	/**
+	 * The '<em><b>Deployment</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Deployment</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DEPLOYMENT_LITERAL
+	 * @model name="Deployment"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEPLOYMENT = 4;
+
+	/**
 	 * The '<em><b>Component</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,6 +124,26 @@ public final class ComponentType extends AbstractEnumerator {
 	public static final ComponentType SEQUENTIAL_THREAD_LITERAL = new ComponentType(SEQUENTIAL_THREAD, "SequentialThread", "SequentialThread");
 
 	/**
+	 * The '<em><b>Library</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LIBRARY
+	 * @generated
+	 * @ordered
+	 */
+	public static final ComponentType LIBRARY_LITERAL = new ComponentType(LIBRARY, "Library", "Library");
+
+	/**
+	 * The '<em><b>Deployment</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DEPLOYMENT
+	 * @generated
+	 * @ordered
+	 */
+	public static final ComponentType DEPLOYMENT_LITERAL = new ComponentType(DEPLOYMENT, "Deployment", "Deployment");
+
+	/**
 	 * An array of all the '<em><b>Component Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +154,8 @@ public final class ComponentType extends AbstractEnumerator {
 			COMPONENT_LITERAL,
 			COMPOSITION_LITERAL,
 			SEQUENTIAL_THREAD_LITERAL,
+			LIBRARY_LITERAL,
+			DEPLOYMENT_LITERAL,
 		};
 
 	/**
@@ -157,6 +209,8 @@ public final class ComponentType extends AbstractEnumerator {
 			case COMPONENT: return COMPONENT_LITERAL;
 			case COMPOSITION: return COMPOSITION_LITERAL;
 			case SEQUENTIAL_THREAD: return SEQUENTIAL_THREAD_LITERAL;
+			case LIBRARY: return LIBRARY_LITERAL;
+			case DEPLOYMENT: return DEPLOYMENT_LITERAL;
 		}
 		return null;
 	}
