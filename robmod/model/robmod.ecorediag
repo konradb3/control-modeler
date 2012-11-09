@@ -175,13 +175,13 @@
         <element xmi:type="ecore:EEnumLiteral" href="robmod.ecore#//ComponentType/SequentialThread"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_V2e_QQ8wEeK9Duk_hkZPDw"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_VSZFIBLdEeKOS_jjFDtd7Q" type="2006">
+      <children xmi:type="notation:Node" xmi:id="_a54mUCdbEeKkHZQo9E8lvQ" type="2006">
         <element xmi:type="ecore:EEnumLiteral" href="robmod.ecore#//ComponentType/Library"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_VSZFIRLdEeKOS_jjFDtd7Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_a54mUSdbEeKkHZQo9E8lvQ"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_WodgMBLdEeKOS_jjFDtd7Q" type="2006">
+      <children xmi:type="notation:Node" xmi:id="_cL_HYCdbEeKkHZQo9E8lvQ" type="2006">
         <element xmi:type="ecore:EEnumLiteral" href="robmod.ecore#//ComponentType/Deployment"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_WodgMRLdEeKOS_jjFDtd7Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cL_HYSdbEeKkHZQo9E8lvQ"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_Hgi0cQ8wEeK9Duk_hkZPDw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_Hgi0cg8wEeK9Duk_hkZPDw"/>
