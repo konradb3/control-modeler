@@ -1,0 +1,109 @@
+[comment encoding = UTF-8 /]
+[module deployment('http://dupa.org/robmod.ecore')/]
+
+[template public generateDeployment(aComponent : Component) ? (aComponent.type2 = ComponentType::Deployment)]
+[comment @main/]	
+  [aComponent.generateXML()/]
+[/template]
+
+[template public generateXML(aComponent : Component)]
+[file (aComponent.name.concat('.lua'), false, 'UTF-8')]
+require "rttlib"
+require "rttros"
+
+tc=rtt.getTC()
+d=tc:getPeer("deployer")
+
+d:import("rtt_rosnode")
+
+ros=false
+prio=0
+schedpol=rtt.globals.ORO_SCHED_OTHER
+
+local opttab=utils.proc_args(arg)
+local cp=rtt.Variable("ConnPolicy")
+
+function conn2ros(depl, port, topic)
+   depl:stream(port,rtt.provides("ros"):topic(topic))
+end
+
+[for (c : Component | Component.allInstances())]
+  [if (c.composition->isEmpty())]
+d:loadComponent("[c.name/]", "[c.type/]")
+d:setActivity("[c.name/]", 0, 5, rtt.globals.ORO_SCHED_RT)
+[c.name/] = d:getPeer("[c.name/]")
+[c.name/]:configure()
+
+  [/if]
+[/for]
+
+[for (c : Component | Component.allInstances())]
+  [if (c.composition->isEmpty())]
+    [for (p : OutputPort | c.outputPorts)]
+	  [for (ip : InputPort | resolveOutputPort(p))]
+d:connect("[c.name/].[p.name/]", "[Component.allInstances()->select(inputPorts->includes(ip)).name/].[ip.name/]", rtt.Variable("ConnPolicy"))
+      [/for]
+	  [for (xp : OutputPort | resolveOutputPortExt(p))]
+d:stream("[c.name/].[p.name/]",rtt.provides("ros"):topic("[xp.name/]"))
+	  [/for]
+    [/for]
+  [/if]
+[/for]
+[for (xp : InputPort | InputPort.allInstances()->select(external))]
+  [for (ip : InputPort | InputPort.allInstances()->select(p | Component.allInstances()->select(inputPorts->includes(p)).handlers->notEmpty())->select(p | isConnected(p, xp)))]
+d:stream("[Component.allInstances()->select(inputPorts->includes(ip)).name/].[ip.name/]",rtt.provides("ros"):topic("[xp.name/]"))
+  [/for]
+[/for]
+
+[for (c : Component | Component.allInstances()->select(type2 = ComponentType::SequentialThread))]
+d:loadComponent("[c.name/]", "FBSched")
+d:setActivity("[c.name/]", 1.001, 0, rtt.globals.ORO_SCHED_OTHER)
+[c.name/]=dp:getPeer("[c.name/]")
+
+  [for (cc : Component | c.composition)]
+d:setMasterSlaveActivity("[c.name/]", "[cc.name/]")
+  [/for]
+
+sched_order=[c.name/]:getProperty("sched_order")
+sched_order:get():resize([c.composition->size()/])
+  [for (cc : Component | c.composition->sortedBy(executionOrder))]
+sched_order['['/][cc.executionOrder/][']'/]="[cc.name/]"
+  [/for]
+[/for]
+
+[for (c : Component | Component.allInstances())]
+  [if (c.composition->isEmpty())]
+[c.name/].start()
+  [/if]
+[/for]
+
+[/file]
+[/template]
+
+[query private resolveOutputPort(op : OutputPort) : Set(InputPort) =
+	InputPort.allInstances()->select(p | Component.allInstances()->select(inputPorts->includes(p)).handlers->notEmpty())->select(p | isConnected(p, op))
+/]
+
+[query private resolveOutputPortExt(op : OutputPort) : Set(OutputPort) =
+	OutputPort.allInstances()->select(p | p.external)->select(p | isConnected(p, op))
+/]
+
+[query private isConnected(ip : OutputPort, xp : OutputPort) : Boolean =
+	if ip = xp then
+		true
+	else
+		xp.delegation->exists(p | isConnected(ip, p))
+	endif
+/]
+
+[query private isConnected(ip : InputPort, xp : OutputPort) : Boolean =
+	xp.connection->exists(p | isConnected(ip, p)) or xp.delegation->exists(p | isConnected(ip, p))
+/]
+
+[query private isConnected(ip : InputPort, xp : InputPort) : Boolean =
+	if ip = xp then
+		true
+	else
+		xp.propagation->exists(p | isConnected(ip, p))
+	endif
+/]

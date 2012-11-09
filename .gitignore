@@ -1,4 +1,1 @@
-robmod/bin
-robmod.editor/bin
-robmod.edit/bin
-robmod.diagram/bin
+org.eclipse.acceleo.module.robmod/bin
