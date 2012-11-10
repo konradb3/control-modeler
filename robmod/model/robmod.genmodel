@@ -26,6 +26,7 @@
           ecoreFeature="ecore:EReference robmod.ecore#//Component/before"/>
       <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EAttribute robmod.ecore#//Component/executionOrder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Component/period"/>
     </genClasses>
     <genClasses ecoreClass="robmod.ecore#//Handler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robmod.ecore#//Handler/name"/>

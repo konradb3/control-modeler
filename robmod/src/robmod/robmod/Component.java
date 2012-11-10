@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link robmod.robmod.Component#getType2 <em>Type2</em>}</li>
  *   <li>{@link robmod.robmod.Component#getBefore <em>Before</em>}</li>
  *   <li>{@link robmod.robmod.Component#getExecutionOrder <em>Execution Order</em>}</li>
+ *   <li>{@link robmod.robmod.Component#getPeriod <em>Period</em>}</li>
  * </ul>
  * </p>
  *
@@ -263,5 +264,31 @@ public interface Component extends EObject {
 	 * @generated
 	 */
 	void setExecutionOrder(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Period</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Period</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Period</em>' attribute.
+	 * @see #setPeriod(Double)
+	 * @see robmod.robmod.RobmodPackage#getComponent_Period()
+	 * @model
+	 * @generated
+	 */
+	Double getPeriod();
+
+	/**
+	 * Sets the value of the '{@link robmod.robmod.Component#getPeriod <em>Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Period</em>' attribute.
+	 * @see #getPeriod()
+	 * @generated
+	 */
+	void setPeriod(Double value);
 
 } // Component

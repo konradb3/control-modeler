@@ -166,13 +166,22 @@ public interface RobmodPackage extends EPackage {
 	int COMPONENT__EXECUTION_ORDER = 10;
 
 	/**
+	 * The feature id for the '<em><b>Period</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__PERIOD = 11;
+
+	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 11;
+	int COMPONENT_FEATURE_COUNT = 12;
 
 	/**
 	 * The meta object id for the '{@link robmod.robmod.impl.HandlerImpl <em>Handler</em>}' class.
@@ -619,6 +628,17 @@ public interface RobmodPackage extends EPackage {
 	EAttribute getComponent_ExecutionOrder();
 
 	/**
+	 * Returns the meta object for the attribute '{@link robmod.robmod.Component#getPeriod <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Period</em>'.
+	 * @see robmod.robmod.Component#getPeriod()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EAttribute getComponent_Period();
+
+	/**
 	 * Returns the meta object for class '{@link robmod.robmod.Handler <em>Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1006,6 +1026,14 @@ public interface RobmodPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT__EXECUTION_ORDER = eINSTANCE.getComponent_ExecutionOrder();
+
+		/**
+		 * The meta object literal for the '<em><b>Period</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT__PERIOD = eINSTANCE.getComponent_Period();
 
 		/**
 		 * The meta object literal for the '{@link robmod.robmod.impl.HandlerImpl <em>Handler</em>}' class.

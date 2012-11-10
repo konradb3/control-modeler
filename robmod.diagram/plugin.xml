@@ -748,6 +748,15 @@
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="robmod"
+            class="robmod.robmod.diagram.custom.RobmodPreferencePage"
+            id="robmod.diagram.page1"
+            name="robmod_libraries">
+      </page>
+   </extension>
 
    <!-- optionally, specify keybindings -->
 </plugin>

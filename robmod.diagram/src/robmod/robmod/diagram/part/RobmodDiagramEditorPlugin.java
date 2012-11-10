@@ -1,7 +1,11 @@
 package robmod.robmod.diagram.part;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
@@ -9,6 +13,12 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -20,6 +30,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import robmod.robmod.Component;
+import robmod.robmod.diagram.custom.LibraryPreference;
 import robmod.robmod.diagram.edit.policies.RobmodBaseItemSemanticEditPolicy;
 import robmod.robmod.diagram.expressions.RobmodOCLFactory;
 import robmod.robmod.diagram.providers.ElementInitializers;
@@ -71,6 +83,7 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 	 */
 	private RobmodOCLFactory oclFactory;
 
+	private List<Component> dictionaries = null;
 	/**
 	 * @generated
 	 */
@@ -112,7 +125,21 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	protected ComposedAdapterFactory createAdapterFactory() {
-		ArrayList/*[org.eclipse.emf.common.notify.AdapterFactory]*/factories = new ArrayList/*[org.eclipse.emf.common.notify.AdapterFactory]*/();
+		ArrayList/* [org.eclipse.emf.common.notify.AdapterFactory] */factories = new ArrayList/*
+																							 * [
+																							 * org
+																							 * .
+																							 * eclipse
+																							 * .
+																							 * emf
+																							 * .
+																							 * common
+																							 * .
+																							 * notify
+																							 * .
+																							 * AdapterFactory
+																							 * ]
+																							 */();
 		fillItemProviderFactories(factories);
 		return new ComposedAdapterFactory(factories);
 	}
@@ -120,8 +147,10 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	 * @generated
 	 */
-	protected void fillItemProviderFactories(
-			List/*[org.eclipse.emf.common.notify.AdapterFactory]*/factories) {
+	protected void fillItemProviderFactories(List/*
+												 * [org.eclipse.emf.common.notify
+												 * .AdapterFactory]
+												 */factories) {
 		factories.add(new RobmodItemProviderAdapterFactory());
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
@@ -148,11 +177,12 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path.
-	 *
+	 * Returns an image descriptor for the image file at the given plug-in
+	 * relative path.
+	 * 
 	 * @generated
-	 * @param path the path
+	 * @param path
+	 *            the path
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getBundledImageDescriptor(String path) {
@@ -160,12 +190,14 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Respects images residing in any plug-in. If path is relative,
-	 * then this bundle is looked up for the image, otherwise, for absolute 
-	 * path, first segment is taken as id of plug-in with image
-	 *
+	 * Respects images residing in any plug-in. If path is relative, then this
+	 * bundle is looked up for the image, otherwise, for absolute path, first
+	 * segment is taken as id of plug-in with image
+	 * 
 	 * @generated
-	 * @param path the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
+	 * @param path
+	 *            the path to image, either absolute (with plug-in id as first
+	 *            segment), or relative for bundled images
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor findImageDescriptor(String path) {
@@ -180,10 +212,12 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 
 	/**
 	 * Returns an image for the image file at the given plug-in relative path.
-	 * Client do not need to dispose this image. Images will be disposed automatically.
-	 *
+	 * Client do not need to dispose this image. Images will be disposed
+	 * automatically.
+	 * 
 	 * @generated
-	 * @param path the path
+	 * @param path
+	 *            the path
 	 * @return image instance
 	 */
 	public Image getBundledImage(String path) {
@@ -197,7 +231,7 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 
 	/**
 	 * Returns string from plug-in's resource bundle
-	 *
+	 * 
 	 * @generated
 	 */
 	public static String getString(String key) {
@@ -212,6 +246,47 @@ public class RobmodDiagramEditorPlugin extends AbstractUIPlugin {
 			documentProvider = new RobmodDocumentProvider();
 		}
 		return documentProvider;
+	}
+
+	public List<Component> getDictionaries() {
+		if (dictionaries == null) {
+			loadDictionaries();
+		}
+		return dictionaries;
+	}
+
+	public void loadDictionaries() {
+		Map<String, String> xmlOptions = Collections.singletonMap(
+				XMLResource.OPTION_ENCODING, "utf-8");
+		if (dictionaries != null) {
+			this.dictionaries.clear();
+		} else {
+			this.dictionaries = new ArrayList<Component>();
+		}
+		ResourceSet resourceSet = new ResourceSetImpl();
+		for (URI loc : LibraryPreference.getLocations()) {
+			String uri = loc.toString();
+			Resource metsResource = null;
+			try {
+				logInfo("METS attempting to load existing file:" + uri);
+				metsResource = resourceSet
+						.getResource(URI.createURI(uri), true);
+				((ResourceImpl) metsResource)
+						.setIntrinsicIDToEObjectMap(new HashMap());
+				metsResource.load(xmlOptions);
+				if (metsResource.getContents().get(0) != null
+						&& metsResource.getContents().get(0) instanceof Component) {
+					dictionaries.add((Component)metsResource.getContents().get(0));
+				}
+			} catch (RuntimeException e) {
+				// TODO warn user in an alert dialog
+				logInfo("Cannot load preferred dictionary: " + loc.toString()
+						+ " (" + e.getLocalizedMessage() + ")");
+			} catch (IOException e) {
+				logInfo("Cannot load preferred dictionary: " + loc.toString()
+						+ " (" + e.getLocalizedMessage() + ")");
+			}
+		}
 	}
 
 	/**

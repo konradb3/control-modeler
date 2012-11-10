@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest;
+import org.eclipse.gmf.runtime.diagram.ui.tools.CreationTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 
+import robmod.robmod.Component;
 import robmod.robmod.diagram.providers.RobmodElementTypes;
 
 /**
@@ -20,14 +28,16 @@ import robmod.robmod.diagram.providers.RobmodElementTypes;
 public class RobmodPaletteFactory {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
 		paletteRoot.add(createRobmod1Group());
+		fillComponentsPalette(paletteRoot);
 	}
 
 	/**
 	 * Creates "robmod" palette tool group
+	 * 
 	 * @generated
 	 */
 	private PaletteContainer createRobmod1Group() {
@@ -47,11 +57,50 @@ public class RobmodPaletteFactory {
 		return paletteContainer;
 	}
 
+	private void fillComponentsPalette(PaletteRoot paletteRoot) {
+		for (Component lib : RobmodDiagramEditorPlugin.getInstance()
+				.getDictionaries()) {
+			paletteRoot.add(createLibraryContentsGroup(lib));
+		}
+	}
+
+	/**
+	 * Creates custom "Dictionary" entry palette tool group
+	 */
+	private PaletteContainer createLibraryContentsGroup(Component library) {
+		PaletteDrawer paletteContainer = new PaletteDrawer(library.getName());
+		paletteContainer.setId(library.getName()); //$NON-NLS-1$
+
+		for (Component mb : (EList<Component>) library.getComposition()) {
+			paletteContainer.add(createMetadataBlockCopyTool(mb));
+		}
+
+		return paletteContainer;
+	}
+
 	/**
 	 * @generated
 	 */
 	private ToolEntry createComponent1CreationTool() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.Component_2003);
 		types.add(RobmodElementTypes.Component_3003);
@@ -84,7 +133,25 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createHandlerTrigeredBy3CreationTool() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		types.add(RobmodElementTypes.HandlerGenerates_4008);
@@ -102,7 +169,25 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createInputPort4CreationTool() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.InputPort_3001);
 		types.add(RobmodElementTypes.InputPort_2004);
@@ -120,7 +205,25 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createOutputPort5CreationTool() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.OutputPort_2001);
 		types.add(RobmodElementTypes.OutputPort_3002);
@@ -138,7 +241,25 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createOutputPortConnection6CreationTool() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				3);
 		types.add(RobmodElementTypes.OutputPortConnection_4005);
 		types.add(RobmodElementTypes.OutputPortDelegation_4006);
@@ -215,6 +336,21 @@ public class RobmodPaletteFactory {
 	}
 
 	/**
+	 * @param mb2
+	 * @generated NOT
+	 */
+	private ToolEntry createMetadataBlockCopyTool(Component mb) {
+		;
+		TemplateObjectToolEntry entry = new TemplateObjectToolEntry(
+				mb.getType(), mb.getDescription(), mb);
+		entry.setId(null); //$NON-NLS-1$
+		entry.setSmallIcon(RobmodElementTypes
+				.getImageDescriptor(RobmodElementTypes.ComponentBefore_4009));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
 	 * @generated
 	 */
 	private static class NodeToolEntry extends ToolEntry {
@@ -222,7 +358,7 @@ public class RobmodPaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/elementTypes;
+		private final List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */elementTypes;
 
 		/**
 		 * @generated
@@ -230,7 +366,7 @@ public class RobmodPaletteFactory {
 		private NodeToolEntry(
 				String title,
 				String description,
-				List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/elementTypes) {
+				List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */elementTypes) {
 			super(title, description, null, null);
 			this.elementTypes = elementTypes;
 		}
@@ -253,7 +389,7 @@ public class RobmodPaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes;
+		private final List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */relationshipTypes;
 
 		/**
 		 * @generated
@@ -261,7 +397,7 @@ public class RobmodPaletteFactory {
 		private LinkToolEntry(
 				String title,
 				String description,
-				List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes) {
+				List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */relationshipTypes) {
 			super(title, description, null, null);
 			this.relationshipTypes = relationshipTypes;
 		}
@@ -273,6 +409,87 @@ public class RobmodPaletteFactory {
 			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
 			tool.setProperties(getToolProperties());
 			return tool;
+		}
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	private static class TemplateObjectToolEntry extends ToolEntry {
+
+		/**
+		 * @generated NOT
+		 */
+		private final EObject object;
+
+		/**
+		 * @generated NOT
+		 */
+		private TemplateObjectToolEntry(String title, String description,
+				EObject object) {
+			super(title, description, null, null);
+			this.object = object;
+		}
+
+		/**
+		 * @generated NOT
+		 */
+		public Tool createTool() {
+			Tool tool = new TemplateObjectCreationTool(object);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+
+	public static class TemplateObjectCreationTool extends CreationTool {
+
+		/**
+		 * List of objects which will be dropped.
+		 */
+		private final EObject object;
+
+		/**
+		 * Creates a new instance with a list of possible element types.
+		 * 
+		 * @param elementTypes
+		 *            List of element types of which one will be created (of
+		 *            type <code>IElementType</code>).
+		 */
+		public TemplateObjectCreationTool(EObject object) {
+			super();
+			this.object = object;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.gef.tools.TargetingTool#createTargetRequest()
+		 */
+		protected Request createTargetRequest() {
+			// return new
+			// TemplateObjectCreateRequest(CrosswalkElementTypes.MetadataBlock_3018,
+			// object, getPreferencesHint());
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			// types.add(RobmodElementTypes.Component_1000);
+			types.add(RobmodElementTypes.Component_2003);
+			// types.add(RobmodElementTypes.Component_2006);
+
+			CreateUnspecifiedTypeRequest result = new CreateUnspecifiedTypeRequest(
+					types, getPreferencesHint());
+			result.getExtendedData().put("templateElement", object);
+			// CreateViewRequest req =
+			// CreateViewRequestFactory.getCreateShapeRequest(
+			// CrosswalkElementTypes.MetadataBlock_3018, getPreferencesHint());
+			// req.getExtendedData().put("templateElement", object);
+			return result;
+			// DropObjectsRequest drop = new DropObjectsRequest();
+			// drop.setObjects(Collections.singletonList(EcoreUtil.copy(this.object)));
+			// return drop;
+		}
+
+		@Override
+		protected String getCommandName() {
+			return "drop: " + object.toString();
 		}
 	}
 }

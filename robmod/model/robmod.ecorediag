@@ -23,6 +23,10 @@
         <element xmi:type="ecore:EAttribute" href="robmod.ecore#//Component/executionOrder"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_qxn08RC7EeK4PL3ZQ8ZuBw"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_cOnJMCtvEeKf_pk9mMRYdw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="robmod.ecore#//Component/period"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cOnJMStvEeKf_pk9mMRYdw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_zQMkgQn8EeKpO-InE6wsbQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_zQMkggn8EeKpO-InE6wsbQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_zQMkgwn8EeKpO-InE6wsbQ"/>

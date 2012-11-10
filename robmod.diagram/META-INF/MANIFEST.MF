@@ -7,9 +7,18 @@ Bundle-ClassPath: .
 Bundle-Activator: robmod.robmod.diagram.part.RobmodDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: robmod.robmod.diagram.edit.parts,
+Export-Package: robmod.robmod.diagram.custom,
+ robmod.robmod.diagram.edit.commands,
+ robmod.robmod.diagram.edit.helpers,
+ robmod.robmod.diagram.edit.parts,
+ robmod.robmod.diagram.edit.policies,
+ robmod.robmod.diagram.expressions,
+ robmod.robmod.diagram.navigator,
+ robmod.robmod.diagram.parsers,
  robmod.robmod.diagram.part,
- robmod.robmod.diagram.providers
+ robmod.robmod.diagram.preferences,
+ robmod.robmod.diagram.providers,
+ robmod.robmod.diagram.sheet
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.core.expressions,

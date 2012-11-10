@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+      <metamodel
+            nsURI="http://dupa.org/robmod.ecore">
+         <adviceBinding
+               class="robmod_plugin2.ComponentTemplateAdvice"
+               id="robmod_plugin2.adviceBinding4"
+               inheritance="all"
+               typeId="robmod.diagram.Component_1000">
+         </adviceBinding>
+      </metamodel>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <binding
+            context="robmod.diagram.TypeContext">
+         <advice
+               pattern="robmod_plugin2.*">
+         </advice>
+      </binding>
+   </extension>
+
+</plugin>

@@ -45,6 +45,7 @@ import robmod.robmod.RobmodPackage;
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getType2 <em>Type2</em>}</li>
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getBefore <em>Before</em>}</li>
  *   <li>{@link robmod.robmod.impl.ComponentImpl#getExecutionOrder <em>Execution Order</em>}</li>
+ *   <li>{@link robmod.robmod.impl.ComponentImpl#getPeriod <em>Period</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +211,26 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * @ordered
 	 */
 	protected Integer executionOrder = EXECUTION_ORDER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPeriod() <em>Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Double PERIOD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double period = PERIOD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -411,6 +432,27 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Double getPeriod() {
+		return period;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPeriod(Double newPeriod) {
+		Double oldPeriod = period;
+		period = newPeriod;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RobmodPackage.COMPONENT__PERIOD, oldPeriod, period));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case RobmodPackage.COMPONENT__COMPOSITION:
@@ -456,6 +498,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				return getBefore();
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
 				return getExecutionOrder();
+			case RobmodPackage.COMPONENT__PERIOD:
+				return getPeriod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -506,6 +550,9 @@ public class ComponentImpl extends EObjectImpl implements Component {
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
 				setExecutionOrder((Integer)newValue);
 				return;
+			case RobmodPackage.COMPONENT__PERIOD:
+				setPeriod((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -550,6 +597,9 @@ public class ComponentImpl extends EObjectImpl implements Component {
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
 				setExecutionOrder(EXECUTION_ORDER_EDEFAULT);
 				return;
+			case RobmodPackage.COMPONENT__PERIOD:
+				setPeriod(PERIOD_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -583,6 +633,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 				return before != null && !before.isEmpty();
 			case RobmodPackage.COMPONENT__EXECUTION_ORDER:
 				return EXECUTION_ORDER_EDEFAULT == null ? executionOrder != null : !EXECUTION_ORDER_EDEFAULT.equals(executionOrder);
+			case RobmodPackage.COMPONENT__PERIOD:
+				return PERIOD_EDEFAULT == null ? period != null : !PERIOD_EDEFAULT.equals(period);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -606,6 +658,8 @@ public class ComponentImpl extends EObjectImpl implements Component {
 		result.append(type2);
 		result.append(", executionOrder: ");
 		result.append(executionOrder);
+		result.append(", period: ");
+		result.append(period);
 		result.append(')');
 		return result.toString();
 	}
