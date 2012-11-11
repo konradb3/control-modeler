@@ -26,11 +26,8 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerTrigeredByEditPart;
@@ -209,6 +206,9 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 					topViews.add((View) o);
 				}
 			}
+			result.addAll(createNavigatorItems(
+					selectViewsByType(topViews, ComponentEditPart.MODEL_ID),
+					file, false));
 			return result.toArray();
 		}
 
@@ -234,14 +234,14 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 	private Object[] getViewChildren(View view, Object parentElement) {
 		switch (RobmodVisualIDRegistry.getVisualID(view)) {
 
-		case HandlerTrigeredByEditPart.VISUAL_ID: {
+		case InputPortPropagationEditPart.VISUAL_ID: {
 			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
 			Edge sv = (Edge) view;
 			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_HandlerTrigeredBy_4004_target,
+					Messages.NavigatorGroupName_InputPortPropagation_4007_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_HandlerTrigeredBy_4004_source,
+					Messages.NavigatorGroupName_InputPortPropagation_4007_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
@@ -254,213 +254,83 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(HandlerEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case OutputPort2EditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_OutputPort_3002_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_OutputPort_3002_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortConnectionEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortDelegationEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortDelegationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(HandlerGeneratesEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
-
-		case ComponentBeforeEditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Edge sv = (Edge) view;
-			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_ComponentBefore_4009_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_ComponentBefore_4009_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component2EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component3EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component4EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component5EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component2EditPart.VISUAL_ID));
+					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component3EditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component4EditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component5EditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case InputPortEditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPort_2004_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPort_2004_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortConnectionEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPortPropagationEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPortPropagationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case HandlerEditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Handler_2002_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(HandlerGeneratesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case Component5EditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Component_3003_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Component_3003_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getChildrenByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(InputPort2EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
+		case ComponentEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Diagram sv = (Diagram) view;
+			RobmodNavigatorGroup links = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_Component_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry.getType(HandlerEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
-							.getType(OutputPort2EditPart.VISUAL_ID));
+							.getType(Component2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry.getType(PropertyEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(Component3EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortConnectionEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortDelegationEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(InputPortPropagationEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerGeneratesEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(ComponentBeforeEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(ComponentBeforeEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
 			}
 			return result.toArray();
 		}
@@ -500,122 +370,6 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 			}
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
-
-		case OutputPortDelegationEditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Edge sv = (Edge) view;
-			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_OutputPortDelegation_4006_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_OutputPortDelegation_4006_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPort2EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPort2EditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case InputPort2EditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPort_3001_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPort_3001_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortConnectionEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPortPropagationEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPortPropagationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case Component4EditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Node sv = (Node) view;
-			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Component_2007_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Component_2007_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(ComponentThreadCompartmentEditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(connectedViews,
-					RobmodVisualIDRegistry
-							.getType(Component5EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(ComponentBeforeEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(ComponentBeforeEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
 			}
 			return result.toArray();
 		}
@@ -691,108 +445,41 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
-		case ComponentEditPart.VISUAL_ID: {
+		case InputPort2EditPart.VISUAL_ID: {
 			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Diagram sv = (Diagram) view;
-			RobmodNavigatorGroup links = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_Component_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Node sv = (Node) view;
+			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_InputPort_3001_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_InputPort_3001_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(HandlerEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(PropertyEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component3EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(Component4EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(OutputPortConnectionEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(OutputPortDelegationEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(InputPortPropagationEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
-							.getType(HandlerGeneratesEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(ComponentBeforeEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			if (!links.isEmpty()) {
-				result.add(links);
+							.getType(InputPortPropagationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
-			return result.toArray();
-		}
-
-		case InputPortPropagationEditPart.VISUAL_ID: {
-			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
-			Edge sv = (Edge) view;
-			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPortPropagation_4007_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
-					Messages.NavigatorGroupName_InputPortPropagation_4007_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPort2EditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					RobmodVisualIDRegistry
-							.getType(InputPort2EditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
 			}
 			return result.toArray();
 		}
@@ -825,6 +512,162 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					RobmodVisualIDRegistry
 							.getType(ComponentBeforeEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case OutputPortDelegationEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Edge sv = (Edge) view;
+			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_OutputPortDelegation_4006_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_OutputPortDelegation_4006_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPort2EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPort2EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
+		case OutputPort2EditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Node sv = (Node) view;
+			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_OutputPort_3002_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_OutputPort_3002_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortConnectionEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortDelegationEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortDelegationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerGeneratesEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			return result.toArray();
+		}
+
+		case ComponentBeforeEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Edge sv = (Edge) view;
+			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_ComponentBefore_4009_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_ComponentBefore_4009_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(Component2EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(Component3EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(Component2EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(Component3EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
+		case InputPortEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Node sv = (Node) view;
+			RobmodNavigatorGroup incominglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_InputPort_2004_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_InputPort_2004_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(OutputPortConnectionEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(InputPortPropagationEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(InputPortPropagationEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -871,6 +714,61 @@ public class RobmodNavigatorContentProvider implements ICommonContentProvider {
 			}
 			if (!outgoinglinks.isEmpty()) {
 				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case HandlerEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Node sv = (Node) view;
+			RobmodNavigatorGroup outgoinglinks = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_Handler_2002_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerTrigeredByEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(HandlerGeneratesEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case HandlerTrigeredByEditPart.VISUAL_ID: {
+			LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/result = new LinkedList/*[robmod.robmod.diagram.navigator.RobmodAbstractNavigatorItem]*/();
+			Edge sv = (Edge) view;
+			RobmodNavigatorGroup target = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_HandlerTrigeredBy_4004_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			RobmodNavigatorGroup source = new RobmodNavigatorGroup(
+					Messages.NavigatorGroupName_HandlerTrigeredBy_4004_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection/*[org.eclipse.gmf.runtime.notation.View]*/connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry.getType(InputPortEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry
+							.getType(InputPort2EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					RobmodVisualIDRegistry.getType(HandlerEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
 			}
 			return result.toArray();
 		}

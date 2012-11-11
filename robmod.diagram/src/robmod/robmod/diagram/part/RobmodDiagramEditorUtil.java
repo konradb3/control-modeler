@@ -220,9 +220,7 @@ public class RobmodDiagramEditorUtil {
 	 * @generated
 	 */
 	private static Component createInitialModel() {
-		Component component = RobmodFactory.eINSTANCE.createComponent();
-		component.setType2(ComponentType.COMPOSITION_LITERAL);
-		return component;
+		return RobmodFactory.eINSTANCE.createComponent();
 	}
 
 	/**

@@ -77,7 +77,8 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new InputPort2ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// XXX need an SCR to runtime to have another abstract superclass that
+		// would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -173,7 +174,7 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
-		//FIXME: workaround for #154536
+		// FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
 		return result;
 	}
@@ -181,8 +182,8 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -229,15 +230,36 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 
 		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
 				getFigure(), 0d, 0.5d);
-
 		return fixedAnchor;
-
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart arg0) {
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -306,8 +328,26 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSource() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSource() {
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				1);
 		types.add(RobmodElementTypes.InputPortPropagation_4007);
 		return types;
@@ -316,9 +356,27 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSourceAndTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (targetEditPart instanceof InputPortEditPart) {
 			types.add(RobmodElementTypes.InputPortPropagation_4007);
 		}
@@ -331,9 +389,27 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMATypesForTarget(
 			IElementType relationshipType) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (relationshipType == RobmodElementTypes.InputPortPropagation_4007) {
 			types.add(RobmodElementTypes.InputPort_2004);
 			types.add(RobmodElementTypes.InputPort_3001);
@@ -344,8 +420,26 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnTarget() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnTarget() {
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				3);
 		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		types.add(RobmodElementTypes.OutputPortConnection_4005);
@@ -356,9 +450,27 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForSource(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMATypesForSource(
 			IElementType relationshipType) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (relationshipType == RobmodElementTypes.HandlerTrigeredBy_4004) {
 			types.add(RobmodElementTypes.Handler_2002);
 		} else if (relationshipType == RobmodElementTypes.OutputPortConnection_4005) {
@@ -394,8 +506,8 @@ public class InputPort2EditPart extends AbstractBorderItemEditPart {
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(4),
 					getMapMode().DPtoLP(4)));
 			this.setLineWidth(0);
-			//this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60),
-			//		getMapMode().DPtoLP(25)));
+			// this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60),
+			// getMapMode().DPtoLP(25)));
 
 			createContents();
 

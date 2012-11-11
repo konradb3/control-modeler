@@ -193,7 +193,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_HggYMQ8wEeK9Duk_hkZPDw" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EEnum" href="robmod.ecore#//ComponentType"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HggYMg8wEeK9Duk_hkZPDw" x="95" y="30" height="88"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HggYMg8wEeK9Duk_hkZPDw" x="95" y="30" width="153" height="148"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_wfYCsQn8EeKpO-InE6wsbQ"/>
   <element xmi:type="ecore:EPackage" href="robmod.ecore#/"/>

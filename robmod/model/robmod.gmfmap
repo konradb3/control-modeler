@@ -174,7 +174,7 @@
         <diagramLabel
             href="robmod.gmfgraph#ComponentName"/>
         <features
-            href="robmod.ecore#//Component/description"/>
+            href="robmod.ecore#//Component/name"/>
       </labelMappings>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
@@ -198,44 +198,6 @@
         <containmentFeature
             href="robmod.ecore#//Component/outputPorts"/>
       </children>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="robmod.ecore#//Component/composition"/>
-    <ownedChild>
-      <domainMetaElement
-          href="robmod.ecore#//Component"/>
-      <domainSpecialization
-          body="self.type2 = ComponentType::SequentialThread"/>
-      <domainInitializer
-          xsi:type="gmfmap:FeatureSeqInitializer">
-        <initializers
-            xsi:type="gmfmap:FeatureValueSpec">
-          <feature
-              xsi:type="ecore:EAttribute"
-              href="robmod.ecore#//Component/type2"/>
-          <value
-              body="ComponentType.SEQUENTIAL_THREAD_LITERAL"
-              language="literal"/>
-        </initializers>
-      </domainInitializer>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="robmod.gmftool#//@palette/@tools.0/@tools.8"/>
-      <diagramNode
-          href="robmod.gmfgraph#Thread"/>
-      <children
-          compartment="//@nodes.6/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.2/@ownedChild">
-        <containmentFeature
-            href="robmod.ecore#//Component/composition"/>
-      </children>
-      <compartments
-          children="//@nodes.6/@ownedChild/@children.0">
-        <compartment
-            href="robmod.gmfgraph#ThreadCompartment"/>
-      </compartments>
     </ownedChild>
   </nodes>
   <links>
@@ -303,7 +265,7 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="robmod.gmftool#//@palette/@tools.0/@tools.9"/>
+        href="robmod.gmftool#//@palette/@tools.0/@tools.2"/>
     <diagramLink
         href="robmod.gmfgraph#HandlerTrigeredBy"/>
     <linkMetaFeature
@@ -323,20 +285,6 @@
   <audits
       id="s"
       name="sdasds">
-    <audits
-        name="sdd"
-        description="Handler or Coposition"
-        id="ssd"
-        useInLiveMode="true"
-        message="Single component can't conteins both Handler and orther Components">
-      <rule
-          body="not handlers->notEmpty() or not composition->notEmpty()"/>
-      <target
-          xsi:type="gmfmap:DomainElementTarget">
-        <element
-            href="robmod.ecore#//Component"/>
-      </target>
-    </audits>
     <audits
         name="Component name audit"
         description="A component must have a name provided."
@@ -390,13 +338,39 @@
       </target>
     </audits>
     <audits
-        name="Component empty"
-        description="Comopnent doesn't contain handler nor other components."
-        id="Component.empty"
-        severity="WARNING"
-        message="Comopnent doesn't contain handler nor other components.">
+        name="Composition no handlers"
+        description="Composition can't have handlers."
+        id="Composition.noHandlers"
+        useInLiveMode="true"
+        message="">
       <rule
-          body="self.handlers->notEmpty() or self.composition->notEmpty()"/>
+          body="self.type2 &lt;> ComponentType::Composition or self.handlers->isEmpty()"/>
+      <target
+          xsi:type="gmfmap:DomainElementTarget">
+        <element
+            href="robmod.ecore#//Component"/>
+      </target>
+    </audits>
+    <audits
+        name="Component composition"
+        description="Components can't have compositions."
+        id="Component.Composition"
+        useInLiveMode="true">
+      <rule
+          body="self.type2 &lt;> ComponentType::Component or self.composition->isEmpty()"/>
+      <target
+          xsi:type="gmfmap:DomainElementTarget">
+        <element
+            href="robmod.ecore#//Component"/>
+      </target>
+    </audits>
+    <audits
+        name="Component handler"
+        description="Component must have at least one handler."
+        id="Component.Handler"
+        message="Component must have at least one handler.">
+      <rule
+          body="self.type2 &lt;> ComponentType::Component or self.handlers->notEmpty()"/>
       <target
           xsi:type="gmfmap:DomainElementTarget">
         <element

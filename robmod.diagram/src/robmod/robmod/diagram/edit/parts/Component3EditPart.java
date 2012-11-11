@@ -82,6 +82,8 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new Component3CanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new OpenDiagramEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -134,7 +136,7 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ComponentDescriptionEditPart) {
@@ -148,17 +150,19 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof InputPort2EditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(),
-					PositionConstants.WEST);
+			BorderItemLocator locator = new ActivityBorderItemLocator(
+					getMainFigure(), PositionConstants.EAST);
 			getBorderedFigure().getBorderItemContainer().add(
 					((InputPort2EditPart) childEditPart).getFigure(), locator);
+			locator.setPreferredSideOfParent(PositionConstants.EAST);
 			return true;
 		}
 		if (childEditPart instanceof OutputPort2EditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(),
-					PositionConstants.EAST);
+			BorderItemLocator locator = new ActivityBorderItemLocator(
+					getMainFigure(), PositionConstants.WEST);
 			getBorderedFigure().getBorderItemContainer().add(
 					((OutputPort2EditPart) childEditPart).getFigure(), locator);
+			locator.setPreferredSideOfParent(PositionConstants.WEST);
 			return true;
 		}
 		return false;
@@ -333,12 +337,6 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 		if (targetEditPart instanceof robmod.robmod.diagram.edit.parts.Component3EditPart) {
 			types.add(RobmodElementTypes.ComponentBefore_4009);
 		}
-		if (targetEditPart instanceof Component4EditPart) {
-			types.add(RobmodElementTypes.ComponentBefore_4009);
-		}
-		if (targetEditPart instanceof Component5EditPart) {
-			types.add(RobmodElementTypes.ComponentBefore_4009);
-		}
 		return types;
 	}
 
@@ -351,8 +349,6 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
 			types.add(RobmodElementTypes.Component_2003);
 			types.add(RobmodElementTypes.Component_2006);
-			types.add(RobmodElementTypes.Component_2007);
-			types.add(RobmodElementTypes.Component_3003);
 		}
 		return types;
 	}
@@ -376,8 +372,6 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
 			types.add(RobmodElementTypes.Component_2003);
 			types.add(RobmodElementTypes.Component_2006);
-			types.add(RobmodElementTypes.Component_2007);
-			types.add(RobmodElementTypes.Component_3003);
 		}
 		return types;
 	}
@@ -416,7 +410,7 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private void createContents() {
 
@@ -425,6 +419,8 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 			fFigureComponentNameFigure.setText("<...>");
 
 			fFigureComponentNameFigure.setFont(FFIGURECOMPONENTNAMEFIGURE_FONT);
+			
+			fFigureComponentNameFigure.setAlignment(PositionConstants.CENTER);
 
 			this.add(fFigureComponentNameFigure);
 
@@ -433,6 +429,8 @@ public class Component3EditPart extends AbstractBorderedShapeEditPart {
 			fFigureComponentTypeFigure.setText("<...>");
 
 			fFigureComponentTypeFigure.setFont(FFIGURECOMPONENTTYPEFIGURE_FONT);
+			
+			fFigureComponentTypeFigure.setAlignment(PositionConstants.CENTER);
 
 			this.add(fFigureComponentTypeFigure);
 

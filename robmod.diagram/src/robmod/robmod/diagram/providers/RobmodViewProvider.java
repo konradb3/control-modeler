@@ -45,18 +45,11 @@ import org.eclipse.swt.graphics.FontData;
 
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentDescription2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentDescriptionEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentName2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentNameEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentType2EditPart;
-import robmod.robmod.diagram.edit.parts.ComponentType3EditPart;
-import robmod.robmod.diagram.edit.parts.ComponentType4EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentTypeEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
@@ -177,9 +170,7 @@ public class RobmodViewProvider extends AbstractProvider implements
 				case Component2EditPart.VISUAL_ID:
 				case InputPortEditPart.VISUAL_ID:
 				case Component3EditPart.VISUAL_ID:
-				case Component4EditPart.VISUAL_ID:
 				case OutputPort2EditPart.VISUAL_ID:
-				case Component5EditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != RobmodVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -198,10 +189,8 @@ public class RobmodViewProvider extends AbstractProvider implements
 				|| InputPortEditPart.VISUAL_ID == visualID
 				|| PropertyEditPart.VISUAL_ID == visualID
 				|| Component3EditPart.VISUAL_ID == visualID
-				|| Component4EditPart.VISUAL_ID == visualID
 				|| InputPort2EditPart.VISUAL_ID == visualID
-				|| OutputPort2EditPart.VISUAL_ID == visualID
-				|| Component5EditPart.VISUAL_ID == visualID;
+				|| OutputPort2EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -276,17 +265,11 @@ public class RobmodViewProvider extends AbstractProvider implements
 		case Component3EditPart.VISUAL_ID:
 			return createComponent_2006(domainElement, containerView, index,
 					persisted, preferencesHint);
-		case Component4EditPart.VISUAL_ID:
-			return createComponent_2007(domainElement, containerView, index,
-					persisted, preferencesHint);
 		case InputPort2EditPart.VISUAL_ID:
 			return createInputPort_3001(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case OutputPort2EditPart.VISUAL_ID:
 			return createOutputPort_3002(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case Component5EditPart.VISUAL_ID:
-			return createComponent_3003(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -566,6 +549,12 @@ public class RobmodViewProvider extends AbstractProvider implements
 	public Node createComponent_2006(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
+		{
+			HintedDiagramLinkStyle diagramFacet = NotationFactory.eINSTANCE
+					.createHintedDiagramLinkStyle();
+			diagramFacet.setHint("Robmod"); //$NON-NLS-1$
+			node.getStyles().add(diagramFacet);
+		}
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(RobmodVisualIDRegistry
 				.getType(Component3EditPart.VISUAL_ID));
@@ -606,53 +595,6 @@ public class RobmodViewProvider extends AbstractProvider implements
 		Node label5011 = createLabel(node,
 				RobmodVisualIDRegistry
 						.getType(ComponentType2EditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	 * @generated
-	 */
-	public Node createComponent_2007(EObject domainElement, View containerView,
-			int index, boolean persisted, PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(RobmodVisualIDRegistry
-				.getType(Component4EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
-				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node
-				.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore,
-					IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
-					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
-					.intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		createCompartment(node,
-				RobmodVisualIDRegistry
-						.getType(ComponentThreadCompartmentEditPart.VISUAL_ID),
-				false, false, false, false);
 		return node;
 	}
 
@@ -742,56 +684,6 @@ public class RobmodViewProvider extends AbstractProvider implements
 		Node label5006 = createLabel(node,
 				RobmodVisualIDRegistry
 						.getType(OutputPortNameEditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	 * @generated
-	 */
-	public Node createComponent_3003(EObject domainElement, View containerView,
-			int index, boolean persisted, PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.getStyles().add(
-				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(RobmodVisualIDRegistry
-				.getType(Component5EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
-				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node
-				.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore,
-					IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
-					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
-					.intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5012 = createLabel(node,
-				RobmodVisualIDRegistry
-						.getType(ComponentName2EditPart.VISUAL_ID));
-		Node label5013 = createLabel(node,
-				RobmodVisualIDRegistry
-						.getType(ComponentType4EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -1112,38 +1004,6 @@ public class RobmodViewProvider extends AbstractProvider implements
 	 */
 	private Node createLabel(View owner, String hint) {
 		DecorationNode rv = NotationFactory.eINSTANCE.createDecorationNode();
-		rv.setType(hint);
-		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
-		return rv;
-	}
-
-	/**
-	 * @generated
-	 */
-	private Node createCompartment(View owner, String hint,
-			boolean canCollapse, boolean hasTitle, boolean canSort,
-			boolean canFilter) {
-		//SemanticListCompartment rv = NotationFactory.eINSTANCE.createSemanticListCompartment();
-		//rv.setShowTitle(showTitle);
-		//rv.setCollapsed(isCollapsed);
-		Node rv;
-		if (canCollapse) {
-			rv = NotationFactory.eINSTANCE.createBasicCompartment();
-		} else {
-			rv = NotationFactory.eINSTANCE.createDecorationNode();
-		}
-		if (hasTitle) {
-			TitleStyle ts = NotationFactory.eINSTANCE.createTitleStyle();
-			ts.setShowTitle(true);
-			rv.getStyles().add(ts);
-		}
-		if (canSort) {
-			rv.getStyles().add(NotationFactory.eINSTANCE.createSortingStyle());
-		}
-		if (canFilter) {
-			rv.getStyles()
-					.add(NotationFactory.eINSTANCE.createFilteringStyle());
-		}
 		rv.setType(hint);
 		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
 		return rv;

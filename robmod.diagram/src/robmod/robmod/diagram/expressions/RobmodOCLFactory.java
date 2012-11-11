@@ -41,16 +41,16 @@ public class RobmodOCLFactory {
 		this.expressionBodies = new String[] {
 				"self.type2 = ComponentType::Component", //$NON-NLS-1$
 				"self.type2 = ComponentType::Composition", //$NON-NLS-1$
-				"self.type2 = ComponentType::SequentialThread", //$NON-NLS-1$
 				"(dataType = oppositeEnd.dataType)\nand \n(Component.allInstances()->select(outputPorts->includes(oppositeEnd)) <> Component.allInstances()->select(inputPorts->includes(self)))\n", //$NON-NLS-1$
 				"self.dataType = oppositeEnd.dataType\nand\nComponent.allInstances()->select(outputPorts->includes(self)).composition->exists(outputPorts->includes(oppositeEnd))\n", //$NON-NLS-1$
 				"self.dataType = oppositeEnd.dataType\nand\nComponent.allInstances()->select(inputPorts->includes(oppositeEnd)).composition->exists(inputPorts->includes(self))\n", //$NON-NLS-1$
-				"not handlers->notEmpty() or not composition->notEmpty()", //$NON-NLS-1$
 				"self.name.size()>0", //$NON-NLS-1$
 				"self.type.size()>0", //$NON-NLS-1$
 				"self.name.size()>0", //$NON-NLS-1$
 				"self.handlers->forAll(trigeredBy->size() > 0) or self.handlers->size() < 2\n", //$NON-NLS-1$
-				"self.handlers->notEmpty() or self.composition->notEmpty()", //$NON-NLS-1$
+				"self.type2 <> ComponentType::Composition or self.handlers->isEmpty()", //$NON-NLS-1$
+				"self.type2 <> ComponentType::Component or self.composition->isEmpty()", //$NON-NLS-1$
+				"self.type2 <> ComponentType::Component or self.handlers->notEmpty()", //$NON-NLS-1$
 		};
 	}
 

@@ -14,13 +14,9 @@ import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
 import robmod.robmod.RobmodPackage;
-import robmod.robmod.diagram.edit.parts.ComponentDescription2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentDescriptionEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentName2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentNameEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentType2EditPart;
-import robmod.robmod.diagram.edit.parts.ComponentType3EditPart;
-import robmod.robmod.diagram.edit.parts.ComponentType4EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentTypeEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerNameEditPart;
 import robmod.robmod.diagram.edit.parts.InputPortDataType2EditPart;
@@ -169,19 +165,19 @@ public class RobmodParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser componentDescription_5010Parser;
+	private IParser componentName_5010Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getComponentDescription_5010Parser() {
-		if (componentDescription_5010Parser == null) {
+	private IParser getComponentName_5010Parser() {
+		if (componentName_5010Parser == null) {
 			EAttribute[] features = new EAttribute[] { RobmodPackage.eINSTANCE
-					.getComponent_Description() };
+					.getComponent_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			componentDescription_5010Parser = parser;
+			componentName_5010Parser = parser;
 		}
-		return componentDescription_5010Parser;
+		return componentName_5010Parser;
 	}
 
 	/**
@@ -241,42 +237,6 @@ public class RobmodParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser componentName_5012Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getComponentName_5012Parser() {
-		if (componentName_5012Parser == null) {
-			EAttribute[] features = new EAttribute[] { RobmodPackage.eINSTANCE
-					.getComponent_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			componentName_5012Parser = parser;
-		}
-		return componentName_5012Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser componentType_5013Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getComponentType_5013Parser() {
-		if (componentType_5013Parser == null) {
-			EAttribute[] features = new EAttribute[] { RobmodPackage.eINSTANCE
-					.getComponent_Type() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			componentType_5013Parser = parser;
-		}
-		return componentType_5013Parser;
-	}
-
-	/**
-	 * @generated
-	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case OutputPortDataTypeEditPart.VISUAL_ID:
@@ -294,17 +254,13 @@ public class RobmodParserProvider extends AbstractProvider implements
 		case WrappingLabel2EditPart.VISUAL_ID:
 			return getPropertyType_5009Parser();
 		case ComponentDescriptionEditPart.VISUAL_ID:
-			return getComponentDescription_5010Parser();
+			return getComponentName_5010Parser();
 		case ComponentType2EditPart.VISUAL_ID:
 			return getComponentType_5011Parser();
 		case InputPortNameEditPart.VISUAL_ID:
 			return getInputPortName_5005Parser();
 		case OutputPortNameEditPart.VISUAL_ID:
 			return getOutputPortName_5006Parser();
-		case ComponentName2EditPart.VISUAL_ID:
-			return getComponentName_5012Parser();
-		case ComponentType4EditPart.VISUAL_ID:
-			return getComponentType_5013Parser();
 		}
 		return null;
 	}

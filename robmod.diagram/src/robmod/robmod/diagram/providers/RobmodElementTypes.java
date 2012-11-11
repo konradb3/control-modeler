@@ -19,8 +19,6 @@ import org.eclipse.swt.graphics.Image;
 import robmod.robmod.RobmodPackage;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
@@ -95,21 +93,11 @@ public class RobmodElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Component_2007 = getElementType("robmod.diagram.Component_2007"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
 	public static final IElementType InputPort_3001 = getElementType("robmod.diagram.InputPort_3001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
 	public static final IElementType OutputPort_3002 = getElementType("robmod.diagram.OutputPort_3002"); //$NON-NLS-1$
-	/**
-	 * @generated
-	 */
-	public static final IElementType Component_3003 = getElementType("robmod.diagram.Component_3003"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
@@ -263,14 +251,10 @@ public class RobmodElementTypes {
 
 			elements.put(Component_2006, RobmodPackage.eINSTANCE.getComponent());
 
-			elements.put(Component_2007, RobmodPackage.eINSTANCE.getComponent());
-
 			elements.put(InputPort_3001, RobmodPackage.eINSTANCE.getInputPort());
 
 			elements.put(OutputPort_3002,
 					RobmodPackage.eINSTANCE.getOutputPort());
-
-			elements.put(Component_3003, RobmodPackage.eINSTANCE.getComponent());
 
 			elements.put(HandlerTrigeredBy_4004,
 					RobmodPackage.eINSTANCE.getHandler_TrigeredBy());
@@ -313,10 +297,8 @@ public class RobmodElementTypes {
 			KNOWN_ELEMENT_TYPES.add(InputPort_2004);
 			KNOWN_ELEMENT_TYPES.add(Property_2005);
 			KNOWN_ELEMENT_TYPES.add(Component_2006);
-			KNOWN_ELEMENT_TYPES.add(Component_2007);
 			KNOWN_ELEMENT_TYPES.add(InputPort_3001);
 			KNOWN_ELEMENT_TYPES.add(OutputPort_3002);
-			KNOWN_ELEMENT_TYPES.add(Component_3003);
 			KNOWN_ELEMENT_TYPES.add(HandlerTrigeredBy_4004);
 			KNOWN_ELEMENT_TYPES.add(OutputPortConnection_4005);
 			KNOWN_ELEMENT_TYPES.add(OutputPortDelegation_4006);
@@ -346,14 +328,10 @@ public class RobmodElementTypes {
 			return Property_2005;
 		case Component3EditPart.VISUAL_ID:
 			return Component_2006;
-		case Component4EditPart.VISUAL_ID:
-			return Component_2007;
 		case InputPort2EditPart.VISUAL_ID:
 			return InputPort_3001;
 		case OutputPort2EditPart.VISUAL_ID:
 			return OutputPort_3002;
-		case Component5EditPart.VISUAL_ID:
-			return Component_3003;
 		case HandlerTrigeredByEditPart.VISUAL_ID:
 			return HandlerTrigeredBy_4004;
 		case OutputPortConnectionEditPart.VISUAL_ID:

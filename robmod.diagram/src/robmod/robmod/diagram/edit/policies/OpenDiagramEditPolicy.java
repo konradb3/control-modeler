@@ -187,14 +187,14 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
 		 * @generated
 		 */
 		protected String getDiagramKind() {
-			return ComponentEditPart.MODEL_ID;
+			return "Robmod";
 		}
 
 		/**
 		 * @generated
 		 */
 		protected String getEditorID() {
-			return RobmodDiagramEditor.ID;
+			return "robmod.robmod.diagram.part.RobmodDiagramEditorID";
 		}
 	}
 

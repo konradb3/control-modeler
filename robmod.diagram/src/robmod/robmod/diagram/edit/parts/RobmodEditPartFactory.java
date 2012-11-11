@@ -70,9 +70,6 @@ public class RobmodEditPartFactory implements EditPartFactory {
 			case ComponentType2EditPart.VISUAL_ID:
 				return new ComponentType2EditPart(view);
 
-			case Component4EditPart.VISUAL_ID:
-				return new Component4EditPart(view);
-
 			case InputPort2EditPart.VISUAL_ID:
 				return new InputPort2EditPart(view);
 
@@ -84,18 +81,6 @@ public class RobmodEditPartFactory implements EditPartFactory {
 
 			case OutputPortNameEditPart.VISUAL_ID:
 				return new OutputPortNameEditPart(view);
-
-			case Component5EditPart.VISUAL_ID:
-				return new Component5EditPart(view);
-
-			case ComponentName2EditPart.VISUAL_ID:
-				return new ComponentName2EditPart(view);
-
-			case ComponentType4EditPart.VISUAL_ID:
-				return new ComponentType4EditPart(view);
-
-			case ComponentThreadCompartmentEditPart.VISUAL_ID:
-				return new ComponentThreadCompartmentEditPart(view);
 
 			case HandlerTrigeredByEditPart.VISUAL_ID:
 				return new HandlerTrigeredByEditPart(view);

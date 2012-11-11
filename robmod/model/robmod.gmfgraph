@@ -52,9 +52,6 @@
       <accessors figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
       <accessors figure="//@figures.0/@descriptors.5/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors name="ThreadFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ThreadFigure"/>
-    </descriptors>
     <descriptors name="PortConnectionFigure">
       <actualFigure xsi:type="gmfgraph:PolylineConnection" name="PortConnectionFigure" lineWidth="3" targetDecoration="//@figures.0/@figures.1">
         <foregroundColor xsi:type="gmfgraph:ConstantColor" value="black"/>
@@ -66,10 +63,8 @@
   <nodes name="InputPort" figure="InputPortFigure" affixedParentSide="WEST"/>
   <nodes name="OutputPort" figure="OutputPortFigure" affixedParentSide="EAST"/>
   <nodes name="Property" figure="PropertyFigure"/>
-  <nodes name="Thread" figure="ThreadFigure"/>
   <connections name="HandlerTrigeredBy" figure="HandlerTrigeredByFigure"/>
   <connections name="PortConnection" figure="PortConnectionFigure"/>
-  <compartments name="ThreadCompartment" figure="ThreadFigure"/>
   <labels name="ComponentName" figure="ComponentFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels name="HandlerName" figure="HandlerFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
   <labels name="InputPortName" figure="InputPortFigure" elementIcon="false" accessor="//@figures.0/@descriptors.3/@accessors.0"/>

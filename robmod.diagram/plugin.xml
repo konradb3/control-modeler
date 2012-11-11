@@ -241,7 +241,7 @@
       <viewProvider class="robmod.robmod.diagram.providers.RobmodViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Robmod"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,3001,3002,3003"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,3001,3002"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4004,4005,4006,4007,4008,4009"/>
       </viewProvider>
    </extension>
@@ -254,16 +254,16 @@
             <method name="getType()" value="Robmod"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,3001,3002,3003"/>
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,3001,3002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4004,4005,4006,4007,4008,4009"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001,5002,5003,5007,5004,5008,5009,5010,5011,5005,5006,5012,5013"/>
+            <method name="getType()" value="5001,5002,5003,5007,5004,5008,5009,5010,5011,5005,5006"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7001"/>
+            <method name="getType()" value=""/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -280,11 +280,9 @@
          <object class="robmod.robmod.diagram.edit.parts.InputPortEditPart" id="InputPort_2004"/>
          <object class="robmod.robmod.diagram.edit.parts.PropertyEditPart" id="Property_2005"/>
          <object class="robmod.robmod.diagram.edit.parts.Component3EditPart" id="Component_2006"/>
-         <object class="robmod.robmod.diagram.edit.parts.Component4EditPart" id="Component_2007"/>
          <object class="robmod.robmod.diagram.edit.parts.InputPort2EditPart" id="InputPort_3001"/>
          <object class="robmod.robmod.diagram.edit.parts.OutputPort2EditPart" id="OutputPort_3002"/>
-         <object class="robmod.robmod.diagram.edit.parts.Component5EditPart" id="Component_3003"/>
-         <context elements="Component_1000,OutputPort_2001,Handler_2002,Component_2003,InputPort_2004,Property_2005,Component_2006,Component_2007,InputPort_3001,OutputPort_3002,Component_3003"/>
+         <context elements="Component_1000,OutputPort_2001,Handler_2002,Component_2003,InputPort_2004,Property_2005,Component_2006,InputPort_3001,OutputPort_3002"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -372,15 +370,6 @@
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://dupa.org/robmod.ecore">
-         <specializationType
-               id="robmod.diagram.Component_2007"
-               name="%metatype.name.Component_2007"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="robmod.diagram.Component_1000"/>
-            <param name="semanticHint" value="2007"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://dupa.org/robmod.ecore">
          <metamodelType
                id="robmod.diagram.InputPort_3001"
                name="%metatype.name.InputPort_3001"
@@ -397,15 +386,6 @@
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="robmod.diagram.OutputPort_2001"/>
             <param name="semanticHint" value="3002"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://dupa.org/robmod.ecore">
-         <specializationType
-               id="robmod.diagram.Component_3003"
-               name="%metatype.name.Component_3003"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="robmod.diagram.Component_1000"/>
-            <param name="semanticHint" value="3003"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://dupa.org/robmod.ecore">
@@ -481,10 +461,8 @@
          <elementType ref="robmod.diagram.InputPort_2004"/>
          <elementType ref="robmod.diagram.Property_2005"/>
          <elementType ref="robmod.diagram.Component_2006"/>
-         <elementType ref="robmod.diagram.Component_2007"/>
          <elementType ref="robmod.diagram.InputPort_3001"/>
          <elementType ref="robmod.diagram.OutputPort_3002"/>
-         <elementType ref="robmod.diagram.Component_3003"/>
          <elementType ref="robmod.diagram.HandlerTrigeredBy_4004"/>
          <elementType ref="robmod.diagram.OutputPortConnection_4005"/>
          <elementType ref="robmod.diagram.OutputPortDelegation_4006"/>
@@ -615,16 +593,6 @@
       <constraintProvider cache="true">
          <package namespaceUri="http://dupa.org/robmod.ecore"/>
                <constraints categories="s">
-                  <constraint id="ssd"
-            lang="OCL"
-            name="sdd"
-            mode="Live"
-            severity="ERROR" statusCode="200">
-            <![CDATA[not handlers->notEmpty() or not composition->notEmpty()]]>
-            <description><![CDATA[Handler or Coposition]]></description>
-            <message><![CDATA[Single component can't conteins both Handler and orther Components]]></message>
-            <target class="robmod.Component"/>
-         </constraint>
                   <constraint id="Component.name"
             lang="OCL"
             name="Component name audit"
@@ -666,14 +634,34 @@
             <message><![CDATA[Conponent can contain only one handler without triggers.]]></message>
             <target class="robmod.Component"/>
          </constraint>
-                  <constraint id="Component.empty"
+                  <constraint id="Composition.noHandlers"
             lang="OCL"
-            name="Component empty"
+            name="Composition no handlers"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <![CDATA[self.type2 <> ComponentType::Composition or self.handlers->isEmpty()]]>
+            <description><![CDATA[Composition can't have handlers.]]></description>
+            <message><![CDATA[]]></message>
+            <target class="robmod.Component"/>
+         </constraint>
+                  <constraint id="Component.Composition"
+            lang="OCL"
+            name="Component composition"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <![CDATA[self.type2 <> ComponentType::Component or self.composition->isEmpty()]]>
+            <description><![CDATA[Components can't have compositions.]]></description>
+            <message><![CDATA[Component composition audit violated]]></message>
+            <target class="robmod.Component"/>
+         </constraint>
+                  <constraint id="Component.Handler"
+            lang="OCL"
+            name="Component handler"
             mode="Batch"
-            severity="WARNING" statusCode="200">
-            <![CDATA[self.handlers->notEmpty() or self.composition->notEmpty()]]>
-            <description><![CDATA[Comopnent doesn't contain handler nor other components.]]></description>
-            <message><![CDATA[Comopnent doesn't contain handler nor other components.]]></message>
+            severity="ERROR" statusCode="200">
+            <![CDATA[self.type2 <> ComponentType::Component or self.handlers->notEmpty()]]>
+            <description><![CDATA[Component must have at least one handler.]]></description>
+            <message><![CDATA[Component must have at least one handler.]]></message>
             <target class="robmod.Component"/>
          </constraint>
                   </constraints>
@@ -686,12 +674,13 @@
          <selector class="robmod.robmod.diagram.providers.RobmodValidationProvider$DefaultCtx"/>
       </clientContext>
       <binding context="robmod.diagramDefaultCtx">
-                  <constraint ref="robmod.diagram.ssd"/>
                   <constraint ref="robmod.diagram.Component.name"/>
                   <constraint ref="robmod.diagram.Component.type"/>
                   <constraint ref="robmod.diagram.InputPort.name"/>
                   <constraint ref="robmod.diagram.Component.handlers"/>
-                  <constraint ref="robmod.diagram.Component.empty"/>
+                  <constraint ref="robmod.diagram.Composition.noHandlers"/>
+                  <constraint ref="robmod.diagram.Component.Composition"/>
+                  <constraint ref="robmod.diagram.Component.Handler"/>
                </binding>
 
    </extension>

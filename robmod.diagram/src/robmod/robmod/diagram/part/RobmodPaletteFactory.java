@@ -52,8 +52,7 @@ public class RobmodPaletteFactory {
 		paletteContainer.add(createOutputPortConnection6CreationTool());
 		paletteContainer.add(createProperty7CreationTool());
 		paletteContainer.add(createComposition8CreationTool());
-		paletteContainer.add(createSequentialThread9CreationTool());
-		paletteContainer.add(createComponentOrdering10CreationTool());
+		paletteContainer.add(createComponentOrdering9CreationTool());
 		return paletteContainer;
 	}
 
@@ -82,31 +81,10 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createComponent1CreationTool() {
-		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
-																								 * [
-																								 * org
-																								 * .
-																								 * eclipse
-																								 * .
-																								 * gmf
-																								 * .
-																								 * runtime
-																								 * .
-																								 * emf
-																								 * .
-																								 * type
-																								 * .
-																								 * core
-																								 * .
-																								 * IElementType
-																								 * ]
-																								 */(
-				2);
-		types.add(RobmodElementTypes.Component_2003);
-		types.add(RobmodElementTypes.Component_3003);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Component1CreationTool_title,
-				Messages.Component1CreationTool_desc, types);
+				Messages.Component1CreationTool_desc,
+				Collections.singletonList(RobmodElementTypes.Component_2003));
 		entry.setId("createComponent1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(RobmodElementTypes
 				.getImageDescriptor(RobmodElementTypes.Component_2003));
@@ -133,28 +111,11 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createHandlerTrigeredBy3CreationTool() {
-		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
-																								 * [
-																								 * org
-																								 * .
-																								 * eclipse
-																								 * .
-																								 * gmf
-																								 * .
-																								 * runtime
-																								 * .
-																								 * emf
-																								 * .
-																								 * type
-																								 * .
-																								 * core
-																								 * .
-																								 * IElementType
-																								 * ]
-																								 */(
-				2);
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+				3);
 		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		types.add(RobmodElementTypes.HandlerGenerates_4008);
+		types.add(RobmodElementTypes.ComponentBefore_4009);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.HandlerTrigeredBy3CreationTool_title,
 				Messages.HandlerTrigeredBy3CreationTool_desc, types);
@@ -169,25 +130,7 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createInputPort4CreationTool() {
-		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
-																								 * [
-																								 * org
-																								 * .
-																								 * eclipse
-																								 * .
-																								 * gmf
-																								 * .
-																								 * runtime
-																								 * .
-																								 * emf
-																								 * .
-																								 * type
-																								 * .
-																								 * core
-																								 * .
-																								 * IElementType
-																								 * ]
-																								 */(
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
 				2);
 		types.add(RobmodElementTypes.InputPort_3001);
 		types.add(RobmodElementTypes.InputPort_2004);
@@ -205,25 +148,7 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createOutputPort5CreationTool() {
-		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
-																								 * [
-																								 * org
-																								 * .
-																								 * eclipse
-																								 * .
-																								 * gmf
-																								 * .
-																								 * runtime
-																								 * .
-																								 * emf
-																								 * .
-																								 * type
-																								 * .
-																								 * core
-																								 * .
-																								 * IElementType
-																								 * ]
-																								 */(
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
 				2);
 		types.add(RobmodElementTypes.OutputPort_2001);
 		types.add(RobmodElementTypes.OutputPort_3002);
@@ -241,25 +166,7 @@ public class RobmodPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createOutputPortConnection6CreationTool() {
-		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
-																								 * [
-																								 * org
-																								 * .
-																								 * eclipse
-																								 * .
-																								 * gmf
-																								 * .
-																								 * runtime
-																								 * .
-																								 * emf
-																								 * .
-																								 * type
-																								 * .
-																								 * core
-																								 * .
-																								 * IElementType
-																								 * ]
-																								 */(
+		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
 				3);
 		types.add(RobmodElementTypes.OutputPortConnection_4005);
 		types.add(RobmodElementTypes.OutputPortDelegation_4006);
@@ -307,31 +214,12 @@ public class RobmodPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createSequentialThread9CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.SequentialThread9CreationTool_title,
-				Messages.SequentialThread9CreationTool_desc,
-				Collections.singletonList(RobmodElementTypes.Component_2007));
-		entry.setId("createSequentialThread9CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(RobmodElementTypes
-				.getImageDescriptor(RobmodElementTypes.Component_2007));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private ToolEntry createComponentOrdering10CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.ComponentOrdering10CreationTool_title,
-				Messages.ComponentOrdering10CreationTool_desc,
-				Collections
-						.singletonList(RobmodElementTypes.ComponentBefore_4009));
-		entry.setId("createComponentOrdering10CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(RobmodElementTypes
-				.getImageDescriptor(RobmodElementTypes.ComponentBefore_4009));
-		entry.setLargeIcon(entry.getSmallIcon());
+	private ToolEntry createComponentOrdering9CreationTool() {
+		ToolEntry entry = new ToolEntry(
+				Messages.ComponentOrdering9CreationTool_title,
+				Messages.ComponentOrdering9CreationTool_desc, null, null) {
+		};
+		entry.setId("createComponentOrdering9CreationTool"); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -358,7 +246,7 @@ public class RobmodPaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */elementTypes;
+		private final List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/elementTypes;
 
 		/**
 		 * @generated
@@ -366,7 +254,7 @@ public class RobmodPaletteFactory {
 		private NodeToolEntry(
 				String title,
 				String description,
-				List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */elementTypes) {
+				List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/elementTypes) {
 			super(title, description, null, null);
 			this.elementTypes = elementTypes;
 		}
@@ -389,7 +277,7 @@ public class RobmodPaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */relationshipTypes;
+		private final List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes;
 
 		/**
 		 * @generated
@@ -397,7 +285,7 @@ public class RobmodPaletteFactory {
 		private LinkToolEntry(
 				String title,
 				String description,
-				List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */relationshipTypes) {
+				List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes) {
 			super(title, description, null, null);
 			this.relationshipTypes = relationshipTypes;
 		}

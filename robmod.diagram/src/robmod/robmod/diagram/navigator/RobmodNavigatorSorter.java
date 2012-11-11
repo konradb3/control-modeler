@@ -12,7 +12,7 @@ public class RobmodNavigatorSorter extends ViewerSorter {
 	/**
 	 * @generated
 	 */
-	private static final int GROUP_CATEGORY = 7003;
+	private static final int GROUP_CATEGORY = 4011;
 
 	/**
 	 * @generated

@@ -220,7 +220,7 @@ public class ComponentImpl extends EObjectImpl implements Component {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double PERIOD_EDEFAULT = null;
+	protected static final Double PERIOD_EDEFAULT = new Double(0.0);
 
 	/**
 	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' attribute.

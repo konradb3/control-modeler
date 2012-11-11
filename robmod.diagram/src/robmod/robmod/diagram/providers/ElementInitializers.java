@@ -40,30 +40,6 @@ public class ElementInitializers {
 	/**
 	 * @generated
 	 */
-	public void init_Component_2007(Component instance) {
-		try {
-			instance.setType2(ComponentType.SEQUENTIAL_THREAD_LITERAL);
-		} catch (RuntimeException e) {
-			RobmodDiagramEditorPlugin.getInstance().logError(
-					"Element initialization failed", e); //$NON-NLS-1$						
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	public void init_Component_3003(Component instance) {
-		try {
-			instance.setType2(ComponentType.COMPONENT_LITERAL);
-		} catch (RuntimeException e) {
-			RobmodDiagramEditorPlugin.getInstance().logError(
-					"Element initialization failed", e); //$NON-NLS-1$						
-		}
-	}
-
-	/**
-	 * @generated
-	 */
 	public static ElementInitializers getInstance() {
 		ElementInitializers cached = RobmodDiagramEditorPlugin.getInstance()
 				.getElementInitializers();

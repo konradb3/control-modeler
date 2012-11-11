@@ -8,7 +8,6 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
 import robmod.robmod.diagram.edit.commands.Component2CreateCommand;
-import robmod.robmod.diagram.edit.commands.Component3CreateCommand;
 import robmod.robmod.diagram.edit.commands.ComponentCreateCommand;
 import robmod.robmod.diagram.edit.commands.HandlerCreateCommand;
 import robmod.robmod.diagram.edit.commands.InputPortCreateCommand;
@@ -50,9 +49,6 @@ public class ComponentItemSemanticEditPolicy extends
 		}
 		if (RobmodElementTypes.Component_2006 == req.getElementType()) {
 			return getGEFWrapper(new Component2CreateCommand(req));
-		}
-		if (RobmodElementTypes.Component_2007 == req.getElementType()) {
-			return getGEFWrapper(new Component3CreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

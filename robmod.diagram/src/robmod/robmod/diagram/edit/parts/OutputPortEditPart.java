@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -13,8 +14,10 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
@@ -69,7 +72,8 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new OutputPortItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// XXX need an SCR to runtime to have another abstract superclass that
+		// would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -170,8 +174,8 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -185,9 +189,11 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -197,6 +203,48 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 			nodeShape.setLayoutManager(layout);
 		}
 		return nodeShape; // use nodeShape itself as contentPane
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart arg0) {
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
+
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart arg0) {
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 0d, 0.5d);
+		return fixedAnchor;
 	}
 
 	/**
@@ -256,8 +304,26 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSource() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSource() {
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.OutputPortConnection_4005);
 		types.add(RobmodElementTypes.OutputPortDelegation_4006);
@@ -267,9 +333,27 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSourceAndTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (targetEditPart instanceof InputPortEditPart) {
 			types.add(RobmodElementTypes.OutputPortConnection_4005);
 		}
@@ -288,9 +372,27 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMATypesForTarget(
 			IElementType relationshipType) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (relationshipType == RobmodElementTypes.OutputPortConnection_4005) {
 			types.add(RobmodElementTypes.InputPort_2004);
 			types.add(RobmodElementTypes.InputPort_3001);
@@ -304,8 +406,26 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnTarget() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnTarget() {
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.OutputPortDelegation_4006);
 		types.add(RobmodElementTypes.HandlerGenerates_4008);
@@ -315,9 +435,27 @@ public class OutputPortEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForSource(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMATypesForSource(
 			IElementType relationshipType) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (relationshipType == RobmodElementTypes.OutputPortDelegation_4006) {
 			types.add(RobmodElementTypes.OutputPort_2001);
 			types.add(RobmodElementTypes.OutputPort_3002);

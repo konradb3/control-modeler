@@ -23,10 +23,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentThreadCompartmentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.InputPort2EditPart;
 import robmod.robmod.diagram.edit.parts.InputPortEditPart;
@@ -48,14 +45,13 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof ComponentEditPart) {
 			ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
-					7);
+					6);
 			types.add(RobmodElementTypes.OutputPort_2001);
 			types.add(RobmodElementTypes.Handler_2002);
 			types.add(RobmodElementTypes.Component_2003);
 			types.add(RobmodElementTypes.InputPort_2004);
 			types.add(RobmodElementTypes.Property_2005);
 			types.add(RobmodElementTypes.Component_2006);
-			types.add(RobmodElementTypes.Component_2007);
 			return types;
 		}
 		if (editPart instanceof Component2EditPart) {
@@ -70,19 +66,6 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 					2);
 			types.add(RobmodElementTypes.InputPort_3001);
 			types.add(RobmodElementTypes.OutputPort_3002);
-			return types;
-		}
-		if (editPart instanceof Component5EditPart) {
-			ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
-					2);
-			types.add(RobmodElementTypes.InputPort_3001);
-			types.add(RobmodElementTypes.OutputPort_3002);
-			return types;
-		}
-		if (editPart instanceof ComponentThreadCompartmentEditPart) {
-			ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
-					1);
-			types.add(RobmodElementTypes.Component_3003);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -112,20 +95,12 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((Component3EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof Component4EditPart) {
-			return ((Component4EditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
 		if (sourceEditPart instanceof InputPort2EditPart) {
 			return ((InputPort2EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof OutputPort2EditPart) {
 			return ((OutputPort2EditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof Component5EditPart) {
-			return ((Component5EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		return Collections.EMPTY_LIST;
@@ -152,20 +127,12 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((Component3EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof Component4EditPart) {
-			return ((Component4EditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
 		if (targetEditPart instanceof InputPort2EditPart) {
 			return ((InputPort2EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof OutputPort2EditPart) {
 			return ((OutputPort2EditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof Component5EditPart) {
-			return ((Component5EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
@@ -200,20 +167,12 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((Component3EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof Component4EditPart) {
-			return ((Component4EditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
 		if (sourceEditPart instanceof InputPort2EditPart) {
 			return ((InputPort2EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof OutputPort2EditPart) {
 			return ((OutputPort2EditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof Component5EditPart) {
-			return ((Component5EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		return Collections.EMPTY_LIST;
@@ -242,20 +201,12 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((Component3EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof Component4EditPart) {
-			return ((Component4EditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
 		if (targetEditPart instanceof InputPort2EditPart) {
 			return ((InputPort2EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof OutputPort2EditPart) {
 			return ((OutputPort2EditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		if (targetEditPart instanceof Component5EditPart) {
-			return ((Component5EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		return Collections.EMPTY_LIST;
@@ -288,20 +239,12 @@ public class RobmodModelingAssistantProvider extends ModelingAssistantProvider {
 			return ((Component3EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof Component4EditPart) {
-			return ((Component4EditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
 		if (sourceEditPart instanceof InputPort2EditPart) {
 			return ((InputPort2EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof OutputPort2EditPart) {
 			return ((OutputPort2EditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof Component5EditPart) {
-			return ((Component5EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		return Collections.EMPTY_LIST;

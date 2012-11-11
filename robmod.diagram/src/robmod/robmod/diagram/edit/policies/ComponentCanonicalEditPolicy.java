@@ -39,11 +39,10 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 
+import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 import robmod.robmod.RobmodPackage;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.InputPort2EditPart;
@@ -137,7 +136,6 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 		case InputPortEditPart.VISUAL_ID:
 		case PropertyEditPart.VISUAL_ID:
 		case Component3EditPart.VISUAL_ID:
-		case Component4EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -293,7 +291,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 	 * @generated
 	 */
 	private Collection/*[org.eclipse.core.runtime.IAdaptable]*/refreshConnections() {
-		Map/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/domain2NotationMap = new HashMap/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/();
+		Domain2Notation domain2NotationMap = new Domain2Notation();
 		Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/linkDescriptors = collectAllLinks(
 				getDiagram(), domain2NotationMap);
 		Collection existingLinks = new LinkedList(getDiagram().getEdges());
@@ -336,8 +334,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 	 * @generated
 	 */
 	private Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/collectAllLinks(
-			View view,
-			Map/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/domain2NotationMap) {
+			View view, Domain2Notation domain2NotationMap) {
 		if (!ComponentEditPart.MODEL_ID.equals(RobmodVisualIDRegistry
 				.getModelID(view))) {
 			return Collections.EMPTY_LIST;
@@ -349,10 +346,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getComponent_1000ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case OutputPortEditPart.VISUAL_ID: {
@@ -360,10 +354,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getOutputPort_2001ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case HandlerEditPart.VISUAL_ID: {
@@ -371,10 +362,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getHandler_2002ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Component2EditPart.VISUAL_ID: {
@@ -382,10 +370,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getComponent_2003ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case InputPortEditPart.VISUAL_ID: {
@@ -393,10 +378,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getInputPort_2004ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case PropertyEditPart.VISUAL_ID: {
@@ -404,10 +386,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getProperty_2005ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Component3EditPart.VISUAL_ID: {
@@ -415,21 +394,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getComponent_2006ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
-			break;
-		}
-		case Component4EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(RobmodDiagramUpdater
-						.getComponent_2007ContainedLinks(view));
-			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case InputPort2EditPart.VISUAL_ID: {
@@ -437,10 +402,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getInputPort_3001ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case OutputPort2EditPart.VISUAL_ID: {
@@ -448,21 +410,7 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 				result.addAll(RobmodDiagramUpdater
 						.getOutputPort_3002ContainedLinks(view));
 			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
-			break;
-		}
-		case Component5EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(RobmodDiagramUpdater
-						.getComponent_3003ContainedLinks(view));
-			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
+			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		}
@@ -483,16 +431,16 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private Collection/*[org.eclipse.core.runtime.IAdaptable]*/createConnections(
 			Collection/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/linkDescriptors,
-			Map/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/domain2NotationMap) {
+			Domain2Notation domain2NotationMap) {
 		LinkedList/*[org.eclipse.core.runtime.IAdaptable]*/adapters = new LinkedList/*[org.eclipse.core.runtime.IAdaptable]*/();
 		for (Iterator/*[robmod.robmod.diagram.part.RobmodLinkDescriptor]*/it = linkDescriptors
 				.iterator(); it.hasNext();) {
 			RobmodLinkDescriptor nextLinkDescriptor = (RobmodLinkDescriptor) it
 					.next();
-			EditPart sourceEditPart = getEditPart(
-					nextLinkDescriptor.getSource(), domain2NotationMap);
-			EditPart targetEditPart = getEditPart(
-					nextLinkDescriptor.getDestination(), domain2NotationMap);
+			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor,
+					domain2NotationMap);
+			EditPart targetEditPart = getTargetEditPart(nextLinkDescriptor,
+					domain2NotationMap);
 			if (sourceEditPart == null || targetEditPart == null) {
 				continue;
 			}
@@ -524,9 +472,8 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private EditPart getEditPart(
-			EObject domainModelElement,
-			Map/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/domain2NotationMap) {
+	private EditPart getEditPart(EObject domainModelElement,
+			Domain2Notation domain2NotationMap) {
 		View view = (View) domain2NotationMap.get(domainModelElement);
 		if (view != null) {
 			return (EditPart) getHost().getViewer().getEditPartRegistry()
@@ -540,5 +487,65 @@ public class ComponentCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private Diagram getDiagram() {
 		return ((View) getHost().getModel()).getDiagram();
+	}
+
+	/**
+	 * @generated
+	 */
+	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor,
+			Domain2Notation domain2NotationMap) {
+		return getEditPart(descriptor.getSource(), domain2NotationMap);
+	}
+
+	/**
+	 * @generated
+	 */
+	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor,
+			Domain2Notation domain2NotationMap) {
+		return getEditPart(descriptor.getDestination(), domain2NotationMap);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected final EditPart getHintedEditPart(EObject domainModelElement,
+			Domain2Notation domain2NotationMap, int hintVisualId) {
+		View view = (View) domain2NotationMap.getHinted(domainModelElement,
+				RobmodVisualIDRegistry.getType(hintVisualId));
+		if (view != null) {
+			return (EditPart) getHost().getViewer().getEditPartRegistry()
+					.get(view);
+		}
+		return null;
+	}
+
+	/**
+	 * @generated
+	 */
+	@SuppressWarnings("serial")
+	protected static class Domain2Notation extends HashMap/*[org.eclipse.emf.ecore.EObject, org.eclipse.gmf.runtime.notation.View]*/{
+		/**
+		 * @generated
+		 */
+		public boolean containsDomainElement(EObject domainElement) {
+			return this.containsKey(domainElement);
+		}
+
+		/**
+		 * @generated
+		 */
+		public View getHinted(EObject domainEObject, String hint) {
+			return (View) this.get(domainEObject);
+		}
+
+		/**
+		 * @generated
+		 */
+		public void putView(EObject domainElement, View view) {
+			if (!containsKey(view.getElement())) {
+				this.put(domainElement, view);
+			}
+		}
+
 	}
 }

@@ -267,6 +267,7 @@ public interface Component extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Period</em>' attribute isn't clear,
@@ -276,7 +277,7 @@ public interface Component extends EObject {
 	 * @return the value of the '<em>Period</em>' attribute.
 	 * @see #setPeriod(Double)
 	 * @see robmod.robmod.RobmodPackage#getComponent_Period()
-	 * @model
+	 * @model default="0.0" required="true"
 	 * @generated
 	 */
 	Double getPeriod();

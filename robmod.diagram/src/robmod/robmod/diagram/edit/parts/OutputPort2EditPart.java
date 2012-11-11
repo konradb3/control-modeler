@@ -236,11 +236,30 @@ public class OutputPort2EditPart extends AbstractBorderItemEditPart {
 
 		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
 				getFigure(), 1d, 0.5d);
-
 		return fixedAnchor;
-
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart arg0) {
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 1d, 0.5d);
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
+
+		FixedConnectionAnchor fixedAnchor = new FixedConnectionAnchor(
+				getFigure(), 1d, 0.5d);
+		return fixedAnchor;
+	}
+	
 	/**
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.

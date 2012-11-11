@@ -338,12 +338,6 @@ public class Component2EditPart extends AbstractBorderedShapeEditPart {
 		if (targetEditPart instanceof Component3EditPart) {
 			types.add(RobmodElementTypes.ComponentBefore_4009);
 		}
-		if (targetEditPart instanceof Component4EditPart) {
-			types.add(RobmodElementTypes.ComponentBefore_4009);
-		}
-		if (targetEditPart instanceof Component5EditPart) {
-			types.add(RobmodElementTypes.ComponentBefore_4009);
-		}
 		return types;
 	}
 
@@ -356,8 +350,6 @@ public class Component2EditPart extends AbstractBorderedShapeEditPart {
 		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
 			types.add(RobmodElementTypes.Component_2003);
 			types.add(RobmodElementTypes.Component_2006);
-			types.add(RobmodElementTypes.Component_2007);
-			types.add(RobmodElementTypes.Component_3003);
 		}
 		return types;
 	}
@@ -381,8 +373,6 @@ public class Component2EditPart extends AbstractBorderedShapeEditPart {
 		if (relationshipType == RobmodElementTypes.ComponentBefore_4009) {
 			types.add(RobmodElementTypes.Component_2003);
 			types.add(RobmodElementTypes.Component_2006);
-			types.add(RobmodElementTypes.Component_2007);
-			types.add(RobmodElementTypes.Component_3003);
 		}
 		return types;
 	}

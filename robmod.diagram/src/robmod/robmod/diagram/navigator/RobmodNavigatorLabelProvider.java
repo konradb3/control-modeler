@@ -19,13 +19,9 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 import robmod.robmod.Component;
 import robmod.robmod.diagram.edit.parts.Component2EditPart;
 import robmod.robmod.diagram.edit.parts.Component3EditPart;
-import robmod.robmod.diagram.edit.parts.Component4EditPart;
-import robmod.robmod.diagram.edit.parts.Component5EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentBeforeEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentDescription2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentDescriptionEditPart;
 import robmod.robmod.diagram.edit.parts.ComponentEditPart;
-import robmod.robmod.diagram.edit.parts.ComponentName2EditPart;
 import robmod.robmod.diagram.edit.parts.ComponentNameEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerEditPart;
 import robmod.robmod.diagram.edit.parts.HandlerGeneratesEditPart;
@@ -110,57 +106,51 @@ public class RobmodNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public Image getImage(View view) {
 		switch (RobmodVisualIDRegistry.getVisualID(view)) {
-		case HandlerTrigeredByEditPart.VISUAL_ID:
+		case InputPortPropagationEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Link?http://dupa.org/robmod.ecore?Handler?trigeredBy", RobmodElementTypes.HandlerTrigeredBy_4004); //$NON-NLS-1$
-		case OutputPort2EditPart.VISUAL_ID:
+					"Navigator?Link?http://dupa.org/robmod.ecore?InputPort?propagation", RobmodElementTypes.InputPortPropagation_4007); //$NON-NLS-1$
+		case ComponentEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http://dupa.org/robmod.ecore?OutputPort", RobmodElementTypes.OutputPort_3002); //$NON-NLS-1$
-		case ComponentBeforeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://dupa.org/robmod.ecore?Component?before", RobmodElementTypes.ComponentBefore_4009); //$NON-NLS-1$
-		case InputPortEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?InputPort", RobmodElementTypes.InputPort_2004); //$NON-NLS-1$
-		case HandlerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Handler", RobmodElementTypes.Handler_2002); //$NON-NLS-1$
-		case Component5EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_3003); //$NON-NLS-1$
+					"Navigator?Diagram?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_1000); //$NON-NLS-1$
 		case OutputPortEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?OutputPort", RobmodElementTypes.OutputPort_2001); //$NON-NLS-1$
-		case OutputPortDelegationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://dupa.org/robmod.ecore?OutputPort?delegation", RobmodElementTypes.OutputPortDelegation_4006); //$NON-NLS-1$
-		case InputPort2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://dupa.org/robmod.ecore?InputPort", RobmodElementTypes.InputPort_3001); //$NON-NLS-1$
-		case Component4EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_2007); //$NON-NLS-1$
 		case HandlerGeneratesEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http://dupa.org/robmod.ecore?Handler?generates", RobmodElementTypes.HandlerGenerates_4008); //$NON-NLS-1$
 		case OutputPortConnectionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http://dupa.org/robmod.ecore?OutputPort?connection", RobmodElementTypes.OutputPortConnection_4005); //$NON-NLS-1$
-		case PropertyEditPart.VISUAL_ID:
+		case InputPort2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Property", RobmodElementTypes.Property_2005); //$NON-NLS-1$
-		case ComponentEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_1000); //$NON-NLS-1$
-		case InputPortPropagationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://dupa.org/robmod.ecore?InputPort?propagation", RobmodElementTypes.InputPortPropagation_4007); //$NON-NLS-1$
+					"Navigator?Node?http://dupa.org/robmod.ecore?InputPort", RobmodElementTypes.InputPort_3001); //$NON-NLS-1$
 		case Component2EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_2003); //$NON-NLS-1$
+		case OutputPortDelegationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://dupa.org/robmod.ecore?OutputPort?delegation", RobmodElementTypes.OutputPortDelegation_4006); //$NON-NLS-1$
+		case OutputPort2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://dupa.org/robmod.ecore?OutputPort", RobmodElementTypes.OutputPort_3002); //$NON-NLS-1$
+		case ComponentBeforeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://dupa.org/robmod.ecore?Component?before", RobmodElementTypes.ComponentBefore_4009); //$NON-NLS-1$
+		case PropertyEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Property", RobmodElementTypes.Property_2005); //$NON-NLS-1$
+		case InputPortEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?InputPort", RobmodElementTypes.InputPort_2004); //$NON-NLS-1$
 		case Component3EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Component", RobmodElementTypes.Component_2006); //$NON-NLS-1$
+		case HandlerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://dupa.org/robmod.ecore?Handler", RobmodElementTypes.Handler_2002); //$NON-NLS-1$
+		case HandlerTrigeredByEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://dupa.org/robmod.ecore?Handler?trigeredBy", RobmodElementTypes.HandlerTrigeredBy_4004); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -213,40 +203,36 @@ public class RobmodNavigatorLabelProvider extends LabelProvider implements
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (RobmodVisualIDRegistry.getVisualID(view)) {
-		case HandlerTrigeredByEditPart.VISUAL_ID:
-			return getHandlerTrigeredBy_4004Text(view);
-		case OutputPort2EditPart.VISUAL_ID:
-			return getOutputPort_3002Text(view);
-		case ComponentBeforeEditPart.VISUAL_ID:
-			return getComponentBefore_4009Text(view);
-		case InputPortEditPart.VISUAL_ID:
-			return getInputPort_2004Text(view);
-		case HandlerEditPart.VISUAL_ID:
-			return getHandler_2002Text(view);
-		case Component5EditPart.VISUAL_ID:
-			return getComponent_3003Text(view);
+		case InputPortPropagationEditPart.VISUAL_ID:
+			return getInputPortPropagation_4007Text(view);
+		case ComponentEditPart.VISUAL_ID:
+			return getComponent_1000Text(view);
 		case OutputPortEditPart.VISUAL_ID:
 			return getOutputPort_2001Text(view);
-		case OutputPortDelegationEditPart.VISUAL_ID:
-			return getOutputPortDelegation_4006Text(view);
-		case InputPort2EditPart.VISUAL_ID:
-			return getInputPort_3001Text(view);
-		case Component4EditPart.VISUAL_ID:
-			return getComponent_2007Text(view);
 		case HandlerGeneratesEditPart.VISUAL_ID:
 			return getHandlerGenerates_4008Text(view);
 		case OutputPortConnectionEditPart.VISUAL_ID:
 			return getOutputPortConnection_4005Text(view);
-		case PropertyEditPart.VISUAL_ID:
-			return getProperty_2005Text(view);
-		case ComponentEditPart.VISUAL_ID:
-			return getComponent_1000Text(view);
-		case InputPortPropagationEditPart.VISUAL_ID:
-			return getInputPortPropagation_4007Text(view);
+		case InputPort2EditPart.VISUAL_ID:
+			return getInputPort_3001Text(view);
 		case Component2EditPart.VISUAL_ID:
 			return getComponent_2003Text(view);
+		case OutputPortDelegationEditPart.VISUAL_ID:
+			return getOutputPortDelegation_4006Text(view);
+		case OutputPort2EditPart.VISUAL_ID:
+			return getOutputPort_3002Text(view);
+		case ComponentBeforeEditPart.VISUAL_ID:
+			return getComponentBefore_4009Text(view);
+		case PropertyEditPart.VISUAL_ID:
+			return getProperty_2005Text(view);
+		case InputPortEditPart.VISUAL_ID:
+			return getInputPort_2004Text(view);
 		case Component3EditPart.VISUAL_ID:
 			return getComponent_2006Text(view);
+		case HandlerEditPart.VISUAL_ID:
+			return getHandler_2002Text(view);
+		case HandlerTrigeredByEditPart.VISUAL_ID:
+			return getHandlerTrigeredBy_4004Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -286,20 +272,6 @@ public class RobmodNavigatorLabelProvider extends LabelProvider implements
 		} else {
 			RobmodDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5002); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getComponent_2007Text(View view) {
-		Component domainModelElement = (Component) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
-		} else {
-			RobmodDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 2007); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -476,26 +448,6 @@ public class RobmodNavigatorLabelProvider extends LabelProvider implements
 		} else {
 			RobmodDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5004); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getComponent_3003Text(View view) {
-		IParser parser = RobmodParserProvider.getParser(
-				RobmodElementTypes.Component_3003,
-				view.getElement() != null ? view.getElement() : view,
-				RobmodVisualIDRegistry
-						.getType(ComponentName2EditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			RobmodDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5012); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

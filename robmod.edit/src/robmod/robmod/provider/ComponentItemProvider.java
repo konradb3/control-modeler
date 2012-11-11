@@ -128,7 +128,7 @@ public class ComponentItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Component_description_feature", "_UI_Component_type"),
 				 RobmodPackage.Literals.COMPONENT__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Ellipse;
+import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
@@ -65,7 +69,8 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new HandlerItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// XXX need an SCR to runtime to have another abstract superclass that
+		// would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -166,8 +171,8 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -181,9 +186,29 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart arg0) {
+		EllipseAnchor fixedAnchor = new EllipseAnchor(getFigure());
+		return fixedAnchor;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+		EllipseAnchor fixedAnchor = new EllipseAnchor(getFigure());
+		return fixedAnchor;
+	}
+
+	/**
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -252,8 +277,26 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSource() {
-		ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSource() {
+		ArrayList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new ArrayList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */(
 				2);
 		types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		types.add(RobmodElementTypes.HandlerGenerates_4008);
@@ -263,9 +306,27 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMARelTypesOnSourceAndTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (targetEditPart instanceof InputPortEditPart) {
 			types.add(RobmodElementTypes.HandlerTrigeredBy_4004);
 		}
@@ -284,9 +345,27 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/getMATypesForTarget(
+	public List/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */getMATypesForTarget(
 			IElementType relationshipType) {
-		LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new LinkedList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
+		LinkedList/* [org.eclipse.gmf.runtime.emf.type.core.IElementType] */types = new LinkedList/*
+																								 * [
+																								 * org
+																								 * .
+																								 * eclipse
+																								 * .
+																								 * gmf
+																								 * .
+																								 * runtime
+																								 * .
+																								 * emf
+																								 * .
+																								 * type
+																								 * .
+																								 * core
+																								 * .
+																								 * IElementType
+																								 * ]
+																								 */();
 		if (relationshipType == RobmodElementTypes.HandlerTrigeredBy_4004) {
 			types.add(RobmodElementTypes.InputPort_2004);
 			types.add(RobmodElementTypes.InputPort_3001);
@@ -308,18 +387,18 @@ public class HandlerEditPart extends ShapeNodeEditPart {
 		private WrappingLabel fFigureHandlerNameFigure;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public HandlerFigure() {
 
-			FlowLayout layoutThis = new FlowLayout();
-			layoutThis.setStretchMinorAxis(false);
-			layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
+			StackLayout layoutThis = new StackLayout();
+			// layoutThis.setStretchMinorAxis(false);
+			// layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
 
-			layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
-			layoutThis.setMajorSpacing(5);
-			layoutThis.setMinorSpacing(5);
-			layoutThis.setHorizontal(true);
+			// layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
+			// layoutThis.setMajorSpacing(5);
+			// layoutThis.setMinorSpacing(5);
+			// layoutThis.setHorizontal(true);
 
 			this.setLayoutManager(layoutThis);
 

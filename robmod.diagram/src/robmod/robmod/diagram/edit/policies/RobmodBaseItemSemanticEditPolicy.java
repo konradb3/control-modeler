@@ -434,7 +434,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getOutputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(3,
+					Object targetVal = RobmodOCLFactory.getExpression(2,
 							RobmodPackage.eINSTANCE.getInputPort(), env)
 							.evaluate(
 									target,
@@ -465,7 +465,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getOutputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(4,
+					Object targetVal = RobmodOCLFactory.getExpression(3,
 							RobmodPackage.eINSTANCE.getOutputPort(), env)
 							.evaluate(
 									target,
@@ -496,7 +496,7 @@ public class RobmodBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					Map/*[String, org.eclipse.emf.ecore.EClassifier]*/env = Collections
 							./*[String, org.eclipse.emf.ecore.EClassifier]*/singletonMap(
 									"oppositeEnd", RobmodPackage.eINSTANCE.getInputPort()); //$NON-NLS-1$
-					Object targetVal = RobmodOCLFactory.getExpression(5,
+					Object targetVal = RobmodOCLFactory.getExpression(4,
 							RobmodPackage.eINSTANCE.getInputPort(), env)
 							.evaluate(
 									target,
