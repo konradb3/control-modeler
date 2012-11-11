@@ -22,5 +22,29 @@
          </advice>
       </binding>
    </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="robmod_plugin2.control_modeling"
+            name="Control Modeling">
+      </category>
+      <wizard
+            canFinishEarly="true"
+            category="robmod_plugin2.control_modeling"
+            class="robmod_plugin2.NewLibraryProjectWizard"
+            id="robmod_plugin2.components_library"
+            name="Components Library"
+            project="true">
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="robmod_plugin2.control_modeling"
+            class="robmod_plugin2.NewDeploymentProjectWizard"
+            hasPages="true"
+            id="robmod_plugin2.deployment"
+            name="Deployment"
+            project="true">
+      </wizard>
+   </extension>
 
 </plugin>

@@ -15,6 +15,9 @@ tc=rtt.getTC()
 d=tc:getPeer("deployer")
 
 d:import("rtt_rosnode")
+-- [protected ('imports')]
+-- place imports heare.
+-- [/protected]
 
 ros=false
 prio=0
@@ -28,57 +31,47 @@ function conn2ros(depl, port, topic)
 end
 
 [for (c : Component | Component.allInstances())]
-  [if (c.composition->isEmpty())]
-d:loadComponent("[c.name/]", "[c.type/]")
-d:setActivity("[c.name/]", 0, 5, rtt.globals.ORO_SCHED_RT)
-[c.name/] = d:getPeer("[c.name/]")
-[c.name/]:configure()
+  [if (c.type2 = ComponentType::Component)]
+d:loadComponent("[getFullName(c)/]", "[c.type/]")
+d:setActivity("[getFullName(c)/]", [c.period/], 5, rtt.globals.ORO_SCHED_RT)
+[getFullName(c)/] = d:getPeer("[c.name/]")
+[getFullName(c)/]:configure()
 
   [/if]
 [/for]
-
 [for (c : Component | Component.allInstances())]
-  [if (c.composition->isEmpty())]
+  [if (c.type2 = ComponentType::Component)]
     [for (p : OutputPort | c.outputPorts)]
 	  [for (ip : InputPort | resolveOutputPort(p))]
-d:connect("[c.name/].[p.name/]", "[Component.allInstances()->select(inputPorts->includes(ip)).name/].[ip.name/]", rtt.Variable("ConnPolicy"))
+d:connect("[getFullName(c)/].[p.name/]", "[getFullName(Component.allInstances()->select(inputPorts->includes(ip))->asOrderedSet()->first())/].[ip.name/]", rtt.Variable("ConnPolicy"))
       [/for]
 	  [for (xp : OutputPort | resolveOutputPortExt(p))]
-d:stream("[c.name/].[p.name/]",rtt.provides("ros"):topic("[xp.name/]"))
+d:stream("[getFullName(c)/].[p.name/]",rtt.provides("ros"):topic("[xp.name/]"))
 	  [/for]
     [/for]
   [/if]
 [/for]
 [for (xp : InputPort | InputPort.allInstances()->select(external))]
   [for (ip : InputPort | InputPort.allInstances()->select(p | Component.allInstances()->select(inputPorts->includes(p)).handlers->notEmpty())->select(p | isConnected(p, xp)))]
-d:stream("[Component.allInstances()->select(inputPorts->includes(ip)).name/].[ip.name/]",rtt.provides("ros"):topic("[xp.name/]"))
+d:stream("[getFullName(Component.allInstances()->select(inputPorts->includes(ip))->asOrderedSet()->first())/].[ip.name/]",rtt.provides("ros"):topic("[xp.name/]"))
   [/for]
 [/for]
 
-[for (c : Component | Component.allInstances()->select(type2 = ComponentType::SequentialThread))]
-d:loadComponent("[c.name/]", "FBSched")
-d:setActivity("[c.name/]", 1.001, 0, rtt.globals.ORO_SCHED_OTHER)
-[c.name/]=dp:getPeer("[c.name/]")
-
-  [for (cc : Component | c.composition)]
-d:setMasterSlaveActivity("[c.name/]", "[cc.name/]")
-  [/for]
-
-sched_order=[c.name/]:getProperty("sched_order")
-sched_order:get():resize([c.composition->size()/])
-  [for (cc : Component | c.composition->sortedBy(executionOrder))]
-sched_order['['/][cc.executionOrder/][']'/]="[cc.name/]"
-  [/for]
-[/for]
-
-[for (c : Component | Component.allInstances())]
-  [if (c.composition->isEmpty())]
-[c.name/].start()
-  [/if]
-[/for]
+-- [protected ('usercode')]
+-- place user code heare
+-- [/protected]
 
 [/file]
 [/template]
+
+[query public getFullName(c : Component) : String = 
+	if c.eContainer(Component).type2 = ComponentType::Deployment then
+		c.name.toString()
+	else
+		getFullName(c.eContainer(Component)).concat('_').concat(c.name)
+	endif
+/]
+
 
 [query private resolveOutputPort(op : OutputPort) : Set(InputPort) =
 	InputPort.allInstances()->select(p | Component.allInstances()->select(inputPorts->includes(p)).handlers->notEmpty())->select(p | isConnected(p, op))
