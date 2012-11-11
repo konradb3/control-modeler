@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Control Modeling Tools Update Site">
+      Control Modeling Tools Update Site
+   </description>
+   <feature url="features/control_modeler_1.0.0.201211111742.jar" id="control_modeler" version="1.0.0.201211111742">
+      <category name="control_modeler"/>
+   </feature>
+   <feature url="features/orocos_code_generator_1.0.0.201211111742.jar" id="orocos_code_generator" version="1.0.0.201211111742">
+      <category name="control_modeler"/>
+   </feature>
+   <category-def name="control_modeler" label="Control System Modeling Tools"/>
+</site>
