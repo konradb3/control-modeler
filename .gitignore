@@ -1,1 +1,6 @@
 org.eclipse.acceleo.module.robmod/bin
+robmod/bin
+robmod.diagram/bin
+robmod.edit/bin
+robmod.editor/bin
+robmod_plugin2/bin
