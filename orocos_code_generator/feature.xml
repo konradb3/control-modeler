@@ -2,7 +2,7 @@
 <feature
       id="orocos_code_generator"
       label="OROCOS Code Generator"
-      version="1.0.0.qualifier"
+      version="1.0.0"
       provider-name="Konrad Banachowicz">
 
    <description url="http://www.example.com/description">

@@ -2,7 +2,7 @@
 <feature
       id="control_modeler"
       label="Control System Modeling Tools"
-      version="1.0.0.qualifier"
+      version="1.0.0"
       provider-name="Konrad Banachowicz">
 
    <description url="http://www.example.com/description">
