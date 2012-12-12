@@ -16,11 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type2" lowerBound="1" eType="#//ComponentType"
-        defaultValueLiteral="">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="namespace" value=""/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="before" upperBound="-1"
         eType="#//Component"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionOrder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
