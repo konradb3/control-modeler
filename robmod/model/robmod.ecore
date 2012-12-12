@@ -8,13 +8,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="handlers" upperBound="-1"
         eType="#//Handler" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputPorts" upperBound="-1"
-        eType="#//InputPort" containment="true"/>
+        eType="#//InputPort" containment="true" eKeys="#//InputPort/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputPorts" upperBound="-1"
-        eType="#//OutputPort" containment="true"/>
+        eType="#//OutputPort" containment="true" eKeys="#//OutputPort/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property" containment="true"/>
+        eType="#//Property" containment="true" eKeys="#//Property/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type2" lowerBound="1" eType="#//ComponentType"
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="before" upperBound="-1"
